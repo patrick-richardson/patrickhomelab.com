@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PatrickHomeLab Architecture</title>
+
+<style>
+body {
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:#0d1117;
+    color:#e6edf3;
+}
+
+header {
+    background:#161b22;
+    padding:20px;
+    border-bottom:1px solid #30363d;
+}
+
+nav {
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+nav a {
+    color:#e6edf3;
+    text-decoration:none;
+    margin-left:20px;
+}
+
+.container {
+    max-width:1100px;
+    margin:auto;
+    padding:40px 20px;
+}
+
+h1 {
+    margin-bottom:10px;
+}
+
+.diagram {
+    background:#161b22;
+    border:1px solid #30363d;
+    padding:20px;
+    margin-top:30px;
+    font-family:monospace;
+    white-space:pre;
+}
+
+.cards {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-top:40px;
+}
+
+.card {
+    background:#161b22;
+    border:1px solid #30363d;
+    padding:20px;
+}
+
+footer {
+    text-align:center;
+    padding:30px;
+    border-top:1px solid #30363d;
+    margin-top:60px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+<div><strong>PatrickHomeLab</strong></div>
+<div>
+<a href="index.html">Home</a>
+<a href="architecture.html">Architecture</a>
+<a href="#">Projects</a>
+<a href="#">Monitoring</a>
+<a href="https://github.com/patrick-richardson">GitHub</a>
+</div>
+</nav>
+</header>
+
+<div class="container">
+
+<h1>Infrastructure Architecture</h1>
+<p>
+PatrickHomeLab is a multi-node infrastructure lab used to develop real-world
+systems engineering skills across virtualization, automation, monitoring,
+and infrastructure management.
+</p>
+
+<div class="diagram">
+
+Internet
+   │
+ISP Router
+   │
+Eero Gateway
+   │
+Managed Switch
+   │
+├── Forge (Physical Server)
+│     └─ Proxmox Hypervisor
+│         ├─ Media VM (Plex)
+│         ├─ Monitor-01 (Prometheus / Grafana)
+│         ├─ Controller-01 (Ansible Control Node)
+│         ├─ VPN-Gateway (WireGuard)
+│         └─ Proxy-01 (Reverse Proxy)
+│
+└── Vault (Physical Server)
+        └─ NFS Storage + Backup Server
+
+</div>
+
+<h2>Core Infrastructure Systems</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Forge</h3>
+<p>Primary Proxmox hypervisor hosting the virtual infrastructure.</p>
+</div>
+
+<div class="card">
+<h3>Vault</h3>
+<p>NFS storage server used for media storage and infrastructure backups.</p>
+</div>
+
+<div class="card">
+<h3>Controller-01</h3>
+<p>Ansible automation control node used to manage and automate lab infrastructure.</p>
+</div>
+
+<div class="card">
+<h3>Monitor-01</h3>
+<p>Prometheus and Grafana monitoring stack used to observe system health.</p>
+</div>
+
+<div class="card">
+<h3>VPN Gateway</h3>
+<p>WireGuard VPN server providing secure remote access into the lab environment.</p>
+</div>
+
+<div class="card">
+<h3>Proxy-01</h3>
+<p>Reverse proxy handling internal routing and service access.</p>
+</div>
+
+</div>
+
+</div>
+
+<footer>
+PatrickHomeLab • Infrastructure Engineering in Practice
+</footer>
+
+</body>
+</html>
