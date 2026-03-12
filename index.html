@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PatrickHomeLab</title>
+
+<style>
+
+body {
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#0d1117;
+    color:#e6edf3;
+}
+
+header {
+    background:#161b22;
+    padding:20px;
+    border-bottom:1px solid #30363d;
+}
+
+nav {
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+nav h1 {
+    font-size:20px;
+}
+
+nav ul {
+    list-style:none;
+    display:flex;
+    gap:20px;
+}
+
+nav a {
+    color:#e6edf3;
+    text-decoration:none;
+}
+
+.hero {
+    text-align:center;
+    padding:80px 20px;
+}
+
+.hero h2 {
+    font-size:40px;
+}
+
+.hero p {
+    max-width:600px;
+    margin:auto;
+    margin-top:20px;
+    font-size:18px;
+}
+
+.section {
+    max-width:1100px;
+    margin:auto;
+    padding:60px 20px;
+}
+
+.cards {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card {
+    background:#161b22;
+    padding:25px;
+    border-radius:8px;
+    border:1px solid #30363d;
+}
+
+footer {
+    text-align:center;
+    padding:40px;
+    border-top:1px solid #30363d;
+    color:#8b949e;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+<h1>PatrickHomeLab</h1>
+
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">Architecture</a></li>
+<li><a href="#">Projects</a></li>
+<li><a href="#">Monitoring</a></li>
+<li><a href="#">GitHub</a></li>
+</ul>
+
+</nav>
+</header>
+
+<section class="hero">
+
+<h2>Patrick Richardson</h2>
+
+<p>
+Aspiring Systems Engineer focused on infrastructure automation,
+virtualization, monitoring, and DevOps practices.
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>PatrickHomeLab</h2>
+
+<p>
+PatrickHomeLab is a multi-node infrastructure lab designed to develop real-world
+systems engineering skills through hands-on work with virtualization,
+automation, monitoring, and infrastructure management.
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Core Systems</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Forge</h3>
+<p>Proxmox hypervisor hosting the virtual infrastructure.</p>
+</div>
+
+<div class="card">
+<h3>Vault</h3>
+<p>NFS storage server providing media storage and backups.</p>
+</div>
+
+<div class="card">
+<h3>Controller-01</h3>
+<p>Ansible automation controller used to manage the lab.</p>
+</div>
+
+<div class="card">
+<h3>Monitor-01</h3>
+<p>Prometheus and Grafana monitoring stack.</p>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+PatrickHomeLab • Infrastructure Engineering in Practice
+
+</footer>
+
+</body>
+</html>
+#Create initial PatrickHomeLab website
