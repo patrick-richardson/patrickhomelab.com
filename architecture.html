@@ -72,6 +72,54 @@ footer {
     margin-top:60px;
 }
 </style>
+
+.topology {
+margin-top:40px;
+text-align:center;
+}
+
+.layer {
+margin:25px 0;
+}
+
+.node {
+display:inline-block;
+padding:12px 20px;
+border:1px solid #30363d;
+background:#161b22;
+border-radius:6px;
+}
+
+.primary {
+background:#1f6feb;
+}
+
+.storage {
+background:#238636;
+}
+
+.split {
+display:flex;
+justify-content:center;
+gap:80px;
+margin-top:30px;
+}
+
+.branch {
+display:flex;
+flex-direction:column;
+gap:15px;
+align-items:center;
+}
+
+.vm {
+padding:10px 16px;
+background:#0d1117;
+border:1px solid #30363d;
+border-radius:6px;
+font-size:14px;
+}
+    
 </head>
 
 <body>
@@ -96,6 +144,48 @@ footer {
 PatrickHomeLab is a multi-node infrastructure lab used to develop real-world
 systems engineering skills across virtualization, automation, monitoring,
 and infrastructure management.
+
+<div class="topology">
+
+<div class="layer">
+<div class="node">Internet</div>
+</div>
+
+<div class="layer">
+<div class="node">ISP Router</div>
+</div>
+
+<div class="layer">
+<div class="node">Eero Gateway</div>
+</div>
+
+<div class="layer">
+<div class="node">Managed Switch</div>
+</div>
+
+<div class="layer split">
+
+<div class="branch">
+
+<div class="node primary">Forge<br><small>Proxmox Hypervisor</small></div>
+
+<div class="vm">Media VM<br><small>Plex</small></div>
+<div class="vm">Monitor-01<br><small>Prometheus / Grafana</small></div>
+<div class="vm">Controller-01<br><small>Ansible</small></div>
+<div class="vm">VPN Gateway<br><small>WireGuard</small></div>
+<div class="vm">Proxy-01<br><small>Reverse Proxy</small></div>
+
+</div>
+
+<div class="branch">
+
+<div class="node storage">Vault<br><small>NFS Storage + Backup</small></div>
+
+</div>
+
+</div>
+
+</div>
     
 </p>
 
