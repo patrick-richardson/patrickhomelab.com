@@ -6,83 +6,76 @@
 <title>PatrickHomeLab Architecture</title>
 
 <style>
-body {
-    margin:0;
-    font-family: Arial, Helvetica, sans-serif;
-    background:#0d1117;
-    color:#e6edf3;
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:#0d1117;
+color:#e6edf3;
 }
 
-header {
-    background:#161b22;
-    padding:20px;
-    border-bottom:1px solid #30363d;
+header{
+background:#161b22;
+padding:20px;
+border-bottom:1px solid #30363d;
 }
 
-nav {
-    max-width:1100px;
-    margin:auto;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+nav{
+max-width:1100px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
-nav a {
-    color:#e6edf3;
-    text-decoration:none;
-    margin-left:20px;
+nav a{
+color:#e6edf3;
+text-decoration:none;
+margin-left:20px;
 }
 
-.container {
-    max-width:1100px;
-    margin:auto;
-    padding:40px 20px;
+.container{
+max-width:1100px;
+margin:auto;
+padding:40px 20px;
 }
 
-h1 {
-    margin-bottom:10px;
+h1{
+margin-bottom:10px;
 }
 
-.diagram {
-    background:#161b22;
-    border:1px solid #30363d;
-    padding:20px;
-    margin-top:30px;
-    font-family:monospace;
-    white-space:pre;
-}
-
-.cards {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-    margin-top:40px;
-}
-
-.card {
-    background:#161b22;
-    border:1px solid #30363d;
-    padding:20px;
-}
-
-footer {
-    text-align:center;
-    padding:30px;
-    border-top:1px solid #30363d;
-    margin-top:60px;
-}
-
-
-.topology {
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
 margin-top:40px;
+}
+
+.card{
+background:#161b22;
+border:1px solid #30363d;
+padding:20px;
+}
+
+footer{
+text-align:center;
+padding:30px;
+border-top:1px solid #30363d;
+margin-top:60px;
+}
+
+/* ---------- Topology Diagram ---------- */
+
+.topology{
+margin-top:50px;
 text-align:center;
 }
 
-.layer {
+.layer{
 margin:25px 0;
 }
 
-.node {
+.node{
 display:inline-block;
 padding:12px 20px;
 border:1px solid #30363d;
@@ -90,49 +83,54 @@ background:#161b22;
 border-radius:6px;
 }
 
-.primary {
+.primary{
 background:#1f6feb;
 }
 
-.storage {
+.storage{
 background:#238636;
 }
 
-.split {
+.split{
 display:flex;
 justify-content:center;
-gap:80px;
+gap:120px;
 margin-top:30px;
 }
 
-.branch {
+.branch{
 display:flex;
 flex-direction:column;
 gap:15px;
 align-items:center;
 }
 
-.vm {
+.vm{
 padding:10px 16px;
 background:#0d1117;
 border:1px solid #30363d;
 border-radius:6px;
 font-size:14px;
 }
-122 .connector {
-123 width:2px;
-124 height:20px;
-125 background:#30363d;
-126 margin:auto;
-127 }    
-</style>    
+
+.connector{
+width:2px;
+height:20px;
+background:#30363d;
+margin:auto;
+}
+
+</style>
 </head>
+
 
 <body>
 
 <header>
 <nav>
+
 <div><strong>PatrickHomeLab</strong></div>
+
 <div>
 <a href="index.html">Home</a>
 <a href="architecture.html">Architecture</a>
@@ -140,16 +138,23 @@ font-size:14px;
 <a href="#">Monitoring</a>
 <a href="https://github.com/patrick-richardson">GitHub</a>
 </div>
+
 </nav>
 </header>
+
 
 <div class="container">
 
 <h1>Infrastructure Architecture</h1>
+
 <p>
 PatrickHomeLab is a multi-node infrastructure lab used to develop real-world
 systems engineering skills across virtualization, automation, monitoring,
 and infrastructure management.
+</p>
+
+
+<!-- ================= TOPOLOGY ================= -->
 
 <div class="topology">
 
@@ -174,24 +179,67 @@ and infrastructure management.
 <div class="layer">
 <div class="node">Managed Switch</div>
 </div>
-    
-    
+
+
 <div class="layer split">
+
+
+<!-- ===== COMPUTE NODE ===== -->
 
 <div class="branch">
 
-<div class="node primary">Forge Node<br><small>Proxmox Hypervisor</small></div>
+<div class="node primary">
+Forge Node<br>
+<small>Proxmox Hypervisor</small>
+</div>
 
-<div class="vm">Media VM<br><small>Plex</small></div>
-<div class="vm">Monitor-01<br><small>Prometheus / Grafana</small></div>
-<div class="vm">Controller-01<br><small>Ansible</small></div>
-<div class="vm">VPN Gateway<br><small>WireGuard</small></div>
-<div class="vm">Proxy-01<br><small>Reverse Proxy</small></div>
+<div class="connector"></div>
 
-<div class="vm">Vault<br><small>NFS Storage</small></div>
-    
-</div>   <!-- closes branch -->
-</div>   <!-- closes layer split -->
+<div class="vm">
+Media VM<br>
+<small>Plex</small>
+</div>
+
+<div class="vm">
+Monitor-01<br>
+<small>Prometheus / Grafana</small>
+</div>
+
+<div class="vm">
+Controller-01<br>
+<small>Ansible Automation</small>
+</div>
+
+<div class="vm">
+VPN Gateway<br>
+<small>WireGuard</small>
+</div>
+
+<div class="vm">
+Proxy-01<br>
+<small>Reverse Proxy</small>
+</div>
+
+</div>
+
+
+<!-- ===== STORAGE NODE ===== -->
+
+<div class="branch">
+
+<div class="node storage">
+Vault<br>
+<small>NFS Storage Server</small>
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+<!-- ================= SYSTEM CARDS ================= -->
 
 <h2>Core Infrastructure Systems</h2>
 
@@ -199,37 +247,56 @@ and infrastructure management.
 
 <div class="card">
 <h3>Forge</h3>
-<p>Primary Proxmox hypervisor hosting the virtual infrastructure.</p>
+<p>
+Primary Proxmox hypervisor hosting the virtual infrastructure
+including monitoring, automation, networking, and media services.
+</p>
 </div>
 
 <div class="card">
 <h3>Vault</h3>
-<p>NFS storage server used for media storage and infrastructure backups.</p>
+<p>
+Dedicated storage node providing NFS storage used for media libraries,
+system backups, and persistent data for infrastructure services.
+</p>
 </div>
 
 <div class="card">
 <h3>Controller-01</h3>
-<p>Ansible automation control node used to manage and automate lab infrastructure.</p>
+<p>
+Ansible automation control node responsible for configuration
+management, patch automation, and infrastructure orchestration.
+</p>
 </div>
 
 <div class="card">
 <h3>Monitor-01</h3>
-<p>Prometheus and Grafana monitoring stack used to observe system health.</p>
+<p>
+Prometheus and Grafana monitoring stack used to observe system health,
+performance metrics, and infrastructure telemetry.
+</p>
 </div>
 
 <div class="card">
 <h3>VPN Gateway</h3>
-<p>WireGuard VPN server providing secure remote access into the lab environment.</p>
+<p>
+WireGuard VPN server providing secure remote connectivity
+into the PatrickHomeLab network environment.
+</p>
 </div>
 
 <div class="card">
 <h3>Proxy-01</h3>
-<p>Reverse proxy handling internal routing and service access.</p>
+<p>
+Reverse proxy responsible for internal service routing and
+exposing lab services through secure entry points.
+</p>
 </div>
 
 </div>
 
 </div>
+
 
 <footer>
 PatrickHomeLab • Infrastructure Engineering in Practice
