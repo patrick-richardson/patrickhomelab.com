@@ -82,10 +82,24 @@ background:#238636;
 background:#8957e5;
 }
 
+.connector{
+width:2px;
+height:20px;
+background:#30363d;
+margin:auto;
+}
+
+.lan-bar{
+width:360px;
+height:2px;
+background:#30363d;
+margin:15px auto 25px auto;
+}
+
 .split{
 display:flex;
 justify-content:center;
-gap:120px;
+gap:160px;
 margin-top:30px;
 }
 
@@ -102,13 +116,6 @@ background:#0d1117;
 border:1px solid #30363d;
 border-radius:6px;
 font-size:14px;
-}
-
-.connector{
-width:2px;
-height:20px;
-background:#30363d;
-margin:auto;
 }
 
 /* ---------- SYSTEM CARDS ---------- */
@@ -160,8 +167,6 @@ and infrastructure management.
 </p>
 
 
-<!-- NETWORK EDGE -->
-
 <h3 style="text-align:center;margin-top:40px;">Network Edge</h3>
 
 <div class="topology">
@@ -188,12 +193,25 @@ and infrastructure management.
 <div class="node">Managed Switch</div>
 </div>
 
+<div class="lan-bar"></div>
 
-<!-- INFRASTRUCTURE -->
 
 <h3 style="text-align:center;margin-top:40px;">Infrastructure Nodes</h3>
 
-<div class="layer split">
+
+<div class="split">
+
+
+<!-- STORAGE -->
+
+<div class="branch">
+
+<div class="node storage">
+Vault<br>
+<small>NFS Storage Server</small>
+</div>
+
+</div>
 
 
 <!-- COMPUTE -->
@@ -235,25 +253,13 @@ Proxy-01<br>
 </div>
 
 
-<!-- STORAGE -->
-
-<div class="branch">
-
-<div class="node storage">
-Vault<br>
-<small>NFS Storage Server</small>
-</div>
-
-</div>
-
-
-<!-- USER INTERFACE -->
+<!-- MANAGEMENT -->
 
 <div class="branch">
 
 <div class="node management">
 MacBook<br>
-<small>Operations / Management Interface</small>
+<small>Operations Interface</small>
 </div>
 
 </div>
@@ -263,8 +269,6 @@ MacBook<br>
 
 </div>
 
-
-<!-- CORE SYSTEMS -->
 
 <h2>Core Infrastructure Systems</h2>
 
