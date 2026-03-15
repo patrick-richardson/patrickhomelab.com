@@ -3,11 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PatrickHomeLab Architecture</title>
+<title>PatrickHomeLab | Infrastructure Architecture</title>
 
 <style>
-
-/* ---------- GLOBAL ---------- */
 
 body{
 margin:0;
@@ -17,14 +15,12 @@ color:#e6edf3;
 line-height:1.6;
 }
 
-/* ---------- HEADER ---------- */
+/* NAVBAR */
 
 header{
 background:#0f1720;
 border-bottom:1px solid #2a3440;
 padding:18px;
-position:sticky;
-top:0;
 }
 
 nav{
@@ -46,15 +42,15 @@ nav a:hover{
 color:#58a6ff;
 }
 
-/* ---------- HERO ---------- */
+/* HERO */
 
 .hero{
 
-height:320px;
+height:260px;
 
 background:
-linear-gradient(135deg,#0f1720 0%,#1b2532 100%),
-url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31");
+linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+url("images/lab-topology.png");
 
 background-size:cover;
 background-position:center;
@@ -63,129 +59,54 @@ display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
+
 }
 
 .hero h1{
-font-size:38px;
+font-size:40px;
 margin-bottom:10px;
 }
 
 .hero p{
 color:#9da7b3;
-max-width:600px;
+max-width:700px;
 margin:auto;
 }
 
-/* ---------- PANEL ---------- */
+/* CONTENT */
 
-.page-panel{
+.container{
+max-width:1200px;
+margin:auto;
+padding:60px 20px;
+}
 
-max-width:1400px;
-margin:-80px auto 60px auto;
+/* DIAGRAM IMAGE */
 
-padding:50px;
+.architecture-diagram{
+text-align:center;
+margin-top:40px;
+}
 
-background:#f8fafc;
+.architecture-image{
 
-color:#1f2933;
+max-width:100%;
+width:1100px;
 
 border-radius:12px;
 
-box-shadow:0 20px 60px rgba(0,0,0,.35);
+box-shadow:0 20px 50px rgba(0,0,0,.45);
 
 }
 
-/* ---------- TOPOLOGY ---------- */
+/* SECTION */
 
-.topology{
-margin-top:40px;
+.section-title{
 text-align:center;
+margin-top:60px;
 }
 
-.node{
-
-display:inline-block;
-
-padding:14px 24px;
-
-border-radius:8px;
-
-font-weight:600;
-
-color:white;
-
-}
-
-.internet{background:#6b7280;}
-
-.router{background:#64748b;}
-
-.gateway{background:#334155;}
-
-.switch{background:#475569;}
-
-.primary{
-background:#2563eb;
-box-shadow:0 0 20px rgba(37,99,235,.4);
-}
-
-.storage{
-background:#16a34a;
-box-shadow:0 0 20px rgba(22,163,74,.4);
-}
-
-.management{
-background:#9333ea;
-box-shadow:0 0 20px rgba(147,51,234,.4);
-}
-
-.vm{
-
-background:#e2e8f0;
-
-color:#1f2933;
-
-padding:8px 16px;
-
-border-radius:6px;
-
-font-size:13px;
-
-display:inline-block;
-
-}
-
-/* connectors */
-
-.connector{
-width:2px;
-height:20px;
-background:#64748b;
-margin:auto;
-}
-
-.lan{
-width:420px;
-height:2px;
-background:#64748b;
-margin:18px auto 30px auto;
-}
-
-.split{
-display:flex;
-justify-content:center;
-gap:220px;
-margin-top:30px;
-}
-
-.branch{
-display:flex;
-flex-direction:column;
-gap:14px;
-align-items:center;
-}
-
-/* ---------- CARDS ---------- */
+/* CARDS */
 
 .cards{
 
@@ -201,13 +122,13 @@ margin-top:40px;
 
 .card{
 
-background:white;
+background:#161b22;
+
+padding:25px;
 
 border-radius:10px;
 
-padding:22px;
-
-box-shadow:0 10px 30px rgba(0,0,0,.15);
+border:1px solid #30363d;
 
 }
 
@@ -215,12 +136,14 @@ box-shadow:0 10px 30px rgba(0,0,0,.15);
 margin-top:0;
 }
 
-/* ---------- FOOTER ---------- */
+/* FOOTER */
 
 footer{
 text-align:center;
-padding:30px;
+padding:40px;
 color:#9da7b3;
+border-top:1px solid #2a3440;
+margin-top:60px;
 }
 
 </style>
@@ -245,114 +168,79 @@ color:#9da7b3;
 </header>
 
 
-<div class="hero">
+<section class="hero">
 
 <div>
+
 <h1>Infrastructure Architecture</h1>
 
 <p>
-Architecture of the PatrickHomeLab infrastructure including virtualization,
-storage, automation, monitoring and secure remote access.
+Architecture of the PatrickHomeLab environment including virtualization,
+storage, monitoring, automation, and secure remote access.
 </p>
 
 </div>
 
-</div>
+</section>
 
 
-<div class="page-panel">
+<div class="container">
 
-<div class="topology">
+<h2 class="section-title">Infrastructure Topology</h2>
 
-<div class="node internet">Internet</div>
+<div class="architecture-diagram">
 
-<div class="connector"></div>
-
-<div class="node router">ISP Router</div>
-
-<div class="connector"></div>
-
-<div class="node gateway">Eero Gateway</div>
-
-<div class="connector"></div>
-
-<div class="node switch">Managed Switch</div>
-
-<div class="lan"></div>
-
-
-<div class="split">
-
-<div class="branch">
-
-<div class="node storage">Vault<br>NFS Storage</div>
+<img src="images/lab-topology.png"
+alt="PatrickHomeLab Infrastructure Topology"
+class="architecture-image">
 
 </div>
 
 
-<div class="branch">
-
-<div class="node primary">Forge<br>Proxmox</div>
-
-<div class="connector"></div>
-
-<div class="vm">Media VM</div>
-<div class="vm">Monitor-01</div>
-<div class="vm">Controller-01</div>
-<div class="vm">VPN Gateway</div>
-<div class="vm">Proxy-01</div>
-
-</div>
-
-
-<div class="branch">
-
-<div class="node management">MacBook<br>Operations</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<h2>Core Infrastructure Systems</h2>
+<h2 class="section-title">Core Infrastructure Systems</h2>
 
 <div class="cards">
 
 <div class="card">
 <h3>Forge</h3>
-Primary Proxmox hypervisor running the virtual infrastructure.
+Primary Proxmox hypervisor responsible for hosting the virtual infrastructure.
+All virtual machines within the lab are deployed and managed here.
 </div>
 
 <div class="card">
 <h3>Vault</h3>
-Dedicated storage node providing NFS storage.
+Dedicated storage node providing NFS storage for the lab environment,
+including media storage and infrastructure backups.
 </div>
 
 <div class="card">
 <h3>Controller-01</h3>
-Ansible automation control node.
+Ansible automation control node responsible for configuration management,
+infrastructure automation, and playbook execution.
 </div>
 
 <div class="card">
 <h3>Monitor-01</h3>
-Prometheus and Grafana monitoring stack.
+Monitoring stack running Prometheus and Grafana, collecting system metrics
+from all infrastructure nodes for observability.
 </div>
 
 <div class="card">
 <h3>VPN Gateway</h3>
-WireGuard secure remote access.
+WireGuard VPN server providing secure remote access to the internal
+PatrickHomeLab network.
 </div>
 
 <div class="card">
 <h3>Proxy-01</h3>
-Reverse proxy routing internal services.
+Reverse proxy responsible for routing internal services and providing
+access to web interfaces within the lab.
 </div>
 
 </div>
 
 </div>
+
 
 <footer>
 PatrickHomeLab • Infrastructure Engineering in Practice
