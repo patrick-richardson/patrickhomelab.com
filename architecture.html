@@ -205,4 +205,92 @@ footer {
 </section>
 
 <div class="container">
-  <!-- keep the rest of the content you already have here -->
+
+  <h2 class="section-title">Current Home Lab Architecture</h2>
+
+  <p class="section-intro">
+    PatrickHomeLab is centered around a Dell Precision 3630 running Proxmox and
+    supporting a collection of virtual machines for media services, secure remote
+    access, centralized storage, monitoring, reverse proxy services, and Ansible-based
+    infrastructure automation.
+  </p>
+
+  <div class="topology-layout">
+
+    <div class="topology-image-wrapper">
+      <img src="images/lab-topology.png"
+           alt="PatrickHomeLab Infrastructure Topology"
+           class="architecture-image">
+
+      <p class="topology-note">
+        Public-facing topology intentionally omits internal IP addresses and
+        sensitive network details while preserving the overall infrastructure design.
+      </p>
+    </div>
+
+    <div class="topology-details">
+
+      <div class="topology-card">
+        <h3>Forge / Server</h3>
+        <p>Dell Precision 3630 running Proxmox as the primary hypervisor for the entire PatrickHomeLab environment.</p>
+      </div>
+
+      <div class="topology-card">
+        <h3>Media VM</h3>
+        <p>Hosts Plex and media-related services for centralized streaming and content management.</p>
+      </div>
+
+      <div class="topology-card">
+        <h3>VPN-Gateway VM</h3>
+        <p>Provides secure remote access to the lab using WireGuard.</p>
+      </div>
+
+      <div class="topology-card">
+        <h3>Vault VM</h3>
+        <p>Provides centralized storage, NFS shares, and backup services for the environment.</p>
+      </div>
+
+      <div class="topology-card">
+        <h3>Proxy-01 VM</h3>
+        <p>Acts as the reverse proxy and HTTPS entry point for published and internal services.</p>
+      </div>
+
+      <div class="topology-card">
+        <h3>Monitor-01 VM</h3>
+        <p>Runs monitoring and observability services using Prometheus and Grafana.</p>
+      </div>
+
+      <div class="topology-card">
+        <h3>Controller-01 VM</h3>
+        <p>Runs Ansible automation, patching, and infrastructure management tasks.</p>
+      </div>
+
+      <div class="topology-card">
+        <h3>Operations Systems</h3>
+        <p>The MacBook Operations system and Windows 11 Dell 7050 workstation are used for remote and local administration of the environment.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <section class="focus-section">
+    <h2 class="section-title">Current Focus Areas</h2>
+
+    <div class="focus-grid">
+      <div class="focus-item">WireGuard Remote Access</div>
+      <div class="focus-item">Monitoring &amp; Observability</div>
+      <div class="focus-item">Ansible Automation</div>
+      <div class="focus-item">Media &amp; Storage Infrastructure</div>
+      <div class="focus-item">Reverse Proxy &amp; HTTPS</div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  PatrickHomeLab • Infrastructure Engineering in Practice
+</footer>
+
+</body>
+</html>
