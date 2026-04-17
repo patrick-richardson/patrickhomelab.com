@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PatrickHomeLab | Projects</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #0f1720;
+  color: #e6edf3;
+  line-height: 1.6;
+}
+
+header {
+  background: #0f1720;
+  border-bottom: 1px solid #2a3440;
+  padding: 18px;
+}
+
+nav {
+  max-width: 1500px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  color: #d0d7de;
+  text-decoration: none;
+  margin-left: 24px;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: #58a6ff;
+}
+
+.hero {
+  padding: 100px 20px;
+  text-align: center;
+  background:
+    linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.72)),
+    url("images/lab-topology.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero h1 {
+  font-size: 52px;
+  margin: 0 0 16px 0;
+}
+
+.hero p {
+  max-width: 850px;
+  margin: auto;
+  color: #b8c2cc;
+  font-size: 18px;
+}
+
+.container {
+  max-width: 1600px;
+  margin: auto;
+  padding: 70px 40px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 18px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: #9da7b3;
+  max-width: 900px;
+  margin: 0 auto 50px auto;
+  font-size: 17px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 28px;
+}
+
+.project-card {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 18px;
+  padding: 28px;
+  transition: transform .2s ease, border-color .2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: #58a6ff;
+}
+
+.project-card h3 {
+  margin: 0 0 14px 0;
+  font-size: 22px;
+}
+
+.project-card p {
+  margin: 0;
+  color: #9da7b3;
+  line-height: 1.7;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.project-tags span {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 13px;
+  color: #9da7b3;
+}
+
+footer {
+  text-align: center;
+  padding: 40px;
+  border-top: 1px solid #2a3440;
+  color: #8b949e;
+  margin-top: 80px;
+}
+
+@media (max-width: 900px) {
+  nav {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  nav a {
+    margin: 0 10px;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+  }
+
+  .container {
+    padding: 50px 20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <div><strong>PatrickHomeLab</strong></div>
+
+    <div>
+      <a href="index.html">Home</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="projects.html">Projects</a>
+      <a href="monitoring.html">Monitoring</a>
+      <a href="profile.html">Profile</a>
+      <a href="https://github.com/patrick-richardson" target="_blank">GitHub</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Infrastructure Projects</h1>
+
+  <p>
+    Active and completed engineering projects across virtualization,
+    automation, monitoring, secure remote access, media infrastructure,
+    and systems administration.
+  </p>
+</section>
+
+<div class="container">
+
+  <h2 class="section-title">Featured Projects</h2>
+
+  <p class="section-subtitle">
+    These projects represent the current core of the PatrickHomeLab environment
+    and demonstrate practical infrastructure engineering, troubleshooting,
+    automation, and systems design.
+  </p>
+
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <h3>Media Infrastructure Migration</h3>
+
+      <p>
+        Migrated Plex from a standalone system into the Media VM hosted on Forge.
+        Integrated centralized NFS storage from the Vault VM and designed the
+        environment for rapid rebuild and future Ansible-driven recovery.
+      </p>
+
+      <div class="project-tags">
+        <span>Proxmox</span>
+        <span>Plex</span>
+        <span>NFS</span>
+        <span>Ubuntu Server</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h3>WireGuard Remote Access</h3>
+
+      <p>
+        Built a dedicated VPN-Gateway VM to provide secure access into the lab
+        from the MacBook Operations system, Windows workstation, and future
+        mobile devices while maintaining network segmentation.
+      </p>
+
+      <div class="project-tags">
+        <span>WireGuard</span>
+        <span>Networking</span>
+        <span>Remote Access</span>
+        <span>Security</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h3>Monitoring &amp; Observability Stack</h3>
+
+      <p>
+        Implemented a centralized monitoring platform using Prometheus and
+        Grafana on Monitor-01. The stack is expanding to provide real-time
+        visibility into Forge, Media, Vault, Proxy-01, and Controller-01.
+      </p>
+
+      <div class="project-tags">
+        <span>Grafana</span>
+        <span>Prometheus</span>
+        <span>Observability</span>
+        <span>Linux</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h3>Reverse Proxy &amp; HTTPS Publishing</h3>
+
+      <p>
+        Deployed Proxy-01 using Caddy and Cloudflare to route internal services
+        and prepare the environment for secure HTTPS access and future
+        public-facing services.
+      </p>
+
+      <div class="project-tags">
+        <span>Caddy</span>
+        <span>Cloudflare</span>
+        <span>HTTPS</span>
+        <span>Reverse Proxy</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h3>Ansible Infrastructure Automation</h3>
+
+      <p>
+        Built Controller-01 to centralize patching, provisioning, VM rebuild
+        workflows, SSH configuration, and future infrastructure-as-code
+        deployments.
+      </p>
+
+      <div class="project-tags">
+        <span>Ansible</span>
+        <span>Automation</span>
+        <span>Linux</span>
+        <span>Infrastructure as Code</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h3>Centralized Operations Workspace</h3>
+
+      <p>
+        Integrated the MacBook Operations system and the Windows 11 Dell 7050
+        workstation to manage the lab locally and remotely, including SSH,
+        file access, and future shared storage workflows.
+      </p>
+
+      <div class="project-tags">
+        <span>Windows 11</span>
+        <span>macOS</span>
+        <span>SSH</span>
+        <span>Operations</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  PatrickHomeLab • Project Portfolio
+</footer>
+
+</body>
+</html>
