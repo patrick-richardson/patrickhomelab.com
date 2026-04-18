@@ -270,3 +270,137 @@
       margin-top: 80px;
     }
 
+        @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      nav div:last-child {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .container {
+        padding: 50px 20px 70px;
+      }
+
+      .two-column-section {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <div><strong>PatrickHomeLab</strong></div>
+
+      <div>
+        <a href="index.html">Home</a>
+        <a href="architecture.html">Architecture</a>
+        <a href="projects.html">Projects</a>
+        <a href="monitoring.html">Monitoring</a>
+        <a href="profile.html">Profile</a>
+        <a href="https://github.com/patrick-richardson" target="_blank">GitHub</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Infrastructure Monitoring</h1>
+
+      <p>
+        Live status and monitoring of the PatrickHomeLab environment including
+        virtualization, storage, automation, and remote access systems.
+      </p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="stats-strip">
+      <div class="stat-card">
+        <h3>Online</h3>
+        <p>Forge Hypervisor</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>Online</h3>
+        <p>Vault Storage</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>Online</h3>
+        <p>Controller-01</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>Online</h3>
+        <p>Monitor-01</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">Monitoring Stack</h2>
+
+    <p class="section-subtitle">
+      Prometheus, Grafana, and Node Exporter are used to monitor the homelab
+      environment and provide visibility into system performance and uptime.
+    </p>
+
+    <div class="systems-grid">
+      <div class="system-card">
+        <h3>Prometheus</h3>
+        <p>
+          Collects CPU, memory, storage, uptime, and network metrics from all systems.
+        </p>
+
+        <div class="system-tags">
+          <span>Metrics</span>
+          <span>Monitoring</span>
+        </div>
+      </div>
+
+      <div class="system-card">
+        <h3>Grafana</h3>
+        <p>
+          Provides dashboards and visualizations for all monitored infrastructure.
+        </p>
+
+        <div class="system-tags">
+          <span>Dashboards</span>
+          <span>Visualization</span>
+        </div>
+      </div>
+
+      <div class="system-card">
+        <h3>Node Exporter</h3>
+        <p>
+          Installed on Forge, Vault, Media, and Controller-01 to provide system metrics.
+        </p>
+
+        <div class="system-tags">
+          <span>Linux</span>
+          <span>Telemetry</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    PatrickHomeLab • Infrastructure Engineering in Practice
+  </footer>
+
+</body>
+</html>
+
