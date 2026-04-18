@@ -81,6 +81,42 @@ nav a:hover {
   font-size: 17px;
 }
 
+<div class="page-overview">
+
+  <div class="side-panel">
+    <h3>Lab at a Glance</h3>
+
+    <ul>
+      <li>1 Proxmox Host</li>
+      <li>6 Active Virtual Machines</li>
+      <li>Centralized NFS Storage</li>
+      <li>AWS S3 Off-Site Backup</li>
+      <li>WireGuard Remote Access</li>
+      <li>Prometheus + Grafana Monitoring</li>
+    </ul>
+  </div>
+
+  <div></div>
+
+  <div class="side-panel">
+    <h3>Primary Technologies</h3>
+
+    <div class="project-tags">
+      <span>Proxmox</span>
+      <span>Ubuntu Server</span>
+      <span>Ansible</span>
+      <span>WireGuard</span>
+      <span>Grafana</span>
+      <span>Prometheus</span>
+      <span>AWS S3</span>
+      <span>Cloudflare</span>
+      <span>Caddy</span>
+      <span>Plex</span>
+    </div>
+  </div>
+
+</div>  
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -331,15 +367,92 @@ footer {
          <span>NFS</span>
          <span>Storage</span>
       </div>
-    </div>  
-        
+    </div> 
+    </div>
+
+    <h2 class="section-title" style="margin-top: 90px;">
+      Planned &amp; In-Progress Projects
+    </h2>
+
+    <p class="section-subtitle">
+      Current initiatives and future engineering projects planned for the continued
+      growth of the PatrickHomeLab environment.
+    </p>
+
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <h3>Media Inventory System</h3>
+
+        <p>
+          Design and build a PostgreSQL-backed web application to catalog movies,
+          television series, and Plex metadata with family accounts, backups,
+          and future API integration.
+        </p>
+
+        <div class="project-tags">
+          <span>PostgreSQL</span>
+          <span>Web App</span>
+          <span>Plex API</span>
+          <span>Automation</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>Plex VM Rebuild Automation</h3>
+
+        <p>
+          Develop an Ansible workflow capable of automatically rebuilding the
+          Media VM, remounting storage, and restoring Plex services after failure.
+        </p>
+
+        <div class="project-tags">
+          <span>Ansible</span>
+          <span>Proxmox</span>
+          <span>Plex</span>
+          <span>Disaster Recovery</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>Public Monitoring Dashboard</h3>
+
+        <p>
+          Build a sanitized public Grafana dashboard for the website that shows
+          live system health and uptime without exposing sensitive infrastructure details.
+        </p>
+
+        <div class="project-tags">
+          <span>Grafana</span>
+          <span>Monitoring</span>
+          <span>Public Dashboard</span>
+          <span>Observability</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>Family Shared Storage Access</h3>
+
+        <p>
+          Create separate secure shared folders and VPN-enabled access for family
+          devices, including dedicated permissions and remote file access.
+        </p>
+
+        <div class="project-tags">
+          <span>SMB</span>
+          <span>VPN</span>
+          <span>File Sharing</span>
+          <span>Permissions</span>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 
-</div>
-
-<footer>
-  PatrickHomeLab • Project Portfolio
-</footer>
+  <footer>
+    PatrickHomeLab • Project Portfolio
+  </footer>
 
 </body>
 </html>
