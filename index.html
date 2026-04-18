@@ -1,170 +1,476 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PatrickHomeLab</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PatrickHomeLab</title>
 
-<style>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-    margin:0;
-    font-family:Arial, Helvetica, sans-serif;
-    background:#0d1117;
-    color:#e6edf3;
-}
+    body {
+      font-family: Arial, sans-serif;
+      background: #0d1117;
+      color: #f0f6fc;
+      line-height: 1.6;
+    }
 
-header {
-    background:#161b22;
-    padding:20px;
-    border-bottom:1px solid #30363d;
-}
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13, 17, 23, 0.95);
+      border-bottom: 1px solid #30363d;
+      backdrop-filter: blur(10px);
+    }
 
-nav {
-    max-width:1100px;
-    margin:auto;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
+    nav {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 18px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-nav h1 {
-    font-size:20px;
-}
+    nav strong {
+      font-size: 20px;
+      color: #f0f6fc;
+    }
 
-nav ul {
-    list-style:none;
-    display:flex;
-    gap:20px;
-}
+    nav div:last-child {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
 
-nav a {
-    color:#e6edf3;
-    text-decoration:none;
-}
+    nav a {
+      color: #c9d1d9;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s ease;
+    }
 
-.hero {
-    text-align:center;
-    padding:80px 20px;
-}
+    nav a:hover {
+      color: #58a6ff;
+    }
 
-.hero h2 {
-    font-size:40px;
-}
+    .hero {
+      background:
+        linear-gradient(rgba(13,17,23,0.72), rgba(13,17,23,0.88)),
+        url("images/lab-topology.png") center/cover no-repeat;
+      text-align: center;
+      padding: 140px 20px 120px;
+      border-bottom: 1px solid #30363d;
+    }
 
-.hero p {
-    max-width:600px;
-    margin:auto;
-    margin-top:20px;
-    font-size:18px;
-}
+    .hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
-.section {
-    max-width:1100px;
-    margin:auto;
-    padding:60px 20px;
-}
+    .hero h1 {
+      font-size: 58px;
+      margin-bottom: 18px;
+    }
 
-.cards {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-}
+    .hero p {
+      color: #9da7b3;
+      font-size: 20px;
+      max-width: 760px;
+      margin: 0 auto 36px;
+    }
 
-.card {
-    background:#161b22;
-    padding:25px;
-    border-radius:8px;
-    border:1px solid #30363d;
-}
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
 
-footer {
-    text-align:center;
-    padding:40px;
-    border-top:1px solid #30363d;
-    color:#8b949e;
-}
+    .primary-button,
+    .secondary-button {
+      padding: 14px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
 
-</style>
+    .primary-button {
+      background: #238636;
+      color: #ffffff;
+    }
+
+    .primary-button:hover {
+      background: #2ea043;
+      transform: translateY(-2px);
+    }
+
+    .secondary-button {
+      border: 1px solid #30363d;
+      color: #f0f6fc;
+      background: #161b22;
+    }
+
+    .secondary-button:hover {
+      border-color: #58a6ff;
+      color: #58a6ff;
+      transform: translateY(-2px);
+    }
+
+    .container {
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 70px 40px 90px;
+    }
+
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-bottom: 70px;
+    }
+
+    .stat-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 18px;
+      padding: 28px;
+      text-align: center;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.28);
+    }
+
+    .stat-card h3 {
+      color: #58a6ff;
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .stat-card p {
+      color: #9da7b3;
+      font-size: 14px;
+    }
+
+    .two-column-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 30px;
+      margin-bottom: 80px;
+    }
+
+    .info-panel {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 18px;
+      padding: 32px;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.25);
+    }
+
+    .info-panel h2 {
+      font-size: 28px;
+      margin-bottom: 18px;
+    }
+
+    .info-panel p {
+      color: #9da7b3;
+      margin-bottom: 20px;
+    }
+
+    .info-panel ul {
+      padding-left: 20px;
+      color: #c9d1d9;
+    }
+
+    .info-panel li {
+      margin-bottom: 12px;
+    }
+
+    .text-link {
+      display: inline-block;
+      margin-top: 16px;
+      color: #58a6ff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .text-link:hover {
+      text-decoration: underline;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 18px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #9da7b3;
+      max-width: 850px;
+      margin: 0 auto 50px;
+    }
+
+    .systems-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+
+    .system-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 18px;
+      padding: 28px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .system-card:hover {
+      transform: translateY(-4px);
+      border-color: #58a6ff;
+    }
+
+    .system-card h3 {
+      margin-bottom: 14px;
+      font-size: 22px;
+    }
+
+    .system-card p {
+      color: #9da7b3;
+      margin-bottom: 18px;
+      font-size: 14px;
+    }
+
+    .system-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .system-tags span {
+      background: rgba(88, 166, 255, 0.12);
+      border: 1px solid rgba(88, 166, 255, 0.35);
+      color: #58a6ff;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+
+    footer {
+      border-top: 1px solid #30363d;
+      text-align: center;
+      color: #8b949e;
+      padding: 30px 20px;
+      font-size: 14px;
+      margin-top: 80px;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      nav div:last-child {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .container {
+        padding: 50px 20px 70px;
+      }
+
+      .two-column-section {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
 </head>
-
 <body>
 
-<header>
-<nav>
-<h1>PatrickHomeLab</h1>
+  <header>
+    <nav>
+      <div><strong>PatrickHomeLab</strong></div>
 
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="architecture.html">Architecture</a></li>
-<li><a href="projects.html">Projects</a></li>
-<li><a href="monitoring.html">Monitoring</a></li>
-<li><a href="profile.html">Profile</a></li>    
-<li><a href="https://github.com/patrick-richardson">GitHub</a></li>
-</ul>
-
+```
+  <div>
+    <a href="index.html">Home</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="projects.html">Projects</a>
+    <a href="monitoring.html">Monitoring</a>
+    <a href="profile.html">Profile</a>
+    <a href="https://github.com/patrick-richardson" target="_blank">GitHub</a>
+  </div>
 </nav>
-</header>
+```
 
-<section class="hero">
+  </header>
 
-<h2>Patrick Richardson</h2>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Patrick Richardson</h1>
 
-<p>
-Aspiring Systems Engineer focused on infrastructure automation,
-virtualization, monitoring, and DevOps practices.
+```
+  <p>
+    Systems engineering homelab focused on Proxmox virtualization,
+    infrastructure automation, centralized storage, monitoring,
+    disaster recovery, and secure remote access.
+  </p>
+
+  <div class="hero-buttons">
+    <a href="architecture.html" class="primary-button">View Architecture</a>
+    <a href="projects.html" class="secondary-button">Explore Projects</a>
+  </div>
+</div>
+```
+
+  </section>
+
+  <div class="container">
+
+```
+<div class="stats-strip">
+  <div class="stat-card">
+    <h3>6</h3>
+    <p>Active Virtual Machines</p>
+  </div>
+
+  <div class="stat-card">
+    <h3>1</h3>
+    <p>Primary Proxmox Host</p>
+  </div>
+
+  <div class="stat-card">
+    <h3>AWS S3</h3>
+    <p>Cloud Backup Enabled</p>
+  </div>
+
+  <div class="stat-card">
+    <h3>WireGuard</h3>
+    <p>Secure Remote Access</p>
+  </div>
+</div>
+
+<div class="two-column-section">
+  <div class="info-panel">
+    <h2>Current Focus</h2>
+
+    <p>
+      The PatrickHomeLab environment is currently focused on building a
+      production-style infrastructure platform using the Dell Precision 3630,
+      Proxmox virtualization, centralized storage, and automation.
+    </p>
+
+    <ul>
+      <li>Media VM with centralized NFS storage from Vault</li>
+      <li>AWS S3 media backup and disaster recovery</li>
+      <li>WireGuard VPN access from MacBook and Windows workstation</li>
+      <li>Prometheus and Grafana monitoring stack</li>
+      <li>Ansible-driven automation and VM rebuild workflows</li>
+    </ul>
+  </div>
+
+  <div class="info-panel">
+    <h2>Current Projects</h2>
+
+    <p>
+      Several new projects are currently being developed to continue expanding
+      the environment and demonstrate real-world infrastructure engineering.
+    </p>
+
+    <ul>
+      <li>Public monitoring dashboard integrated into the website</li>
+      <li>Plex VM rebuild automation with Ansible</li>
+      <li>Media inventory system using PostgreSQL and Plex API</li>
+      <li>Family shared storage and VPN-based remote access</li>
+    </ul>
+
+    <a href="projects.html" class="text-link">View Full Project Portfolio →</a>
+  </div>
+</div>
+
+<h2 class="section-title">Core Systems</h2>
+
+<p class="section-subtitle">
+  The primary systems currently operating within the PatrickHomeLab environment.
 </p>
 
-</section>
+<div class="systems-grid">
+  <div class="system-card">
+    <h3>Forge</h3>
+    <p>
+      Dell Precision 3630 running Proxmox as the primary hypervisor for the entire environment.
+    </p>
 
-<section class="section">
+    <div class="system-tags">
+      <span>Proxmox</span>
+      <span>Virtualization</span>
+      <span>Dell Precision 3630</span>
+    </div>
+  </div>
 
-<h2>PatrickHomeLab</h2>
+  <div class="system-card">
+    <h3>Vault</h3>
+    <p>
+      Centralized storage VM providing NFS shares, backup services,
+      and media storage to the environment.
+    </p>
 
-<p>
-PatrickHomeLab is a multi-node infrastructure lab designed to develop real-world
-systems engineering skills through hands-on work with virtualization,
-automation, monitoring, and infrastructure management.
-</p>
+    <div class="system-tags">
+      <span>NFS</span>
+      <span>Storage</span>
+      <span>Backup</span>
+    </div>
+  </div>
 
-</section>
+  <div class="system-card">
+    <h3>Controller-01</h3>
+    <p>
+      Automation and management VM used for Ansible, SSH orchestration,
+      provisioning, and future infrastructure-as-code workflows.
+    </p>
 
-<section class="section">
+    <div class="system-tags">
+      <span>Ansible</span>
+      <span>Automation</span>
+      <span>Linux</span>
+    </div>
+  </div>
 
-<h2>Core Systems</h2>
+  <div class="system-card">
+    <h3>Monitor-01</h3>
+    <p>
+      Dedicated monitoring VM running Prometheus and Grafana for infrastructure visibility.
+    </p>
 
-<div class="cards">
-
-<div class="card">
-<h3>Forge</h3>
-<p>Proxmox hypervisor hosting the virtual infrastructure.</p>
+    <div class="system-tags">
+      <span>Grafana</span>
+      <span>Prometheus</span>
+      <span>Monitoring</span>
+    </div>
+  </div>
 </div>
+```
 
-<div class="card">
-<h3>Vault</h3>
-<p>NFS storage server providing media storage and backups.</p>
-</div>
+  </div>
 
-<div class="card">
-<h3>Controller-01</h3>
-<p>Ansible automation controller used to manage the lab.</p>
-</div>
-
-<div class="card">
-<h3>Monitor-01</h3>
-<p>Prometheus and Grafana monitoring stack.</p>
-</div>
-
-</div>
-
-</section>
-
-<footer>
-
-PatrickHomeLab • Infrastructure Engineering in Practice
-
-</footer>
+  <footer>
+    PatrickHomeLab • Infrastructure Engineering in Practice
+  </footer>
 
 </body>
 </html>
-
