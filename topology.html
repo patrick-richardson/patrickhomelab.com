@@ -172,10 +172,12 @@
 
 .topology-layout {
   display: grid;
-  grid-template-columns: 320px 1fr 320px;
+  grid-template-columns: 320px minmax(700px, 1fr) 320px;
   gap: 32px;
   align-items: center;
-  margin-top: 40px;
+  max-width: 1500px;
+  margin: 40px auto 0;
+  padding: 0 32px;
 }
 
 .topology-side {
@@ -187,6 +189,7 @@
 .topology-center {
   display: flex;
   justify-content: center;
+  width: 100%
 }
 
 .topology-side .card {
@@ -308,7 +311,7 @@
 <section class="section">
   <div class="cards-grid">
 
-<section class="section topology-layout">
+<section class="topology-layout">
   <div class="topology-side left">
     <div class="card">
       <h3>Vault</h3>
