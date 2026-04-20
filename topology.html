@@ -170,6 +170,45 @@
   box-shadow: 0 18px 45px rgba(0,0,0,0.35);
 }
 
+.topology-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr 320px;
+  gap: 32px;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.topology-side {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.topology-center {
+  display: flex;
+  justify-content: center;
+}
+
+.topology-side .card {
+  min-height: 150px;
+}
+
+@media (max-width: 1200px) {
+  .topology-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .topology-side {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .topology-side .card {
+    width: 300px;
+  }
+}    
+
     footer {
       border-top: 1px solid #30363d;
       text-align: center;
@@ -264,57 +303,68 @@
   <div class="topology-image">
     <img src="images/lab-topology.png" alt="PatrickHomeLab Topology Diagram">
   </div>
-</section>
+</section>  
 
 <section class="section">
   <div class="cards-grid">
 
-  <div class="card">
-    <h3>Vault</h3>
-    <p>
-      Storage VM providing NFS shares and backup storage. Vault exports the
-      media library to Media-01 and stores infrastructure backups.
-    </p>
+<section class="section topology-layout">
+  <div class="topology-side left">
+    <div class="card">
+      <h3>Vault</h3>
+      <p>
+        Storage VM providing NFS shares and backup storage. Vault exports the
+        media library to Media-01 and stores infrastructure backups.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Media-01</h3>
+      <p>
+        Ubuntu Server virtual machine running Plex. Media-01 mounts the NFS share
+        from Vault and provides local and remote media streaming.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Controller-01</h3>
+      <p>
+        Dedicated Ansible control node used to automate patching, software
+        deployment, configuration management, and future rebuild workflows.
+      </p>
+    </div>
   </div>
 
-  <div class="card">
-    <h3>Media-01</h3>
-    <p>
-      Ubuntu Server virtual machine running Plex. Media-01 mounts the NFS share
-      from Vault and provides local and remote media streaming.
-    </p>
+  <div class="topology-center">
+    <div class="topology-image">
+      <img src="images/lab-topology.png" alt="PatrickHomeLab Topology Diagram">
+    </div>
   </div>
 
-  <div class="card">
-    <h3>Controller-01</h3>
-    <p>
-      Dedicated Ansible control node used to automate patching, software
-      deployment, configuration management, and future rebuild workflows.
-    </p>
-  </div>
+  <div class="topology-side right">
+    <div class="card">
+      <h3>Monitor-01</h3>
+      <p>
+        Monitoring VM running Prometheus and Grafana. Collects metrics from the
+        hypervisor and all virtual machines using Node Exporter.
+      </p>
+    </div>
 
-  <div class="card">
-    <h3>Monitor-01</h3>
-    <p>
-      Monitoring VM running Prometheus and Grafana. Collects metrics from the
-      hypervisor and all virtual machines using Node Exporter.
-    </p>
-  </div>
+    <div class="card">
+      <h3>Proxy-01</h3>
+      <p>
+        Reverse proxy VM used to manage internal routing and future HTTPS access
+        for services exposed through the homelab domain.
+      </p>
+    </div>
 
-  <div class="card">
-    <h3>Proxy-01</h3>
-    <p>
-      Reverse proxy VM used to manage internal routing and future HTTPS access
-      for services exposed through the homelab domain.
-    </p>
-  </div>
-
-  <div class="card">
-    <h3>VPN-Gateway</h3>
-    <p>
-      WireGuard VPN server that provides secure remote access into the lab from
-      the MacBook, Windows workstation, and future mobile devices.
-    </p>
+    <div class="card">
+      <h3>VPN-Gateway</h3>
+      <p>
+        WireGuard VPN server that provides secure remote access into the lab from
+        the MacBook, Windows workstation, and future mobile devices.
+      </p>
+    </div>
   </div>
 </section>
 
