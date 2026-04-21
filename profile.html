@@ -135,6 +135,26 @@
       box-shadow: 0 14px 40px rgba(0,0,0,0.28);
     }
 
+    .about-main {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    .profile-photo {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid #1f6feb;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.45);
+      flex-shrink: 0;
+    }
+
     .about-main h2 {
       font-size: 38px;
       margin-bottom: 24px;
@@ -311,7 +331,10 @@
   <div class="container">
   <section class="about-section">
   <div class="about-card">
-    <div class="about-main">
+   <div class="about-main">
+     <img src="images/profile-photo.png" alt="Patrick Richardson" class="profile-photo">
+
+    <div class="about-text">
       <h2>About Me</h2>
 
       <p>
