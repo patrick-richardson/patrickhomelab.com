@@ -60,52 +60,57 @@
     }
 
     .hero {
-  background:
-    linear-gradient(135deg, rgba(13, 17, 23, 0.96), rgba(22, 27, 34, 0.92));
-  text-align: center;
-  padding: 140px 20px 120px;
-  border-bottom: 1px solid #30363d;
-}
+      background:
+        linear-gradient(135deg, rgba(13, 17, 23, 0.96), rgba(22, 27, 34, 0.92));
+      text-align: center;
+      padding: 140px 20px 120px;
+      border-bottom: 1px solid #30363d;
+    }
 
-.hero-content {
-  max-width: 900px;
-  margin: 0 auto;
-}
+    .hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
-.hero h1 {
-  font-size: 64px;
-  font-weight: 700;
-  margin-bottom: 18px;
-  color: #f0f6fc;
-}
+    .hero h1 {
+      font-size: 64px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      color: #f0f6fc;
+    }
 
-.hero p {
-  color: #9da7b3;
-  font-size: 20px;
-  max-width: 760px;
-  margin: 0 auto;
-  line-height: 1.7;
-}
+    .hero p {
+      color: #9da7b3;
+      font-size: 20px;
+      max-width: 760px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 80px 40px;
+    }
 
     .stats-strip {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
-      margin-bottom: 70px;
+      margin-bottom: 80px;
     }
 
     .stat-card {
       background: #161b22;
       border: 1px solid #30363d;
       border-radius: 18px;
-      padding: 28px;
+      padding: 32px;
       text-align: center;
-      box-shadow: 0 14px 40px rgba(0,0,0,0.28);
     }
 
     .stat-card h3 {
       color: #58a6ff;
-      font-size: 30px;
+      font-size: 34px;
       margin-bottom: 10px;
     }
 
@@ -115,16 +120,16 @@
     }
 
     .section-title {
-      text-align: center;
       font-size: 36px;
-      margin-bottom: 18px;
+      text-align: center;
+      margin-bottom: 16px;
     }
 
     .section-subtitle {
+      max-width: 800px;
+      margin: 0 auto 50px;
       text-align: center;
       color: #9da7b3;
-      max-width: 850px;
-      margin: 0 auto 50px;
     }
 
     .systems-grid {
@@ -143,19 +148,20 @@
     }
 
     .system-card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-6px);
       border-color: #58a6ff;
     }
 
     .system-card h3 {
-      margin-bottom: 14px;
       font-size: 22px;
+      margin-bottom: 14px;
+      color: #f0f6fc;
     }
 
     .system-card p {
       color: #9da7b3;
-      margin-bottom: 18px;
       font-size: 14px;
+      margin-bottom: 18px;
     }
 
     .system-tags {
@@ -173,30 +179,19 @@
       font-size: 12px;
     }
 
-    .dashboard-preview {
-      margin-top: 30px;
-      border: 1px solid #30363d;
-      border-radius: 18px;
-      overflow: hidden;
-      background: #161b22;
-      box-shadow: 0 14px 40px rgba(0,0,0,0.28);
-    }
-
-    .dashboard-preview img {
-      width: 100%;
-      display: block;
-    }
-
     footer {
       border-top: 1px solid #30363d;
       text-align: center;
       color: #8b949e;
       padding: 30px 20px;
       font-size: 14px;
-      margin-top: 80px;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
+      .stats-strip {
+        grid-template-columns: 1fr;
+      }
+
       nav {
         flex-direction: column;
         gap: 16px;
@@ -208,20 +203,11 @@
       }
 
       .hero h1 {
-        font-size: 40px;
-      }
-
-      .hero p {
-        font-size: 18px;
+        font-size: 44px;
       }
 
       .container {
-        padding: 50px 20px 70px;
-      }
-
-      .stats-strip,
-      .systems-grid {
-        grid-template-columns: 1fr;
+        padding: 60px 20px;
       }
     }
   </style>
@@ -239,18 +225,108 @@
         <a href="topology.html">Topology</a>
         <a href="projects.html">Projects</a>
         <a href="monitoring.html">Monitoring</a>
-        
         <a href="https://github.com/patrick-richardson" target="_blank">GitHub</a>
       </div>
     </nav>
   </header>
 
-   <section class="hero">
+  <section class="hero">
     <div class="hero-content">
       <h1>Profile</h1>
-      <p>Systems engineering, infrastructure, automation, and homelab development.</p>
+      <p>
+        Systems engineering, virtualization, infrastructure automation,
+        monitoring, and homelab development.
+      </p>
     </div>
   </section>
 
+  <div class="container">
+    <div class="stats-strip">
+      <div class="stat-card">
+        <h3>6+</h3>
+        <p>Core Infrastructure Systems</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>10+</h3>
+        <p>Technologies in Active Use</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>24/7</h3>
+        <p>Monitoring and Remote Access</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">Current Technical Focus</h2>
+    <p class="section-subtitle">
+      PatrickHomeLab is focused on building practical systems engineering
+      experience through infrastructure automation, centralized monitoring,
+      virtualization, remote access, and resilient service design.
+    </p>
+
+    <div class="systems-grid">
+      <div class="system-card">
+        <h3>Virtualization & Infrastructure</h3>
+        <p>
+          Proxmox VE on the Dell Precision 3630 hosts the core environment,
+          including Media-01, Vault-01, Monitor-01, Proxy-01, VPN-Gateway,
+          and Controller-01.
+        </p>
+
+        <div class="system-tags">
+          <span>Proxmox</span>
+          <span>Ubuntu Server</span>
+          <span>Virtualization</span>
+        </div>
+      </div>
+
+      <div class="system-card">
+        <h3>Monitoring & Observability</h3>
+        <p>
+          Prometheus, Grafana, and Node Exporter provide centralized metrics,
+          dashboarding, and visibility across every major system in the lab.
+        </p>
+
+        <div class="system-tags">
+          <span>Grafana</span>
+          <span>Prometheus</span>
+          <span>Node Exporter</span>
+        </div>
+      </div>
+
+      <div class="system-card">
+        <h3>Automation & Configuration</h3>
+        <p>
+          Ansible playbooks automate updates, package deployment, baseline
+          configuration, and future rebuild workflows across the environment.
+        </p>
+
+        <div class="system-tags">
+          <span>Ansible</span>
+          <span>Automation</span>
+          <span>Configuration Management</span>
+        </div>
+      </div>
+
+      <div class="system-card">
+        <h3>Storage & Media Services</h3>
+        <p>
+          Vault-01 provides centralized NFS-based storage while Media-01 runs
+          Plex and related services using shared storage across the environment.
+        </p>
+
+        <div class="system-tags">
+          <span>NFS</span>
+          <span>Plex</span>
+          <span>Centralized Storage</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    PatrickHomeLab • Infrastructure Engineering in Practice
+  </footer>
 </body>
 </html>
