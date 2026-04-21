@@ -126,13 +126,14 @@
 
     .about-card {
       display: grid;
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns: minmax(0, 2fr) 320px;
       gap: 48px;
       background: #161b22;
       border: 1px solid #30363d;
       border-radius: 20px;
       padding: 50px;
       box-shadow: 0 14px 40px rgba(0,0,0,0.28);
+      align-items: start;
     }
 
     .about-main {
@@ -145,9 +146,15 @@
       flex: 1;
     }
 
+    .about-main {
+      display: flex;
+      gap; 36px;
+      align-items: flex-start;
+    }
+
     .profile-photo {
-      width: 220px;
-      height: 220px;
+      width: 180px;
+      height: 180px;
       object-fit: cover;
       border-radius: 50%;
       border: 2px solid #1f6feb;
