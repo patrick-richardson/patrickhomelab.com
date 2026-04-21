@@ -85,76 +85,32 @@ nav a:hover {
   font-size: 17px;
 }
 
-.topology-layout {
+.architecture-grid {
   display: grid;
-  grid-template-columns: minmax(900px, 1.8fr) minmax(320px, 420px);
-  gap: 48px;
-  align-items: start;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 1400px;
+  margin: 40px auto 0;
 }
 
-.topology-image-wrapper {
-  display: flex;
-  flex-direction: column;
+.architecture-card {
+  background: rgba(18, 28, 40, 0.9);
+  border: 1px solid rgba(0, 180, 255, 0.15);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
 }
 
-.architecture-image {
-  width: 100%;
-  max-height: 950px;
-  object-fit: contain;
-  border-radius: 16px;
-  border: 1px solid #30363d;
-  box-shadow: 0 24px 50px rgba(0,0,0,.45);
+.architecture-card h3 {
+  color: #58c4ff;
+  margin-bottom: 12px;
 }
 
-.topology-note {
-  margin-top: 16px;
-  text-align: center;
-  color: #8b949e;
-  font-size: 14px;
+.architecture-card p {
+  color: #d7e3ee;
+  line-height: 1.7;
 }
-
-.topology-details {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.topology-card {
-  background: #161b22;
-  border: 1px solid #30363d;
-  border-radius: 14px;
-  padding: 20px;
-}
-
-.topology-card h3 {
-  margin: 0 0 8px 0;
-}
-
-.topology-card p {
-  margin: 0;
-  color: #9da7b3;
-}
-
-.focus-section {
-  margin-top: 70px;
-}
-
-.focus-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
-  margin-top: 30px;
-}
-
-.focus-item {
-  background: #161b22;
-  border: 1px solid #30363d;
-  border-radius: 14px;
-  padding: 20px;
-  text-align: center;
-  font-weight: 600;
-}
-
+  
 footer {
   text-align: center;
   padding: 40px;
@@ -210,73 +166,58 @@ footer {
 
 <div class="container">
 
-  <h2 class="section-title">Current Home Lab Architecture</h2>
-
+  <section class="section">
+  <h2 class="section-title">Infrastructure Architecture</h2>
   <p class="section-intro">
-    PatrickHomeLab is centered around a Dell Precision 3630 running Proxmox and
-    supporting a collection of virtual machines for media services, secure remote
-    access, centralized storage, monitoring, reverse proxy services, and Ansible-based
-    infrastructure automation.
+    PatrickHomeLab is organized into distinct infrastructure layers designed to mirror a small enterprise environment. Each layer provides a dedicated function while remaining integrated through centralized networking, storage, monitoring, and automation.
   </p>
 
-  <div class="topology-layout">
+  <div class="architecture-grid">
 
-    <div class="topology-image-wrapper">
-      <img src="images/lab-topology.png"
-           alt="PatrickHomeLab Infrastructure Topology"
-           class="architecture-image">
-
-      <p class="topology-note">
-        Public-facing topology intentionally omits internal IP addresses and
-        sensitive network details while preserving the overall infrastructure design.
+    <div class="architecture-card">
+      <h3>Compute Layer</h3>
+      <p>
+        Forge serves as the primary hypervisor running Proxmox VE. It hosts Media-01, Vault-01, VPN-Gateway, Proxy-01, Monitor-01, and Controller-01.
       </p>
     </div>
 
-    <div class="topology-details">
+    <div class="architecture-card">
+      <h3>Storage Layer</h3>
+      <p>
+        Vault-01 provides centralized NFS-based storage for media, backups, and shared lab files. This allows the environment to remain modular and easier to rebuild.
+      </p>
+    </div>
 
-      <div class="topology-card">
-        <h3>Forge / Server</h3>
-        <p>Dell Precision 3630 running Proxmox as the primary hypervisor for the entire PatrickHomeLab environment.</p>
-      </div>
+    <div class="architecture-card">
+      <h3>Networking Layer</h3>
+      <p>
+        The environment is connected through the ISP modem, eero gateway, and managed switch. VPN-Gateway and Proxy-01 extend secure remote access and service publishing.
+      </p>
+    </div>
 
-      <div class="topology-card">
-        <h3>Media VM</h3>
-        <p>Hosts Plex and media-related services for centralized streaming and content management.</p>
-      </div>
+    <div class="architecture-card">
+      <h3>Management Layer</h3>
+      <p>
+        The Windows Dell 7050 workstation and MacBook provide centralized administration access for Proxmox, SSH, Grafana, Plex, and system management.
+      </p>
+    </div>
 
-      <div class="topology-card">
-        <h3>VPN-Gateway VM</h3>
-        <p>Provides secure remote access to the lab using WireGuard.</p>
-      </div>
+    <div class="architecture-card">
+      <h3>Monitoring Layer</h3>
+      <p>
+        Monitor-01 runs Prometheus and Grafana with Node Exporter to provide centralized monitoring, performance metrics, and health visibility across the lab.
+      </p>
+    </div>
 
-      <div class="topology-card">
-        <h3>Vault VM</h3>
-        <p>Provides centralized storage, NFS shares, and backup services for the environment.</p>
-      </div>
-
-      <div class="topology-card">
-        <h3>Proxy-01 VM</h3>
-        <p>Acts as the reverse proxy and HTTPS entry point for published and internal services.</p>
-      </div>
-
-      <div class="topology-card">
-        <h3>Monitor-01 VM</h3>
-        <p>Runs monitoring and observability services using Prometheus and Grafana.</p>
-      </div>
-
-      <div class="topology-card">
-        <h3>Controller-01 VM</h3>
-        <p>Runs Ansible automation, patching, and infrastructure management tasks.</p>
-      </div>
-
-      <div class="topology-card">
-        <h3>Operations Systems</h3>
-        <p>The MacBook Operations system and Windows 11 Dell 7050 workstation are used for remote and local administration of the environment.</p>
-      </div>
-
+    <div class="architecture-card">
+      <h3>Automation Layer</h3>
+      <p>
+        Controller-01 runs Ansible playbooks for updates, software deployment, configuration management, and future automated rebuild workflows.
+      </p>
     </div>
 
   </div>
+</section>
 
   <section class="focus-section">
     <h2 class="section-title">Current Focus Areas</h2>
