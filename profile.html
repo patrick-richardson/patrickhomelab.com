@@ -120,118 +120,73 @@
     }
 
     .about-section {
-      max-width: 1200px;
-      margin: 0 auto 90px;
-    }
-
-    .about-section {
-      max-width: 1600px;
-      margin: 0 auto 100px;
-      padding: 0 60px;
-    }
-
-    .about-card {
-      display: grid;
-      grid-template-columns: 1.4fr 320px;
-      gap: 60px;
-      background: #161b22;
-      border: 1px solid #30363d;
       border-radius: 24px;
       padding: 60px;
       box-shadow: 0 14px 40px rgba(0,0,0,0.28);
       align-items: start;
     }
-
-    .about-main {
+    
+    .profile-column {
       display: flex;
+      justify-content: center;
       align-items: flex-start;
-      gap: 50px;
     }
-
+    
     .profile-photo {
-      width: 420px;
-      height: 420px;
+      width: 320px;
+      height: 320px;
       object-fit: cover;
       border-radius: 50%;
       flex-shrink: 0;
     }
-
-    .about-section {
-      max-width: 1800px;
-      margin: 0 auto 100px;
-      padding: 0 60px;
+    
+    .content-column {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) 320px;
+      gap: 60px;
+      align-items: start;
     }
-  
-      .about-card {
-        display: grid;
-        grid-template-columns: 340px 1fr;
-        gap: 70px;
-        background: #161b22;
-        border: 1px solid #30363d;
-        border-radius: 24px;
-        padding: 60px;
-        box-shadow: 0 14px 40px rgba(0,0,0,0.28);
-        align-items: start;
-      }
-      
-      .profile-column {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-      }
-      
-      .profile-photo {
-        width: 320px;
-        height: 320px;
-        object-fit: contain;
-        flex-shrink: 0;
-      }
-      
-      .content-column {
-        display: grid;
-        grid-template-columns: minmax(0, 2fr) 320px;
-        gap: 60px;
-        align-items: start;
-      }
-      
-      .about-text h2 {
-        font-size: 42px;
-        margin-bottom: 24px;
-        color: #f0f6fc;
-      }
-      
-      .about-text p {
-        color: #9da7b3;
-        font-size: 18px;
-        line-height: 1.9;
-        margin-bottom: 24px;
-      }
-      
-      .about-side {
-        border-left: 1px solid #30363d;
-        padding-left: 36px;
-      }
-      
-      .about-side h3 {
-        color: #58a6ff;
-        font-size: 28px;
-        margin-bottom: 24px;
-      }
-      
-      .about-side ul {
-        list-style: none;
-      }
-      
-      .about-side li {
-        margin-bottom: 18px;
-        color: #d1d9e0;
-        font-size: 16px;
-        line-height: 1.7;
-      }
-      
-      .about-side strong {
-        color: #f0f6fc;
-      }
+    
+    .about-text h2 {
+      font-size: 42px;
+      margin-bottom: 24px;
+      color: #f0f6fc;
+    }
+    
+    .about-text p {
+      color: #9da7b3;
+      font-size: 18px;
+      line-height: 1.9;
+      margin-bottom: 24px;
+    }
+    
+    .about-side {
+      border-left: 1px solid #30363d;
+      padding-left: 36px;
+    }
+    
+    .about-side h3 {
+      color: #58a6ff;
+      font-size: 28px;
+      margin-bottom: 24px;
+    }
+    
+    .about-side ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .about-side li {
+      margin-bottom: 18px;
+      color: #d1d9e0;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    
+    .about-side strong {
+      color: #f0f6fc;
+    }
     
     @media (max-width: 900px) {
       .about-card {
@@ -370,52 +325,54 @@
   <div class="container">
   <section class="about-section">
   <div class="about-card">
-   <div class="about-main">
-     <img src="images/profile-photo.png" alt="Patrick Richardson" class="profile-photo">
-
-    <div class="about-text">
-      <h2>About Me</h2>
-
-      <p>
-        I am an aspiring Systems Engineer focused on infrastructure,
-        automation, and practical hands-on experience through PatrickHomeLab.
-      </p>
-
-      <p>
-        My lab is centered around a Dell Precision 3630 running Proxmox VE and
-        includes dedicated virtual machines for monitoring, centralized
-        storage, secure remote access, media services, and Ansible-based
-        automation.
-      </p>
-
-      <p>
-        I use the environment to build real-world experience with Linux
-        administration, virtualization, networking, Grafana, Prometheus,
-        WireGuard, and Ansible while continuing to develop toward a Systems
-        Engineering or DevOps role.
-      </p>
-
-      <p>
-        Beyond the lab, I am building documentation, automation workflows, and
-        a professional portfolio to demonstrate practical infrastructure design
-        and long-term growth.
-      </p>
+    <div class="profile-column">
+      <img src="images/profile-photo.png" alt="Patrick Richardson" class="profile-photo">
     </div>
-   </div>
 
-    <div class="about-side">
-      <h3>Quick Facts</h3>
+    <div class="content-column">
+      <div class="about-text">
+        <h2>About Me</h2>
 
-      <ul>
-        <li><strong>Current Focus:</strong> Systems Engineering & DevOps</li>
-        <li><strong>Primary Platform:</strong> Proxmox VE</li>
-        <li><strong>Core Host:</strong> Dell Precision 3630</li>
-        <li><strong>Automation:</strong> Ansible</li>
-        <li><strong>Monitoring:</strong> Grafana + Prometheus</li>
-        <li><strong>Remote Access:</strong> WireGuard VPN</li>
-        <li><strong>Storage:</strong> NFS-based centralized storage</li>
-        <li><strong>Current Goal:</strong> Build production-style infrastructure skills</li>
-      </ul>
+        <p>
+          I am an aspiring Systems Engineer focused on infrastructure,
+          automation, and practical hands-on experience through PatrickHomeLab.
+        </p>
+
+        <p>
+          My lab is centered around a Dell Precision 3630 running Proxmox VE and
+          includes dedicated virtual machines for monitoring, centralized
+          storage, secure remote access, media services, and Ansible-based
+          automation.
+        </p>
+
+        <p>
+          I use the environment to build real-world experience with Linux
+          administration, virtualization, networking, Grafana, Prometheus,
+          WireGuard, and Ansible while continuing to develop toward a Systems
+          Engineering or DevOps role.
+        </p>
+
+        <p>
+          Beyond the lab, I am building documentation, automation workflows, and
+          a professional portfolio to demonstrate practical infrastructure design
+          and long-term growth.
+        </p>
+      </div>
+
+      <div class="about-side">
+        <h3>Quick Facts</h3>
+
+        <ul>
+          <li><strong>Current Focus:</strong> Systems Engineering & DevOps</li>
+          <li><strong>Primary Platform:</strong> Proxmox VE</li>
+          <li><strong>Core Host:</strong> Dell Precision 3630</li>
+          <li><strong>Automation:</strong> Ansible</li>
+          <li><strong>Monitoring:</strong> Grafana + Prometheus</li>
+          <li><strong>Remote Access:</strong> WireGuard VPN</li>
+          <li><strong>Storage:</strong> NFS-based centralized storage</li>
+          <li><strong>Current Goal:</strong> Build production-style infrastructure skills</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
