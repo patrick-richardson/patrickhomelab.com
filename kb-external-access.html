@@ -11,7 +11,6 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background: #0f1720;
   color: #e6edf3;
-  line-height: 1.6;
 }
 
 header {
@@ -49,7 +48,6 @@ nav a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
 }
 
 .hero h1 {
@@ -62,17 +60,67 @@ nav a:hover {
   padding: 60px 30px;
 }
 
-.section {
-  margin-bottom: 50px;
+/* ===== FLOW ===== */
+.flow-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
 }
 
-.section h2 {
-  margin-bottom: 12px;
+.flow-box {
+  background: rgba(18, 28, 40, 0.9);
+  border: 1px solid rgba(0, 180, 255, 0.25);
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.flow-arrow {
   color: #58c4ff;
+  font-size: 18px;
 }
 
-.section p {
-  color: #d7e3ee;
+/* ===== COMPONENTS GRID ===== */
+.component-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.component-card {
+  background: rgba(18, 28, 40, 0.9);
+  border: 1px solid rgba(0, 180, 255, 0.15);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.component-card h3 {
+  color: #58c4ff;
+  margin-bottom: 8px;
+}
+
+/* ===== RATIONALE ===== */
+.rationale-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.rationale-card {
+  background: rgba(18, 28, 40, 0.9);
+  border: 1px solid rgba(0, 180, 255, 0.15);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.rationale-card h3 {
+  color: #58c4ff;
+  margin-bottom: 8px;
 }
 
 footer {
@@ -99,7 +147,6 @@ footer {
       <a href="projects.html">Projects</a>
       <a href="kb.html">KB</a>
       <a href="monitoring.html">Monitoring</a>
-    
       <a href="https://github.com/patrick-richardson" target="_blank">GitHub</a>
     </div>
   </nav>
@@ -111,88 +158,71 @@ footer {
 
 <div class="container">
 
-  <div class="section">
-    <h2>Overview</h2>
-    <p>
-      External access to PatrickHomeLab is designed to provide secure HTTPS
-      connectivity to selected services without exposing internal network
-      ports directly to the internet.
-    </p>
+  <!-- FLOW -->
+  <h2>Traffic Flow</h2>
+
+  <div class="flow-grid">
+    <div class="flow-box">User</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">Cloudflare</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">Tunnel</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">proxy-01</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">Caddy</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">Services</div>
   </div>
 
-  <div class="section">
-    <h2>Traffic Flow</h2>
-<div style="
-  background: rgba(18, 28, 40, 0.9);
-  border: 1px solid rgba(0, 180, 255, 0.2);
-  padding: 16px;
-  border-radius: 10px;
-  font-family: monospace;
-  text-align: center;
-  margin-top: 10px;
-">
-  User → Cloudflare → Tunnel → proxy-01 → Caddy → Internal Services
-</div>
+  <!-- COMPONENTS -->
+  <h2 style="margin-top:50px;">Components</h2>
+
+  <div class="component-grid">
+    <div class="component-card">
+      <h3>Cloudflare</h3>
+      <p>DNS, HTTPS termination, and external entry point.</p>
+    </div>
+
+    <div class="component-card">
+      <h3>Tunnel</h3>
+      <p>Secure outbound connection without port forwarding.</p>
+    </div>
+
+    <div class="component-card">
+      <h3>proxy-01</h3>
+      <p>Central ingress node for all incoming traffic.</p>
+    </div>
+
+    <div class="component-card">
+      <h3>Caddy</h3>
+      <p>Reverse proxy routing requests to services.</p>
+    </div>
+
+    <div class="component-card">
+      <h3>Services</h3>
+      <p>Internal systems selectively exposed.</p>
+    </div>
   </div>
 
-  <div class="section">
-    <h2>Components</h2>
+  <!-- DESIGN -->
+  <h2 style="margin-top:50px;">Design Rationale</h2>
 
-    <p>
-      The external access system is built using a layered approach, with each
-      component responsible for a specific part of the ingress and routing process.
-    </p>
+  <div class="rationale-grid">
+    <div class="rationale-card">
+      <h3>Secure by Design</h3>
+      <p>No open ports. All traffic is tunneled securely.</p>
+    </div>
 
-    <p>
-      <strong>Cloudflare:</strong> Handles DNS, HTTPS termination, and acts as the
-      external entry point into the environment.
-    </p>
+    <div class="rationale-card">
+      <h3>Centralized Routing</h3>
+      <p>One proxy handles all service exposure.</p>
+    </div>
 
-    <p>
-      <strong>Cloudflare Tunnel:</strong> Maintains a secure outbound connection
-      from proxy-01 to Cloudflare, eliminating the need for inbound port forwarding.
-    </p>
-
-    <p>
-      <strong>proxy-01:</strong> Dedicated ingress node that receives tunneled
-      traffic and serves as the central entry point into the lab.
-    </p>
-
-    <p>
-      <strong>Caddy:</strong> Reverse proxy responsible for routing incoming requests
-      to the appropriate internal services.
-    </p>
-
-    <p>
-      <strong>Internal Services:</strong> Includes monitoring, media, and other lab
-      systems that are selectively exposed through the proxy layer.
-    </p>
-
-  </div>
-
-  <div class="section">
-    <h2>Design Rationale</h2>
-
-    <p>
-      This architecture was designed to provide secure external access while
-      minimizing exposure of the internal network. Instead of opening ports
-      on the router, all inbound traffic is handled through an outbound tunnel
-      initiated from within the lab environment.
-    </p>
-
-    <p>
-      By using a reverse proxy as a centralized entry point, all service routing
-      is managed in a single location. This simplifies service exposure, improves
-      scalability, and allows additional services to be added without modifying
-      network-level configurations.
-    </p>
-
-    <p>
-      Separating public access from internal infrastructure ensures that only
-      intended services are exposed, while monitoring, automation, and storage
-      systems remain isolated within the private network.
-    </p>
-
+    <div class="rationale-card">
+      <h3>Isolation</h3>
+      <p>Only intended services are publicly accessible.</p>
+    </div>
   </div>
 
 </div>
