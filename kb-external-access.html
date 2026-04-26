@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PatrickHomeLab | External Access</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #0f1720;
+  color: #e6edf3;
+  line-height: 1.6;
+}
+
+header {
+  background: #0f1720;
+  border-bottom: 1px solid #2a3440;
+  padding: 18px;
+}
+
+nav {
+  max-width: 1400px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  color: #d0d7de;
+  text-decoration: none;
+  margin-left: 24px;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: #58a6ff;
+}
+
+.hero {
+  height: 260px;
+  background:
+    linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
+    url("images/lab-topology.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 40px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 60px 30px;
+}
+
+.section {
+  margin-bottom: 50px;
+}
+
+.section h2 {
+  margin-bottom: 12px;
+  color: #58c4ff;
+}
+
+footer {
+  text-align: center;
+  padding: 40px;
+  color: #9da7b3;
+  border-top: 1px solid #2a3440;
+  margin-top: 80px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <div><strong>PatrickHomeLab</strong></div>
+
+    <div>
+      <a href="index.html">Home</a>
+      <a href="profile.html">Profile</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="topology.html">Topology</a>
+      <a href="projects.html">Projects</a>
+      <a href="kb.html">KB</a>
+      <a href="monitoring.html">Monitoring</a>
+      
+      <a href="https://github.com/patrick-richardson" target="_blank">GitHub</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>External Access Architecture</h1>
+</section>
+
+<div class="container">
+
+  <div class="section">
+    <h2>Overview</h2>
+    <p>
+      External access to PatrickHomeLab is designed to provide secure HTTPS
+      connectivity to selected services without exposing internal network
+      ports directly to the internet.
+    </p>
+  </div>
+
+</div>
+
+<footer>
+  PatrickHomeLab • Infrastructure Engineering in Practice
+</footer>
+
+</body>
+</html>
