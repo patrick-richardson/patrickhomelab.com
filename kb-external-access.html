@@ -71,6 +71,10 @@ nav a:hover {
   color: #58c4ff;
 }
 
+.section p {
+  color: #d7e3ee;
+}
+
 footer {
   text-align: center;
   padding: 40px;
@@ -95,7 +99,7 @@ footer {
       <a href="projects.html">Projects</a>
       <a href="kb.html">KB</a>
       <a href="monitoring.html">Monitoring</a>
-      
+    
       <a href="https://github.com/patrick-richardson" target="_blank">GitHub</a>
     </div>
   </nav>
@@ -114,6 +118,73 @@ footer {
       connectivity to selected services without exposing internal network
       ports directly to the internet.
     </p>
+  </div>
+
+  <div class="section">
+    <h2>Traffic Flow</h2>
+    <p>
+      User → Cloudflare → Tunnel → proxy-01 → Caddy → Internal Services
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Components</h2>
+
+    <p>
+      The external access system is built using a layered approach, with each
+      component responsible for a specific part of the ingress and routing process.
+    </p>
+
+    <p>
+      <strong>Cloudflare:</strong> Handles DNS, HTTPS termination, and acts as the
+      external entry point into the environment.
+    </p>
+
+    <p>
+      <strong>Cloudflare Tunnel:</strong> Maintains a secure outbound connection
+      from proxy-01 to Cloudflare, eliminating the need for inbound port forwarding.
+    </p>
+
+    <p>
+      <strong>proxy-01:</strong> Dedicated ingress node that receives tunneled
+      traffic and serves as the central entry point into the lab.
+    </p>
+
+    <p>
+      <strong>Caddy:</strong> Reverse proxy responsible for routing incoming requests
+      to the appropriate internal services.
+    </p>
+
+    <p>
+      <strong>Internal Services:</strong> Includes monitoring, media, and other lab
+      systems that are selectively exposed through the proxy layer.
+    </p>
+
+  </div>
+
+  <div class="section">
+    <h2>Design Rationale</h2>
+
+    <p>
+      This architecture was designed to provide secure external access while
+      minimizing exposure of the internal network. Instead of opening ports
+      on the router, all inbound traffic is handled through an outbound tunnel
+      initiated from within the lab environment.
+    </p>
+
+    <p>
+      By using a reverse proxy as a centralized entry point, all service routing
+      is managed in a single location. This simplifies service exposure, improves
+      scalability, and allows additional services to be added without modifying
+      network-level configurations.
+    </p>
+
+    <p>
+      Separating public access from internal infrastructure ensures that only
+      intended services are exposed, while monitoring, automation, and storage
+      systems remain isolated within the private network.
+    </p>
+
   </div>
 
 </div>
