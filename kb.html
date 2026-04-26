@@ -112,6 +112,16 @@ nav a:hover {
   line-height: 1.7;
 }
 
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card-link:hover .architecture-card {
+  transform: translateY(-4px);
+  transition: 0.2s ease;
+}
+
 footer {
   text-align: center;
   padding: 40px;
@@ -189,13 +199,15 @@ footer {
       </p>
     </div>
 
-    <div class="architecture-card">
-      <h3>External Access</h3>
-      <p>
-        Cloudflare Tunnel, reverse proxy routing, and how
-        services are exposed securely.
-      </p>
-    </div>
+   <a href="kb-external-access.html" class="card-link">
+  <div class="architecture-card">
+    <h3>External Access</h3>
+    <p>
+      Cloudflare Tunnel, reverse proxy routing, and how
+      services are exposed securely.
+    </p>
+  </div>
+</a>
 
     <div class="architecture-card">
       <h3>Storage 🔒</h3>
