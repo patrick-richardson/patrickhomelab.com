@@ -83,7 +83,7 @@ nav a:hover {
   font-size: 18px;
 }
 
-/* ===== COMPONENTS GRID ===== */
+/* ===== COMPONENTS ===== */
 .component-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -96,11 +96,18 @@ nav a:hover {
   border: 1px solid rgba(0, 180, 255, 0.15);
   border-radius: 14px;
   padding: 18px;
+  transition: 0.2s ease;
 }
 
-.component-card h3 {
+.component-card:hover {
+  transform: translateY(-4px);
+}
+
+.component-header {
+  font-weight: 600;
   color: #58c4ff;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+  font-size: 16px;
 }
 
 /* ===== RATIONALE ===== */
@@ -121,6 +128,11 @@ nav a:hover {
 .rationale-card h3 {
   color: #58c4ff;
   margin-bottom: 8px;
+}
+
+/* ===== SPACING ===== */
+.section-spacing {
+  margin-top: 50px;
 }
 
 footer {
@@ -156,10 +168,11 @@ footer {
   <h1>External Access Architecture</h1>
 </section>
 
+<!-- INFOGRAPHIC -->
 <div class="container">
   <img src="images/external-access-infographic.png"
        alt="External Access Overview"
-       style="width:100%; border-radius:12px; margin-bottom:40px;">
+       style="width:100%; border-radius:12px;">
 </div>
 
 <div class="container">
@@ -182,39 +195,42 @@ footer {
   </div>
 
   <!-- COMPONENTS -->
-  <h2 style="margin-top:50px;">Components</h2>
+  <h2 class="section-spacing">Components</h2>
 
   <div class="component-grid">
+
     <div class="component-card">
-      <h3>Cloudflare</h3>
+      <div class="component-header">🌐 Cloudflare</div>
       <p>DNS, HTTPS termination, and external entry point.</p>
     </div>
 
     <div class="component-card">
-      <h3>Tunnel</h3>
+      <div class="component-header">🔗 Tunnel</div>
       <p>Secure outbound connection without port forwarding.</p>
     </div>
 
     <div class="component-card">
-      <h3>proxy-01</h3>
+      <div class="component-header">🖥️ proxy-01</div>
       <p>Central ingress node for all incoming traffic.</p>
     </div>
 
     <div class="component-card">
-      <h3>Caddy</h3>
+      <div class="component-header">⚙️ Caddy</div>
       <p>Reverse proxy routing requests to services.</p>
     </div>
 
     <div class="component-card">
-      <h3>Services</h3>
+      <div class="component-header">📦 Services</div>
       <p>Internal systems selectively exposed.</p>
     </div>
+
   </div>
 
   <!-- DESIGN -->
-  <h2 style="margin-top:50px;">Design Rationale</h2>
+  <h2 class="section-spacing">Design Rationale</h2>
 
   <div class="rationale-grid">
+
     <div class="rationale-card">
       <h3>Secure by Design</h3>
       <p>No open ports. All traffic is tunneled securely.</p>
@@ -229,6 +245,7 @@ footer {
       <h3>Isolation</h3>
       <p>Only intended services are publicly accessible.</p>
     </div>
+
   </div>
 
 </div>
