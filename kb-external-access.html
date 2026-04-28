@@ -13,6 +13,7 @@ body {
   color: #e6edf3;
 }
 
+/* NAV */
 header {
   background: #0f1720;
   border-bottom: 1px solid #2a3440;
@@ -38,6 +39,7 @@ nav a:hover {
   color: #58a6ff;
 }
 
+/* HERO */
 .hero {
   height: 260px;
   background:
@@ -52,37 +54,26 @@ nav a:hover {
 
 .hero h1 {
   font-size: 40px;
+  text-align: center;
 }
 
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 60px 30px;
-}
-
-/* ===== FLOW ===== */
-.flow-grid {
+/* FULL WIDTH INFOGRAPHIC SECTION */
+.infographic {
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin-top: 20px;
+  padding: 60px 20px;
 }
 
-.flow-box {
-  background: rgba(18, 28, 40, 0.9);
-  border: 1px solid rgba(0, 180, 255, 0.25);
-  padding: 12px 18px;
-  border-radius: 10px;
-  font-weight: 500;
+.infographic img {
+  width: 95%;
+  max-width: 1800px;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 30px 120px rgba(0,0,0,0.6);
 }
 
-.flow-arrow {
-  color: #58c4ff;
-  font-size: 18px;
-}
-
+/* FOOTER */
 footer {
   text-align: center;
   padding: 40px;
@@ -116,20 +107,11 @@ footer {
   <h1>External Access Architecture</h1>
 </section>
 
-<!-- INFOGRAPHIC -->
-
-<div style="text-align:center; margin: 60px 0;">
-
+<!-- INFOGRAPHIC (FULL WIDTH CENTERED) -->
+<section class="infographic">
   <img src="images/external-access-infographic.png"
-       alt="External Access Architecture"
-       style="
-         width: 95%;
-         max-width: 3800px;
-         border-radius: 12px;
-         box-shadow: 0 30px 120px rgba(0,0,0,0.5);
-       ">
-
-</div>
+       alt="External Access Architecture">
+</section>
 
 <footer>
   PatrickHomeLab • Infrastructure Engineering in Practice
