@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PatrickHomeLab | Knowledge Base</title>
+<title>PatrickHomeLab | Troubleshooting</title>
 
 <style>
 body {
@@ -154,10 +154,9 @@ footer {
 
 <section class="hero">
   <div>
-    <h1>Knowledge Base (Atlas)</h1>
+    <h1>Troubleshooting (Atlas)</h1>
     <p>
-      Documentation, system design notes, and operational knowledge
-      from the PatrickHomeLab environment.
+      Documentation, troubleshooting, and fixes for issues.
     </p>
   </div>
 </section>
@@ -165,18 +164,16 @@ footer {
 <div class="container">
 
 <section class="section">
-  <h2 class="section-title">Knowledge Base</h2>
+  <h2 class="section-title">Troubleshooting</h2>
   <p class="section-intro">
-    This section contains structured documentation covering infrastructure,
-    automation, monitoring, storage, and operational workflows used throughout
-    the lab environment.<br><br>
+    This section contains structured troubleshooting documentation covering Docker, Infrastructure, Networking, Plex, Proxmox, and Storage.<br><br>
     🔒 Indicates internal documentation or configurations not publicly exposed.
   </p>
 
   <div class="architecture-grid">
 
     <div class="architecture-card">
-      <h3>Infrastructure 🔒</h3>
+      <h3>Docker 🔒</h3>
       <p>
         Core system architecture, VM roles, networking design,
         and internal service layout.
@@ -184,7 +181,7 @@ footer {
     </div>
 
     <div class="architecture-card">
-      <h3>Automation 🔒</h3>
+      <h3>Infrastructure 🔒</h3>
       <p>
         Ansible playbooks, update workflows, and configuration
         management across the environment.
@@ -192,19 +189,33 @@ footer {
     </div>
 
     <div class="architecture-card">
-      <h3>Monitoring 🔒</h3>
+      <h3>Networking 🔒</h3>
       <p>
         Prometheus, Grafana dashboards, and system health
         visibility across all nodes.
       </p>
     </div>
 
-   <a href="kb-external-access.html" class="card-link">
+    <div class="architecture-card">
+      <h3>Plex 🔒</h3>
+      <p>
+        Media streaming service.
+      </p>
+    </div>
+
+    <div class="architecture-card">
+      <h3>Proxmox 🔒</h3>
+      <p>
+        Virtual Machine software.
+      </p>
+    </div>
+
+   <a href="troubleshooting-external-access.html" class="card-link">
   <div class="architecture-card">
     <h3>External Access</h3>
     <p>
       Cloudflare Tunnel, reverse proxy routing, and how
-      services are exposed securely.
+      Services are exposed securely.
     </p>
   </div>
 </a>
@@ -212,8 +223,7 @@ footer {
     <div class="architecture-card">
       <h3>Storage 🔒</h3>
       <p>
-        Vault configuration, NFS shares, and backup strategy
-        used within the lab.
+        Vault configuration and NFS shares used within the lab.
       </p>
     </div>
 
