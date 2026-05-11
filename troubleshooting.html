@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>PatrickHomeLab | Troubleshooting</title>
 
 <style>
+
+/* =========================
+   GLOBAL
+========================= */
 
 * {
     box-sizing: border-box;
@@ -21,7 +26,7 @@ body {
 }
 
 /* =========================
-   HEADER / NAVIGATION
+   HEADER
 ========================= */
 
 header {
@@ -34,9 +39,10 @@ header {
 }
 
 nav {
-    max-width: 1500px;
+    max-width: 1600px;
     margin: auto;
-    padding: 18px 40px;
+
+    padding: 18px 42px;
 
     display: flex;
     justify-content: space-between;
@@ -68,12 +74,13 @@ nav a:hover {
 }
 
 /* =========================
-   HERO SECTION
+   HERO
 ========================= */
 
 .hero {
     position: relative;
-    height: 360px;
+
+    height: 320px;
 
     display: flex;
     justify-content: center;
@@ -93,32 +100,44 @@ nav a:hover {
 .hero-content {
     position: relative;
     z-index: 2;
+
     padding: 0 30px;
-    max-width: 1100px;
 }
 
 .hero h1 {
-    font-size: 58px;
-    margin-bottom: 18px;
+    font-size: 62px;
     color: #ffffff;
-    line-height: 1.15;
-}
+    margin: 0;
+    line-height: 1.1;
 
-.hero p {
-    color: #c4d0dc;
-    font-size: 18px;
-    max-width: 850px;
-    margin: auto;
+    text-shadow:
+        0 0 18px rgba(0,0,0,0.55);
 }
 
 /* =========================
-   MAIN CONTAINER
+   CONTENT AREA
 ========================= */
 
 .container {
-    max-width: 1600px;
+    max-width: 1700px;
     margin: auto;
-    padding: 90px 60px;
+
+    padding: 80px 70px;
+}
+
+.section-intro {
+    text-align: center;
+
+    max-width: 1000px;
+
+    margin:
+        0 auto
+        70px auto;
+
+    color: #c0ccd7;
+
+    font-size: 20px;
+    line-height: 1.9;
 }
 
 /* =========================
@@ -127,8 +146,11 @@ nav a:hover {
 
 .architecture-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 34px;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(380px, 1fr));
+
+    gap: 40px;
 }
 
 /* =========================
@@ -136,17 +158,21 @@ nav a:hover {
 ========================= */
 
 .architecture-card {
-    min-height: 240px;
 
-    background: rgba(17, 27, 40, 0.95);
+    min-height: 280px;
 
-    border: 1px solid rgba(88, 166, 255, 0.15);
-    border-radius: 18px;
+    background:
+        rgba(17, 27, 40, 0.95);
 
-    padding: 32px;
+    border:
+        1px solid rgba(88, 166, 255, 0.14);
+
+    border-radius: 20px;
+
+    padding: 38px;
 
     box-shadow:
-        0 10px 30px rgba(0,0,0,0.35);
+        0 12px 34px rgba(0,0,0,0.34);
 
     transition:
         transform 0.25s ease,
@@ -155,27 +181,34 @@ nav a:hover {
 }
 
 .architecture-card:hover {
+
     transform: translateY(-6px);
 
-    border-color: rgba(88, 166, 255, 0.5);
+    border-color:
+        rgba(88,166,255,0.45);
 
     box-shadow:
-        0 0 22px rgba(88,166,255,0.15),
-        0 14px 34px rgba(0,0,0,0.45);
+        0 0 22px rgba(88,166,255,0.14),
+        0 16px 36px rgba(0,0,0,0.42);
 }
 
 .architecture-card h3 {
+
     margin-top: 0;
-    margin-bottom: 18px;
+    margin-bottom: 22px;
 
     color: #58c4ff;
-    font-size: 22px;
+
+    font-size: 26px;
 }
 
 .architecture-card p {
+
     color: #d7e3ee;
-    font-size: 16px;
-    line-height: 1.8;
+
+    font-size: 17px;
+
+    line-height: 1.9;
 }
 
 .card-link {
@@ -184,15 +217,17 @@ nav a:hover {
 }
 
 /* =========================
-   FOOTNOTE
+   NOTICE
 ========================= */
 
 .notice {
-    margin-top: 50px;
+
+    margin-top: 55px;
 
     text-align: center;
 
-    color: rgba(230,237,243,0.72);
+    color:
+        rgba(230,237,243,0.78);
 
     font-size: 15px;
 }
@@ -202,13 +237,15 @@ nav a:hover {
 ========================= */
 
 footer {
+
     margin-top: 120px;
 
     text-align: center;
 
-    padding: 40px;
+    padding: 42px;
 
-    border-top: 1px solid #1f2b3a;
+    border-top:
+        1px solid #1f2b3a;
 
     color: #9da7b3;
 
@@ -216,14 +253,14 @@ footer {
 }
 
 /* =========================
-   RESPONSIVE
+   MOBILE
 ========================= */
 
-@media (max-width: 900px) {
+@media (max-width: 950px) {
 
     nav {
         flex-direction: column;
-        gap: 16px;
+        gap: 18px;
     }
 
     .nav-links {
@@ -231,26 +268,39 @@ footer {
     }
 
     .hero {
-        height: 320px;
+        height: 260px;
     }
 
     .hero h1 {
         font-size: 42px;
     }
 
-    .hero p {
-        font-size: 16px;
-    }
-
     .container {
         padding: 60px 24px;
+    }
+
+    .section-intro {
+        font-size: 17px;
+    }
+
+    .architecture-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .architecture-card {
+        min-height: auto;
     }
 }
 
 </style>
+
 </head>
 
 <body>
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
@@ -292,12 +342,6 @@ footer {
             Troubleshooting & Issue Resolution
         </h1>
 
-        <p>
-            Operational troubleshooting, Linux administration,
-            infrastructure diagnostics, virtualization recovery,
-            and systems engineering issue resolution across PatrickHomeLab.
-        </p>
-
     </div>
 
 </section>
@@ -308,7 +352,19 @@ footer {
 
 <div class="container">
 
+    <div class="section-intro">
+
+        Operational troubleshooting, Linux administration,
+        infrastructure diagnostics, virtualization recovery,
+        storage management, secure remote access,
+        and systems engineering issue resolution
+        across PatrickHomeLab.
+
+    </div>
+
     <div class="architecture-grid">
+
+        <!-- SERVICES -->
 
         <div class="architecture-card">
 
@@ -316,71 +372,85 @@ footer {
 
             <p>
                 Application deployment, containerized services,
-                media platform troubleshooting, and service
-                availability diagnostics across hosted lab systems.
+                media platform troubleshooting, service failures,
+                and operational diagnostics across hosted lab systems.
             </p>
 
         </div>
+
+        <!-- INFRASTRUCTURE -->
 
         <div class="architecture-card">
 
             <h3>Infrastructure 🔒</h3>
 
             <p>
-                Linux administration, server configuration,
-                hypervisor operations, storage architecture,
-                and infrastructure recovery troubleshooting.
+                Linux administration, infrastructure recovery,
+                hypervisor operations, system configuration,
+                and platform-level troubleshooting throughout the lab.
             </p>
 
         </div>
+
+        <!-- NETWORKING -->
 
         <div class="architecture-card">
 
             <h3>Networking 🔒</h3>
 
             <p>
-                Routing, DNS, remote access, monitoring,
-                network visibility, and connectivity troubleshooting
-                across segmented lab systems.
+                DNS resolution, routing, remote access,
+                monitoring visibility, connectivity troubleshooting,
+                and segmented network diagnostics.
             </p>
 
         </div>
+
+        <!-- VIRTUALIZATION -->
 
         <div class="architecture-card">
 
             <h3>Virtualization 🔒</h3>
 
             <p>
-                Proxmox VE management, VM recovery,
-                snapshot handling, resource allocation,
+                Proxmox VE administration, virtual machine recovery,
+                snapshot management, resource allocation,
                 and virtualization platform troubleshooting.
             </p>
 
         </div>
+
+        <!-- AUTOMATION -->
 
         <div class="architecture-card">
 
             <h3>Automation 🔒</h3>
 
             <p>
-                Automation workflows, Ansible deployment,
-                infrastructure orchestration, and configuration
-                management troubleshooting.
+                Infrastructure automation workflows,
+                Ansible deployment troubleshooting,
+                orchestration validation,
+                and configuration management diagnostics.
             </p>
 
         </div>
+
+        <!-- SECURITY -->
 
         <div class="architecture-card">
 
             <h3>Security 🔒</h3>
 
             <p>
-                Authentication, WireGuard VPN access,
-                secure remote connectivity, encryption,
-                and infrastructure access control troubleshooting.
+                WireGuard VPN access, encrypted remote connectivity,
+                authentication troubleshooting,
+                infrastructure access control,
+                and secure systems management.
             </p>
 
         </div>
+
+        <!-- STORAGE -->
 
         <a href="troubleshooting-storage.html" class="card-link">
 
@@ -390,8 +460,9 @@ footer {
 
                 <p>
                     Thinpool recovery, NFS troubleshooting,
-                    storage reliability, VM migration,
-                    snapshots, and backup infrastructure diagnostics.
+                    snapshot cleanup, VM migration,
+                    storage reliability, backup validation,
+                    and infrastructure storage diagnostics.
                 </p>
 
             </div>
@@ -401,13 +472,22 @@ footer {
     </div>
 
     <div class="notice">
-        🔒 Indicates internal documentation or configurations not publicly exposed.
+
+        🔒 Indicates internal documentation or configurations
+        not publicly exposed.
+
     </div>
 
 </div>
 
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
+
     PatrickHomeLab • Infrastructure Engineering in Practice
+
 </footer>
 
 </body>
