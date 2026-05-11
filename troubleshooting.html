@@ -80,7 +80,7 @@ nav a:hover {
 .hero {
     position: relative;
 
-    height: 320px;
+    height: 360px;
 
     display: flex;
     justify-content: center;
@@ -100,7 +100,6 @@ nav a:hover {
 .hero-content {
     position: relative;
     z-index: 2;
-
     padding: 0 30px;
 }
 
@@ -115,24 +114,27 @@ nav a:hover {
 }
 
 /* =========================
-   CONTENT AREA
+   MAIN CONTAINER
 ========================= */
 
 .container {
     max-width: 1700px;
     margin: auto;
-
     padding: 80px 70px;
 }
+
+/* =========================
+   INTRO
+========================= */
 
 .section-intro {
     text-align: center;
 
-    max-width: 1000px;
+    max-width: 1100px;
 
     margin:
         0 auto
-        70px auto;
+        55px auto;
 
     color: #c0ccd7;
 
@@ -141,10 +143,74 @@ nav a:hover {
 }
 
 /* =========================
+   OPERATIONS SUMMARY
+========================= */
+
+.operations-summary {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(240px, 1fr));
+
+    gap: 24px;
+
+    margin-bottom: 70px;
+}
+
+.summary-card {
+
+    background:
+        rgba(17, 27, 40, 0.92);
+
+    border:
+        1px solid rgba(88, 166, 255, 0.12);
+
+    border-radius: 16px;
+
+    padding: 24px;
+
+    box-shadow:
+        0 10px 24px rgba(0,0,0,0.28);
+}
+
+.summary-label {
+
+    color: #58c4ff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    margin-bottom: 10px;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.summary-value {
+
+    font-size: 24px;
+    font-weight: 700;
+
+    color: #ffffff;
+
+    margin-bottom: 8px;
+}
+
+.summary-description {
+
+    color: #b9c5d0;
+
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+/* =========================
    GRID
 ========================= */
 
 .architecture-grid {
+
     display: grid;
 
     grid-template-columns:
@@ -352,6 +418,8 @@ footer {
 
 <div class="container">
 
+    <!-- INTRO -->
+
     <div class="section-intro">
 
         Operational troubleshooting, Linux administration,
@@ -361,6 +429,82 @@ footer {
         across PatrickHomeLab.
 
     </div>
+
+    <!-- OPERATIONS SUMMARY -->
+
+    <div class="operations-summary">
+
+        <div class="summary-card">
+
+            <div class="summary-label">
+                Infrastructure Focus
+            </div>
+
+            <div class="summary-value">
+                Systems Engineering
+            </div>
+
+            <div class="summary-description">
+                Operational infrastructure management,
+                virtualization, networking, and recovery engineering.
+            </div>
+
+        </div>
+
+        <div class="summary-card">
+
+            <div class="summary-label">
+                Core Platforms
+            </div>
+
+            <div class="summary-value">
+                Proxmox • Linux
+            </div>
+
+            <div class="summary-description">
+                Hypervisor management, Linux administration,
+                storage architecture, and VM operations.
+            </div>
+
+        </div>
+
+        <div class="summary-card">
+
+            <div class="summary-label">
+                Recovery Operations
+            </div>
+
+            <div class="summary-value">
+                Storage • VPN • NFS
+            </div>
+
+            <div class="summary-description">
+                Infrastructure recovery involving thinpool saturation,
+                remote access, and storage migration scenarios.
+            </div>
+
+        </div>
+
+        <div class="summary-card">
+
+            <div class="summary-label">
+                Lab Status
+            </div>
+
+            <div class="summary-value">
+                Operational
+            </div>
+
+            <div class="summary-description">
+                Active infrastructure environment supporting
+                monitoring, media services, automation, and secure access.
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- TROUBLESHOOTING GRID -->
 
     <div class="architecture-grid">
 
@@ -470,6 +614,8 @@ footer {
         </a>
 
     </div>
+
+    <!-- NOTICE -->
 
     <div class="notice">
 
