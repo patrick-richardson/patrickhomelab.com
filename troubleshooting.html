@@ -3,244 +3,411 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>PatrickHomeLab | Troubleshooting</title>
 
 <style>
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background: #0f1720;
-  color: #e6edf3;
-  line-height: 1.6;
+
+* {
+    box-sizing: border-box;
 }
 
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0b1220;
+    color: #e6edf3;
+    line-height: 1.7;
+}
+
+/* =========================
+   HEADER / NAVIGATION
+========================= */
+
 header {
-  background: #0f1720;
-  border-bottom: 1px solid #2a3440;
-  padding: 18px;
+    background: rgba(10, 16, 28, 0.96);
+    border-bottom: 1px solid #1f2b3a;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
 }
 
 nav {
-  max-width: 1400px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    max-width: 1500px;
+    margin: auto;
+    padding: 18px 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
 }
 
 nav a {
-  color: #d0d7de;
-  text-decoration: none;
-  margin-left: 24px;
-  font-weight: 500;
+    color: #d0d7de;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.2s ease;
 }
 
 nav a:hover {
-  color: #58a6ff;
+    color: #58a6ff;
 }
 
+/* =========================
+   HERO SECTION
+========================= */
+
 .hero {
-  height: 350px;
-  background:
-    linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
-    url("images/lab-topology.png");
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  flex-direction: column;
-  padding: 0 120px;
+    position: relative;
+    height: 360px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(rgba(0,0,0,0.72), rgba(0,0,0,0.72)),
+        url("images/troubleshooting-hero-v1.png");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 30px;
+    max-width: 1100px;
 }
 
 .hero h1 {
-  font-size: 56px;
-  margin-bottom: 20px;
+    font-size: 58px;
+    margin-bottom: 18px;
+    color: #ffffff;
+    line-height: 1.15;
 }
 
 .hero p {
-  color: #b8c2cc;
-  max-width: 760px;
-  margin: 10px auto 0 auto;
-  font-size: 18px;
-  line-height: 1.8;
-  position: relative;
-  z-index: 2;
+    color: #c4d0dc;
+    font-size: 18px;
+    max-width: 850px;
+    margin: auto;
 }
+
+/* =========================
+   MAIN CONTAINER
+========================= */
 
 .container {
-  max-width: 1450px;
-  margin: auto;
-  padding: 70px 40px;
+    max-width: 1600px;
+    margin: auto;
+    padding: 90px 60px;
 }
 
-.section-title {
-  text-align: center;
-  margin-bottom: 18px;
-  font-size: 34px;
-}
-
-.section-intro {
-  text-align: center;
-  max-width: 850px;
-  margin: 0 auto 50px auto;
-  color: #9da7b3;
-  font-size: 17px;
-}
+/* =========================
+   GRID
+========================= */
 
 .architecture-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  max-width: 1400px;
-  margin: 60px auto 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 34px;
 }
 
+/* =========================
+   CARDS
+========================= */
+
 .architecture-card {
-  min-height: 210px;
-  background: rgba(18, 28, 40, 0.9);
-  border: 1px solid rgba(0, 180, 255, 0.15);
-  border-radius: 18px;
-  padding: 28px;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+    min-height: 240px;
+
+    background: rgba(17, 27, 40, 0.95);
+
+    border: 1px solid rgba(88, 166, 255, 0.15);
+    border-radius: 18px;
+
+    padding: 32px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.35);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.architecture-card:hover {
+    transform: translateY(-6px);
+
+    border-color: rgba(88, 166, 255, 0.5);
+
+    box-shadow:
+        0 0 22px rgba(88,166,255,0.15),
+        0 14px 34px rgba(0,0,0,0.45);
 }
 
 .architecture-card h3 {
-  color: #58c4ff;
-  margin-bottom: 12px;
+    margin-top: 0;
+    margin-bottom: 18px;
+
+    color: #58c4ff;
+    font-size: 22px;
 }
 
 .architecture-card p {
-  color: #d7e3ee;
-  line-height: 1.7;
+    color: #d7e3ee;
+    font-size: 16px;
+    line-height: 1.8;
 }
 
 .card-link {
-  text-decoration: none;
-  color: inherit;
+    text-decoration: none;
+    color: inherit;
 }
 
-.card-link:hover .architecture-card {
-  transform: translateY(-4px);
-  transition: 0.2s ease;
+/* =========================
+   FOOTNOTE
+========================= */
+
+.notice {
+    margin-top: 50px;
+
+    text-align: center;
+
+    color: rgba(230,237,243,0.72);
+
+    font-size: 15px;
 }
+
+/* =========================
+   FOOTER
+========================= */
 
 footer {
-  text-align: center;
-  padding: 40px;
-  color: #9da7b3;
-  border-top: 1px solid #2a3440;
-  margin-top: 120px;
+    margin-top: 120px;
+
+    text-align: center;
+
+    padding: 40px;
+
+    border-top: 1px solid #1f2b3a;
+
+    color: #9da7b3;
+
+    font-size: 15px;
 }
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    nav {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .nav-links {
+        justify-content: center;
+    }
+
+    .hero {
+        height: 320px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .container {
+        padding: 60px 24px;
+    }
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-  <nav>
-    <div><strong>PatrickHomeLab</strong></div>
 
-    <div>
-      <a href="index.html">Home</a>
-      <a href="profile.html">Profile</a>
-      <a href="architecture.html">Architecture</a>
-      <a href="topology.html">Topology</a>
-      <a href="projects.html">Projects</a>
-      <a href="troubleshooting.html">Troubleshooting</a>
-      <a href="monitoring.html">Monitoring</a>
-      
-      <a href="https://github.com/patrick-richardson" target="_blank">GitHub</a>
-    </div>
-  </nav>
+    <nav>
+
+        <div class="logo">
+            PatrickHomeLab
+        </div>
+
+        <div class="nav-links">
+
+            <a href="index.html">Home</a>
+            <a href="profile.html">Profile</a>
+            <a href="architecture.html">Architecture</a>
+            <a href="topology.html">Topology</a>
+            <a href="projects.html">Projects</a>
+            <a href="troubleshooting.html">Troubleshooting</a>
+            <a href="monitoring.html">Monitoring</a>
+
+            <a href="https://github.com/patrick-richardson" target="_blank">
+                GitHub
+            </a>
+
+        </div>
+
+    </nav>
+
 </header>
 
+<!-- =========================
+     HERO
+========================= -->
+
 <section class="hero">
-  <div>
-    <h1>Troubleshooting & Issue Resolution</h1>
-        
-    </p>
-      Operational troubleshooting, system diagnostics,
-      and infrastructure issue resolution across PatrickHomeLab.
-      </p>
-  </div>
+
+    <div class="hero-content">
+
+        <h1>
+            Troubleshooting & Issue Resolution
+        </h1>
+
+        <p>
+            Operational troubleshooting, Linux administration,
+            infrastructure diagnostics, virtualization recovery,
+            and systems engineering issue resolution across PatrickHomeLab.
+        </p>
+
+    </div>
+
 </section>
+
+<!-- =========================
+     MAIN CONTENT
+========================= -->
 
 <div class="container">
 
-  <div class="architecture-grid">
+    <div class="architecture-grid">
 
-    <div class="architecture-card">
-      <h3>Services 🔒</h3>
-      <p>
-        Application deployment, containerized services,
-        and service availability troubleshooting.
-      </p>
+        <div class="architecture-card">
+
+            <h3>Services 🔒</h3>
+
+            <p>
+                Application deployment, containerized services,
+                media platform troubleshooting, and service
+                availability diagnostics across hosted lab systems.
+            </p>
+
+        </div>
+
+        <div class="architecture-card">
+
+            <h3>Infrastructure 🔒</h3>
+
+            <p>
+                Linux administration, server configuration,
+                hypervisor operations, storage architecture,
+                and infrastructure recovery troubleshooting.
+            </p>
+
+        </div>
+
+        <div class="architecture-card">
+
+            <h3>Networking 🔒</h3>
+
+            <p>
+                Routing, DNS, remote access, monitoring,
+                network visibility, and connectivity troubleshooting
+                across segmented lab systems.
+            </p>
+
+        </div>
+
+        <div class="architecture-card">
+
+            <h3>Virtualization 🔒</h3>
+
+            <p>
+                Proxmox VE management, VM recovery,
+                snapshot handling, resource allocation,
+                and virtualization platform troubleshooting.
+            </p>
+
+        </div>
+
+        <div class="architecture-card">
+
+            <h3>Automation 🔒</h3>
+
+            <p>
+                Automation workflows, Ansible deployment,
+                infrastructure orchestration, and configuration
+                management troubleshooting.
+            </p>
+
+        </div>
+
+        <div class="architecture-card">
+
+            <h3>Security 🔒</h3>
+
+            <p>
+                Authentication, WireGuard VPN access,
+                secure remote connectivity, encryption,
+                and infrastructure access control troubleshooting.
+            </p>
+
+        </div>
+
+        <a href="troubleshooting-storage.html" class="card-link">
+
+            <div class="architecture-card">
+
+                <h3>Storage</h3>
+
+                <p>
+                    Thinpool recovery, NFS troubleshooting,
+                    storage reliability, VM migration,
+                    snapshots, and backup infrastructure diagnostics.
+                </p>
+
+            </div>
+
+        </a>
+
     </div>
 
-    <div class="architecture-card">
-      <h3>Infrastructure 🔒</h3>
-      <p>
-        System configuration, Linux administration,
-        server management, and infrastructure troubleshooting.
-      </p>
+    <div class="notice">
+        🔒 Indicates internal documentation or configurations not publicly exposed.
     </div>
-
-    <div class="architecture-card">
-      <h3>Networking 🔒</h3>
-      <p>
-        Connectivity, monitoring, routing,
-        and network visibility troubleshooting.
-      </p>
-    </div>
-
-    <div class="architecture-card">
-      <h3>Virtualization 🔒</h3>
-      <p>
-        Virtual machine management, hypervisor configuration,
-        and virtualization platform troubleshooting.
-      </p>
-    </div>
-
-    <div class="architecture-card">
-      <h3>Automation 🔒</h3>
-      <p>
-        Automation workflows, configuration management,
-        and deployment troubleshooting.
-      </p>
-    </div>
-
-    <div class="architecture-card">
-      <h3>Security 🔒</h3>
-      <p>
-        Authentication, secure remote access,
-        encryption, and access control troubleshooting.
-      </p>
-    </div>
-
-   <a href="troubleshooting-storage.html" class="card-link">
-  <div class="architecture-card">
-    <h3>Storage</h3>
-    <p>
-      Storage reliability, NFS shares, mount issues,
-      and backup-related troubleshooting.
-    </p>
-  </div>
-</a>
-
-  </div>
-
-  <section class="section">
-    🔒 Indicates internal documentation or configurations not publicly exposed.
-  </p>
-
-</section>
 
 </div>
 
 <footer>
-  PatrickHomeLab • Infrastructure Engineering in Practice
+    PatrickHomeLab • Infrastructure Engineering in Practice
 </footer>
 
 </body>
