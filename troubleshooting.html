@@ -9,352 +9,581 @@
 
 <style>
 
-/* =========================
+/* =========================================================
    GLOBAL
-========================= */
+========================================================= */
 
 * {
     box-sizing: border-box;
 }
 
 body {
+
     margin: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: #0b1220;
-    color: #e6edf3;
+
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        sans-serif;
+
     line-height: 1.7;
+
+    color: #e6edf3;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(35, 96, 170, 0.22),
+            transparent 34%
+        ),
+
+        radial-gradient(
+            circle at 15% 45%,
+            rgba(0, 119, 255, 0.08),
+            transparent 26%
+        ),
+
+        #07111f;
 }
 
-/* =========================
+/* =========================================================
    HEADER
-========================= */
+========================================================= */
 
 header {
-    background: rgba(10, 16, 28, 0.96);
-    border-bottom: 1px solid #1f2b3a;
+
     position: sticky;
     top: 0;
+
     z-index: 1000;
-    backdrop-filter: blur(8px);
+
+    backdrop-filter: blur(12px);
+
+    background:
+        rgba(7, 15, 28, 0.94);
+
+    border-bottom:
+        1px solid rgba(88, 166, 255, 0.12);
 }
 
+/* ---------- NAVIGATION ---------- */
+
 nav {
-    max-width: 1600px;
+
+    max-width: 1450px;
+
     margin: auto;
 
-    padding: 18px 42px;
+    padding:
+        18px 34px;
 
     display: flex;
+
     justify-content: space-between;
     align-items: center;
 }
 
+/* ---------- LOGO ---------- */
+
 .logo {
-    font-size: 20px;
-    font-weight: 700;
+
+    font-size: 18px;
+    font-weight: 800;
+
     color: #ffffff;
 }
 
+/* ---------- NAV LINKS ---------- */
+
 .nav-links {
+
     display: flex;
+
     flex-wrap: wrap;
+
     gap: 22px;
 }
 
 nav a {
-    color: #d0d7de;
+
     text-decoration: none;
-    font-size: 15px;
+
+    color: #c9d4df;
+
+    font-size: 14px;
     font-weight: 500;
-    transition: color 0.2s ease;
+
+    transition:
+        color 0.2s ease;
 }
 
-nav a:hover {
+nav a:hover,
+nav a.active {
+
     color: #58a6ff;
 }
 
-/* =========================
-   HERO
-========================= */
+/* =========================================================
+   HERO SECTION
+========================================================= */
 
 .hero {
+
     position: relative;
 
-    height: 360px;
+    min-height: 330px;
 
     display: flex;
+
     justify-content: center;
     align-items: center;
+
     text-align: center;
 
     overflow: hidden;
 
     background:
-        linear-gradient(rgba(0,0,0,0.72), rgba(0,0,0,0.72)),
+
+        linear-gradient(
+            rgba(2, 8, 18, 0.70),
+            rgba(2, 8, 18, 0.86)
+        ),
+
         url("images/troubleshooting-hero-v1.png");
 
     background-size: cover;
     background-position: center;
 }
 
-.hero-content {
-    position: relative;
-    z-index: 2;
-    padding: 0 30px;
+/* ---------- HERO OVERLAY ---------- */
+
+.hero::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            #07111f 92%
+        );
 }
+
+/* ---------- HERO CONTENT ---------- */
+
+.hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 980px;
+
+    padding: 0 24px;
+}
+
+/* ---------- HERO TITLE ---------- */
 
 .hero h1 {
-    font-size: 62px;
-    color: #ffffff;
+
     margin: 0;
-    line-height: 1.1;
+
+    font-size:
+        clamp(36px, 5vw, 58px);
+
+    line-height: 1.08;
+
+    color: #ffffff;
 
     text-shadow:
-        0 0 18px rgba(0,0,0,0.55);
+        0 0 26px rgba(0,0,0,0.65);
 }
 
-/* =========================
-   MAIN CONTAINER
-========================= */
+/* ---------- HERO ACCENT LINE ---------- */
 
-.container {
-    max-width: 1700px;
-    margin: auto;
-    padding: 80px 70px;
-}
+.hero-accent {
 
-/* =========================
-   INTRO
-========================= */
-
-.section-intro {
-    text-align: center;
-
-    max-width: 1100px;
+    width: 120px;
+    height: 5px;
 
     margin:
-        0 auto
-        55px auto;
+        24px auto 20px;
 
-    color: #c0ccd7;
+    border-radius: 999px;
 
-    font-size: 20px;
-    line-height: 1.9;
+    background:
+        linear-gradient(
+            90deg,
+            #1f6feb,
+            #58a6ff
+        );
+
+    box-shadow:
+        0 0 18px rgba(88,166,255,0.45);
 }
 
-/* =========================
-   OPERATIONS SUMMARY
-========================= */
+/* ---------- HERO DESCRIPTION ---------- */
 
-.operations-summary {
+.hero p {
+
+    max-width: 920px;
+
+    margin: 0 auto;
+
+    color: #c7d1dd;
+
+    font-size: 19px;
+}
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.container {
+
+    max-width: 1450px;
+
+    margin: auto;
+
+    padding:
+        54px 34px 0;
+}
+
+/* =========================================================
+   DASHBOARD LAYOUT
+========================================================= */
+
+.dashboard-layout {
 
     display: grid;
 
     grid-template-columns:
-        repeat(auto-fit, minmax(240px, 1fr));
+        260px
+        1fr
+        260px;
+
+    gap: 28px;
+
+    align-items: start;
+}
+
+/* ---------- SIDE COLUMN ---------- */
+
+.side-column {
+
+    display: grid;
 
     gap: 24px;
-
-    margin-bottom: 70px;
 }
 
-.summary-card {
+/* ---------- CENTER GRID ---------- */
 
-    background:
-        rgba(17, 27, 40, 0.92);
-
-    border:
-        1px solid rgba(88, 166, 255, 0.12);
-
-    border-radius: 16px;
-
-    padding: 24px;
-
-    box-shadow:
-        0 10px 24px rgba(0,0,0,0.28);
-}
-
-.summary-label {
-
-    color: #58c4ff;
-
-    font-size: 14px;
-    font-weight: 600;
-
-    margin-bottom: 10px;
-
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.summary-value {
-
-    font-size: 24px;
-    font-weight: 700;
-
-    color: #ffffff;
-
-    margin-bottom: 8px;
-}
-
-.summary-description {
-
-    color: #b9c5d0;
-
-    font-size: 15px;
-    line-height: 1.7;
-}
-
-/* =========================
-   GRID
-========================= */
-
-.architecture-grid {
+.core-grid {
 
     display: grid;
 
     grid-template-columns:
-        repeat(auto-fit, minmax(380px, 1fr));
+        repeat(4, 1fr);
 
-    gap: 40px;
+    gap: 18px;
 }
 
-/* =========================
-   CARDS
-========================= */
+/* =========================================================
+   CARD SYSTEM
+========================================================= */
 
-.architecture-card {
+/* ---------- BASE CARD ---------- */
 
-    min-height: 280px;
+.card,
+.side-card {
 
-    background:
-        rgba(17, 27, 40, 0.95);
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 18px;
 
     border:
-        1px solid rgba(88, 166, 255, 0.14);
+        1px solid rgba(88, 166, 255, 0.18);
 
-    border-radius: 20px;
+    background:
 
-    padding: 38px;
+        linear-gradient(
+            180deg,
+            rgba(18, 31, 49, 0.95),
+            rgba(10, 19, 33, 0.96)
+        );
 
     box-shadow:
-        0 12px 34px rgba(0,0,0,0.34);
+        0 18px 38px rgba(0,0,0,0.32);
 
     transition:
+
         transform 0.25s ease,
+
         border-color 0.25s ease,
+
         box-shadow 0.25s ease;
 }
 
-.architecture-card:hover {
+/* ---------- CARD GLOW EFFECT ---------- */
 
-    transform: translateY(-6px);
+.card::before,
+.side-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        radial-gradient(
+            circle at top left,
+            rgba(88,166,255,0.13),
+            transparent 42%
+        );
+
+    pointer-events: none;
+}
+
+/* ---------- CARD HOVER ---------- */
+
+.card:hover,
+.side-card:hover {
+
+    transform:
+        translateY(-5px);
 
     border-color:
-        rgba(88,166,255,0.45);
+        rgba(88,166,255,0.48);
 
     box-shadow:
-        0 0 22px rgba(88,166,255,0.14),
-        0 16px 36px rgba(0,0,0,0.42);
+
+        0 0 24px rgba(88,166,255,0.16),
+
+        0 20px 44px rgba(0,0,0,0.42);
 }
 
-.architecture-card h3 {
+/* ---------- CENTER CARD ---------- */
 
-    margin-top: 0;
-    margin-bottom: 22px;
+.card {
 
-    color: #58c4ff;
+    min-height: 240px;
 
-    font-size: 26px;
+    padding: 28px;
 }
 
-.architecture-card p {
+/* ---------- SIDE CARD ---------- */
 
-    color: #d7e3ee;
+.side-card {
 
-    font-size: 17px;
+    min-height: 210px;
 
-    line-height: 1.9;
+    padding: 24px;
 }
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
+/* ---------- ICON ---------- */
+
+.icon {
+
+    margin-bottom: 18px;
+
+    font-size: 32px;
+
+    color: #58a6ff;
+}
+
+/* ---------- LABEL ---------- */
+
+.label {
+
+    margin-bottom: 14px;
+
+    color: #58a6ff;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.08em;
+}
+
+/* ---------- HEADINGS ---------- */
+
+.card h3,
+.side-card h3 {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin:
+        0 0 12px;
+
+    color: #ffffff;
+
+    font-size: 21px;
+
+    line-height: 1.25;
+}
+
+/* ---------- PARAGRAPHS ---------- */
+
+.card p,
+.side-card p {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin: 0;
+
+    color: #c7d1dd;
+
+    font-size: 15px;
+
+    line-height: 1.75;
+}
+
+/* ---------- LOCK ICON ---------- */
+
+.lock {
+
+    margin-left: 4px;
+
+    color: #f59e0b;
+
+    font-size: 15px;
+}
+
+/* ---------- CARD LINKS ---------- */
 
 .card-link {
+
     text-decoration: none;
+
     color: inherit;
 }
 
-/* =========================
-   NOTICE
-========================= */
+/* =========================================================
+   NOTICE SECTION
+========================================================= */
 
 .notice {
 
-    margin-top: 55px;
+    max-width: 1180px;
+
+    margin:
+        48px auto 0;
+
+    padding:
+        22px 26px;
 
     text-align: center;
 
     color:
         rgba(230,237,243,0.78);
 
-    font-size: 15px;
+    border-radius: 16px;
+
+    background:
+        rgba(12, 23, 38, 0.82);
+
+    border:
+        1px solid rgba(88, 166, 255, 0.16);
 }
 
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer {
 
-    margin-top: 120px;
+    margin-top: 42px;
+
+    padding: 34px;
 
     text-align: center;
 
-    padding: 42px;
-
-    border-top:
-        1px solid #1f2b3a;
-
     color: #9da7b3;
 
-    font-size: 15px;
+    font-size: 14px;
+
+    border-top:
+        1px solid rgba(88, 166, 255, 0.12);
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* =========================================================
+   RESPONSIVE DESIGN
+========================================================= */
 
-@media (max-width: 950px) {
+/* ---------- TABLET ---------- */
+
+@media (max-width: 1150px) {
+
+    .dashboard-layout {
+
+        grid-template-columns: 1fr;
+    }
+
+    .side-column {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .core-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 700px) {
 
     nav {
+
         flex-direction: column;
-        gap: 18px;
+
+        gap: 16px;
     }
 
     .nav-links {
+
         justify-content: center;
     }
 
     .hero {
-        height: 260px;
-    }
 
-    .hero h1 {
-        font-size: 42px;
+        min-height: 300px;
     }
 
     .container {
-        padding: 60px 24px;
+
+        padding:
+            40px 20px 0;
     }
 
-    .section-intro {
-        font-size: 17px;
-    }
+    .side-column,
+    .core-grid {
 
-    .architecture-grid {
         grid-template-columns: 1fr;
-    }
-
-    .architecture-card {
-        min-height: auto;
     }
 }
 
@@ -364,30 +593,46 @@ footer {
 
 <body>
 
-<!-- =========================
+<!-- ======================================================
      HEADER
-========================= -->
+====================================================== -->
 
 <header>
 
     <nav>
 
+        <!-- LOGO -->
+
         <div class="logo">
             PatrickHomeLab
         </div>
 
+        <!-- NAVIGATION -->
+
         <div class="nav-links">
 
             <a href="index.html">Home</a>
+
             <a href="profile.html">Profile</a>
+
             <a href="architecture.html">Architecture</a>
+
             <a href="topology.html">Topology</a>
+
             <a href="projects.html">Projects</a>
-            <a href="troubleshooting.html">Troubleshooting</a>
+
+            <a href="troubleshooting.html" class="active">
+                Troubleshooting
+            </a>
+
             <a href="monitoring.html">Monitoring</a>
 
-            <a href="https://github.com/patrick-richardson" target="_blank">
+            <a
+                href="https://github.com/patrick-richardson"
+                target="_blank">
+
                 GitHub
+
             </a>
 
         </div>
@@ -396,9 +641,9 @@ footer {
 
 </header>
 
-<!-- =========================
-     HERO
-========================= -->
+<!-- ======================================================
+     HERO SECTION
+====================================================== -->
 
 <section class="hero">
 
@@ -408,231 +653,400 @@ footer {
             Troubleshooting & Issue Resolution
         </h1>
 
+        <div class="hero-accent"></div>
+
+        <p>
+
+            Operational troubleshooting,
+            Linux administration,
+            infrastructure diagnostics,
+            virtualization recovery,
+            storage management,
+            secure remote access,
+            and systems engineering issue resolution
+            across PatrickHomeLab.
+
+        </p>
+
     </div>
 
 </section>
 
-<!-- =========================
+<!-- ======================================================
      MAIN CONTENT
-========================= -->
+====================================================== -->
 
-<div class="container">
+<main class="container">
 
-    <!-- INTRO -->
+    <!-- ==================================================
+         DASHBOARD GRID
+    =================================================== -->
 
-    <div class="section-intro">
+    <section class="dashboard-layout">
 
-        Operational troubleshooting, Linux administration,
-        infrastructure diagnostics, virtualization recovery,
-        storage management, secure remote access,
-        and systems engineering issue resolution
-        across PatrickHomeLab.
+        <!-- ==============================================
+             LEFT COLUMN
+        =============================================== -->
 
-    </div>
+        <aside class="side-column">
 
-    <!-- OPERATIONS SUMMARY -->
+            <!-- SYSTEMS ENGINEERING -->
 
-    <div class="operations-summary">
+            <div class="side-card">
 
-        <div class="summary-card">
+                <div class="label">
+                    Infrastructure Focus
+                </div>
 
-            <div class="summary-label">
-                Infrastructure Focus
-            </div>
+                <div class="icon">
+                    ▦
+                </div>
 
-            <div class="summary-value">
-                Systems Engineering
-            </div>
-
-            <div class="summary-description">
-                Operational infrastructure management,
-                virtualization, networking, and recovery engineering.
-            </div>
-
-        </div>
-
-        <div class="summary-card">
-
-            <div class="summary-label">
-                Core Platforms
-            </div>
-
-            <div class="summary-value">
-                Proxmox • Linux
-            </div>
-
-            <div class="summary-description">
-                Hypervisor management, Linux administration,
-                storage architecture, and VM operations.
-            </div>
-
-        </div>
-
-        <div class="summary-card">
-
-            <div class="summary-label">
-                Recovery Operations
-            </div>
-
-            <div class="summary-value">
-                Storage • VPN • NFS
-            </div>
-
-            <div class="summary-description">
-                Infrastructure recovery involving thinpool saturation,
-                remote access, and storage migration scenarios.
-            </div>
-
-        </div>
-
-        <div class="summary-card">
-
-            <div class="summary-label">
-                Lab Status
-            </div>
-
-            <div class="summary-value">
-                Operational
-            </div>
-
-            <div class="summary-description">
-                Active infrastructure environment supporting
-                monitoring, media services, automation, and secure access.
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- TROUBLESHOOTING GRID -->
-
-    <div class="architecture-grid">
-
-        <!-- SERVICES -->
-
-        <div class="architecture-card">
-
-            <h3>Services 🔒</h3>
-
-            <p>
-                Application deployment, containerized services,
-                media platform troubleshooting, service failures,
-                and operational diagnostics across hosted lab systems.
-            </p>
-
-        </div>
-
-        <!-- INFRASTRUCTURE -->
-
-        <div class="architecture-card">
-
-            <h3>Infrastructure 🔒</h3>
-
-            <p>
-                Linux administration, infrastructure recovery,
-                hypervisor operations, system configuration,
-                and platform-level troubleshooting throughout the lab.
-            </p>
-
-        </div>
-
-        <!-- NETWORKING -->
-
-        <div class="architecture-card">
-
-            <h3>Networking 🔒</h3>
-
-            <p>
-                DNS resolution, routing, remote access,
-                monitoring visibility, connectivity troubleshooting,
-                and segmented network diagnostics.
-            </p>
-
-        </div>
-
-        <!-- VIRTUALIZATION -->
-
-        <div class="architecture-card">
-
-            <h3>Virtualization 🔒</h3>
-
-            <p>
-                Proxmox VE administration, virtual machine recovery,
-                snapshot management, resource allocation,
-                and virtualization platform troubleshooting.
-            </p>
-
-        </div>
-
-        <!-- AUTOMATION -->
-
-        <div class="architecture-card">
-
-            <h3>Automation 🔒</h3>
-
-            <p>
-                Infrastructure automation workflows,
-                Ansible deployment troubleshooting,
-                orchestration validation,
-                and configuration management diagnostics.
-            </p>
-
-        </div>
-
-        <!-- SECURITY -->
-
-        <div class="architecture-card">
-
-            <h3>Security 🔒</h3>
-
-            <p>
-                WireGuard VPN access, encrypted remote connectivity,
-                authentication troubleshooting,
-                infrastructure access control,
-                and secure systems management.
-            </p>
-
-        </div>
-
-        <!-- STORAGE -->
-
-        <a href="troubleshooting-storage.html" class="card-link">
-
-            <div class="architecture-card">
-
-                <h3>Storage</h3>
+                <h3>
+                    Systems Engineering
+                </h3>
 
                 <p>
-                    Thinpool recovery, NFS troubleshooting,
-                    snapshot cleanup, VM migration,
-                    storage reliability, backup validation,
-                    and infrastructure storage diagnostics.
+
+                    Operational infrastructure management,
+                    optimization,
+                    monitoring,
+                    and recovery engineering.
+
                 </p>
 
             </div>
 
-        </a>
+            <!-- CORE PLATFORMS -->
 
-    </div>
+            <div class="side-card">
 
-    <!-- NOTICE -->
+                <div class="label">
+                    Core Platforms
+                </div>
+
+                <div class="icon">
+                    ⌁
+                </div>
+
+                <h3>
+                    Proxmox • Linux
+                </h3>
+
+                <p>
+
+                    Hypervisor management,
+                    Linux administration,
+                    storage automation,
+                    and virtual machine operations.
+
+                </p>
+
+            </div>
+
+        </aside>
+
+        <!-- ==============================================
+             CENTER GRID
+        =============================================== -->
+
+        <section class="core-grid">
+
+            <!-- SERVICES -->
+
+            <div class="card">
+
+                <div class="icon">
+                    ⚙
+                </div>
+
+                <h3>
+                    Services
+                    <span class="lock">🔒</span>
+                </h3>
+
+                <p>
+
+                    Application deployment,
+                    containerized services,
+                    media platforms,
+                    monitoring services,
+                    and operational diagnostics
+                    across hosted lab systems.
+
+                </p>
+
+            </div>
+
+            <!-- INFRASTRUCTURE -->
+
+            <div class="card">
+
+                <div class="icon">
+                    ▤
+                </div>
+
+                <h3>
+                    Infrastructure
+                    <span class="lock">🔒</span>
+                </h3>
+
+                <p>
+
+                    Linux administration,
+                    infrastructure recovery,
+                    hypervisor operations,
+                    system configuration,
+                    and platform-level troubleshooting.
+
+                </p>
+
+            </div>
+
+            <!-- NETWORKING -->
+
+            <div class="card">
+
+                <div class="icon">
+                    ⌘
+                </div>
+
+                <h3>
+                    Networking
+                    <span class="lock">🔒</span>
+                </h3>
+
+                <p>
+
+                    DNS resolution,
+                    routing,
+                    remote access,
+                    monitoring visibility,
+                    connectivity troubleshooting,
+                    and segmented network diagnostics.
+
+                </p>
+
+            </div>
+
+            <!-- VIRTUALIZATION -->
+
+            <div class="card">
+
+                <div class="icon">
+                    ◇
+                </div>
+
+                <h3>
+                    Virtualization
+                    <span class="lock">🔒</span>
+                </h3>
+
+                <p>
+
+                    Proxmox VE administration,
+                    virtual machine recovery,
+                    snapshot management,
+                    VM migrations,
+                    and virtualization platform troubleshooting.
+
+                </p>
+
+            </div>
+
+            <!-- AUTOMATION -->
+
+            <div class="card">
+
+                <div class="icon">
+                    🤖
+                </div>
+
+                <h3>
+                    Automation
+                    <span class="lock">🔒</span>
+                </h3>
+
+                <p>
+
+                    Infrastructure automation workflows,
+                    Ansible deployment troubleshooting,
+                    provisioning templates,
+                    and configuration management diagnostics.
+
+                </p>
+
+            </div>
+
+            <!-- STORAGE -->
+
+            <a
+                href="troubleshooting-storage.html"
+                class="card-link">
+
+                <div class="card">
+
+                    <div class="icon">
+                        ◉
+                    </div>
+
+                    <h3>
+                        Storage
+                    </h3>
+
+                    <p>
+
+                        Storage recovery,
+                        NFS troubleshooting,
+                        ZFS diagnostics,
+                        snapshot management,
+                        backup validation,
+                        and infrastructure storage diagnostics.
+
+                    </p>
+
+                </div>
+
+            </a>
+
+            <!-- SECURITY -->
+
+            <div class="card">
+
+                <div class="icon">
+                    🛡
+                </div>
+
+                <h3>
+                    Security
+                    <span class="lock">🔒</span>
+                </h3>
+
+                <p>
+
+                    WireGuard VPN access,
+                    encrypted remote connectivity,
+                    authentication troubleshooting,
+                    firewall configuration,
+                    and secure systems management.
+
+                </p>
+
+            </div>
+
+            <!-- OPERATIONS -->
+
+            <div class="card">
+
+                <div class="icon">
+                    ☑
+                </div>
+
+                <h3>
+                    Operational
+                    <span class="lock">🔒</span>
+                </h3>
+
+                <p>
+
+                    Audit procedures,
+                    maintenance records,
+                    access standards,
+                    automation validation,
+                    and operational best practices.
+
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- ==============================================
+             RIGHT COLUMN
+        =============================================== -->
+
+        <aside class="side-column">
+
+            <!-- RECOVERY -->
+
+            <div class="side-card">
+
+                <div class="label">
+                    Recovery Operations
+                </div>
+
+                <div class="icon">
+                    ◎
+                </div>
+
+                <h3>
+                    Storage • VPN • NFS
+                </h3>
+
+                <p>
+
+                    Infrastructure recovery involving
+                    storage systems,
+                    remote access,
+                    encrypted operations,
+                    and service restoration.
+
+                </p>
+
+            </div>
+
+            <!-- LAB STATUS -->
+
+            <div class="side-card">
+
+                <div class="label">
+                    Lab Status
+                </div>
+
+                <div class="icon">
+                    ⌁
+                </div>
+
+                <h3>
+                    Operational
+                </h3>
+
+                <p>
+
+                    Active infrastructure environment
+                    supporting monitoring,
+                    media services,
+                    automation,
+                    and secure access across the lab.
+
+                </p>
+
+            </div>
+
+        </aside>
+
+    </section>
+
+    <!-- ==================================================
+         NOTICE
+    =================================================== -->
 
     <div class="notice">
 
-        🔒 Indicates internal documentation or configurations
-        not publicly exposed.
+        🔒 Sensitive internal documentation
+        and configurations are privately secured.
 
     </div>
 
-</div>
+</main>
 
-<!-- =========================
+<!-- ======================================================
      FOOTER
-========================= -->
+====================================================== -->
 
 <footer>
 
-    PatrickHomeLab • Infrastructure Engineering in Practice
+    PatrickHomeLab • Infrastructure Engineering & Practice
 
 </footer>
 
