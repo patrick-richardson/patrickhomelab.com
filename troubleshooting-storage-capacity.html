@@ -34,6 +34,8 @@ body{
         sans-serif;
 
     line-height:1.7;
+
+    overflow-x:hidden;
 }
 
 /* =========================================
@@ -55,7 +57,7 @@ header{
 
 nav{
 
-    max-width:1600px;
+    max-width:1800px;
 
     margin:auto;
 
@@ -71,6 +73,7 @@ nav{
 .logo{
 
     font-size:15px;
+
     font-weight:700;
 
     color:white;
@@ -79,6 +82,7 @@ nav{
 .nav-links{
 
     display:flex;
+
     gap:22px;
 }
 
@@ -187,11 +191,13 @@ nav{
 
 .main-container{
 
-    max-width:1700px;
+    width:100%;
+
+    max-width:100%;
 
     margin:auto;
 
-    padding:0 34px 120px;
+    padding:0 80px 120px;
 }
 
 /* =========================================
@@ -202,9 +208,11 @@ nav{
 
     display:grid;
 
-    grid-template-columns:repeat(4, minmax(300px, 1fr));
+    grid-template-columns:repeat(4, 1fr);
 
-    gap:28px;
+    gap:36px;
+
+    width:100%;
 
     align-items:start;
 }
@@ -230,7 +238,7 @@ nav{
 
     padding:32px;
 
-    min-height:420px;
+    min-height:460px;
 
     overflow:hidden;
 
@@ -311,7 +319,7 @@ nav{
 
     font-size:34px;
 
-    line-height:1.2;
+    line-height:1.15;
 
     margin-bottom:24px;
 
@@ -452,19 +460,24 @@ footer{
    RESPONSIVE
 ========================================= */
 
-@media(max-width:1500px){
+@media(max-width:1700px){
 
     .incident-grid{
 
-        grid-template-columns:repeat(2, minmax(320px, 1fr));
+        grid-template-columns:repeat(2, 1fr);
     }
 }
 
-@media(max-width:850px){
+@media(max-width:900px){
 
     .incident-grid{
 
         grid-template-columns:1fr;
+    }
+
+    .main-container{
+
+        padding:0 24px 100px;
     }
 
     .hero h1{
