@@ -46,11 +46,12 @@ header{
     top:0;
     z-index:1000;
 
-    background:rgba(5,10,18,.88);
+    background:rgba(8,12,18,.82);
 
-    backdrop-filter:blur(12px);
+    backdrop-filter:blur(14px);
 
-    border-bottom:1px solid rgba(80,120,180,.10);
+    border-bottom:
+        1px solid rgba(88,166,255,.10);
 }
 
 nav{
@@ -59,44 +60,39 @@ nav{
 
     margin:auto;
 
-    padding:18px 32px;
+    padding:18px 36px;
 
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
 }
 
 .logo{
 
-    font-size:15px;
-
+    font-size:20px;
     font-weight:700;
-
-    color:white;
+    letter-spacing:.5px;
 }
 
 .nav-links{
 
     display:flex;
-
-    gap:22px;
+    gap:28px;
 }
 
 .nav-links a{
 
-    color:#c7d0db;
+    color:#c9d1d9;
 
     text-decoration:none;
 
     font-size:14px;
+    font-weight:500;
 
     transition:.2s ease;
 }
 
 .nav-links a:hover{
-
     color:#58a6ff;
 }
 
@@ -108,11 +104,17 @@ nav{
 
     position:relative;
 
-    padding:140px 20px 110px;
+    min-height:520px;
 
-    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
     text-align:center;
+
+    padding:100px 30px 80px 30px;
+
+    overflow:hidden;
 }
 
 .hero::before{
@@ -123,13 +125,31 @@ nav{
     inset:0;
 
     background:
-        linear-gradient(rgba(3,10,18,.82), rgba(3,10,18,.95)),
+        linear-gradient(rgba(6,10,15,.88), rgba(6,10,15,.92)),
         url("images/lab-topology.png");
 
     background-size:cover;
     background-position:center;
 
-    opacity:.20;
+    opacity:.10;
+
+    z-index:0;
+}
+
+.hero::after{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+
+    background-size:40px 40px;
+
+    z-index:1;
 }
 
 .hero-content{
@@ -137,148 +157,154 @@ nav{
     position:relative;
     z-index:2;
 
-    max-width:1000px;
-
-    margin:auto;
+    max-width:900px;
 }
 
-.hero-badge{
+.hero-tag{
 
     display:inline-block;
 
-    padding:8px 18px;
+    padding:10px 18px;
 
     border-radius:999px;
 
-    background:rgba(15,25,40,.85);
+    border:
+        1px solid rgba(88,166,255,.22);
 
-    border:1px solid rgba(88,166,255,.20);
+    background:
+        rgba(88,166,255,.08);
 
-    color:#6cb6ff;
+    color:#58a6ff;
 
     font-size:13px;
+    font-weight:700;
 
     margin-bottom:30px;
 }
 
 .hero h1{
 
-    font-size:68px;
+    font-size:72px;
 
     line-height:1.05;
 
     margin-bottom:28px;
 
-    color:white;
+    font-weight:800;
+}
+
+.hero-divider{
+
+    width:160px;
+    height:4px;
+
+    border-radius:999px;
+
+    margin:0 auto 34px auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #58a6ff,
+            transparent
+        );
 }
 
 .hero p{
 
-    max-width:850px;
+    font-size:22px;
+
+    line-height:1.9;
+
+    color:#b5c0cc;
+}
+
+/* =========================================
+   MAIN CONTENT
+========================================= */
+
+main{
+
+    max-width:1850px;
 
     margin:auto;
 
-    color:#b8c2cc;
-
-    font-size:19px;
-
-    line-height:1.8;
+    padding:100px 40px 140px 40px;
 }
 
-/* =========================================
-   MAIN CONTAINER
-========================================= */
+.section-header{
 
-.main-container{
-
-    width:100%;
-
-    padding:0 60px 120px;
+    margin-bottom:55px;
 }
 
-/* =========================================
-   SECTION TITLES
-========================================= */
-
-.section-title{
-
-    margin-bottom:50px;
-}
-
-.section-title h2{
+.section-header h2{
 
     font-size:42px;
 
     margin-bottom:18px;
-
-    color:white;
 }
 
-.section-title p{
+.section-header p{
 
-    color:#b8c2cc;
-
-    max-width:900px;
+    color:#aeb8c3;
 
     line-height:1.8;
+
+    max-width:950px;
 }
 
 /* =========================================
-   DOCUMENTATION GRID
+   INCIDENT GRID
 ========================================= */
 
-.doc-grid{
+.incident-grid{
 
     display:grid;
 
-    grid-template-columns:repeat(3, 1fr);
+    grid-template-columns:
+        repeat(auto-fit, minmax(420px,1fr));
 
-    gap:36px;
+    gap:34px;
+
+    margin-bottom:130px;
 }
 
-/* =========================================
-   CARDS
-========================================= */
-
-.doc-card{
+.incident-card{
 
     position:relative;
 
     background:
         linear-gradient(
-            145deg,
-            rgba(15,25,40,.96),
-            rgba(8,14,24,.96)
+            180deg,
+            rgba(20,30,42,.96),
+            rgba(10,17,26,.98)
         );
 
-    border:1px solid rgba(70,120,180,.16);
+    border:
+        1px solid rgba(88,166,255,.12);
 
-    border-radius:28px;
+    border-radius:24px;
 
-    padding:34px;
-
-    min-height:420px;
-
-    display:flex;
-
-    flex-direction:column;
+    padding:38px;
 
     overflow:hidden;
 
     transition:.25s ease;
 }
 
-.doc-card:hover{
+.incident-card:hover{
 
-    transform:translateY(-6px);
+    transform:translateY(-8px);
 
-    border-color:rgba(88,166,255,.30);
+    border-color:
+        rgba(88,166,255,.35);
 
     box-shadow:
-        0 20px 50px rgba(0,0,0,.35);
+        0 25px 80px rgba(0,0,0,.40);
 }
 
-.doc-card::before{
+.incident-card::before{
 
     content:"";
 
@@ -288,98 +314,150 @@ nav{
     left:0;
 
     width:100%;
-    height:3px;
+    height:4px;
 
     background:
         linear-gradient(
             90deg,
             #58a6ff,
-            transparent
+            #2ea043
         );
 }
 
-/* =========================================
-   CARD CONTENT
-========================================= */
+.incident-label{
 
-.card-label{
+    color:#58a6ff;
 
-    display:inline-block;
+    font-size:13px;
+    font-weight:700;
 
-    width:max-content;
+    letter-spacing:1px;
 
-    padding:6px 14px;
-
-    border-radius:999px;
-
-    background:rgba(88,166,255,.10);
-
-    border:1px solid rgba(88,166,255,.18);
-
-    color:#6cb6ff;
-
-    font-size:12px;
+    text-transform:uppercase;
 
     margin-bottom:22px;
 }
 
-.doc-card h3{
+.incident-card h3{
 
-    font-size:34px;
+    font-size:32px;
 
-    line-height:1.15;
-
-    margin-bottom:24px;
-
-    color:white;
+    margin-bottom:22px;
 }
 
-.doc-card p{
+.incident-card p{
 
-    color:#c7d0db;
+    color:#b5c0cc;
 
-    line-height:1.8;
+    line-height:1.9;
 
-    font-size:15px;
-
-    margin-bottom:20px;
+    margin-bottom:30px;
 }
 
-/* =========================================
-   TAGS
-========================================= */
-
-.tag-container{
+.incident-meta{
 
     display:flex;
-
     flex-wrap:wrap;
-
-    gap:10px;
-
-    margin-top:auto;
-
-    margin-bottom:24px;
+    gap:12px;
 }
 
-.tag{
+.incident-meta span{
 
-    padding:8px 14px;
+    padding:8px 16px;
 
     border-radius:999px;
 
-    background:rgba(88,166,255,.08);
+    background:
+        rgba(88,166,255,.08);
 
-    border:1px solid rgba(88,166,255,.12);
+    border:
+        1px solid rgba(88,166,255,.14);
 
-    color:#8fc7ff;
+    color:#8fc1ff;
 
-    font-size:12px;
+    font-size:13px;
 }
 
 /* =========================================
-   LINKS
+   BOOKSTACK SECTION
 ========================================= */
+
+.bookstack-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(420px,1fr));
+
+    gap:34px;
+}
+
+.bookstack-card{
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(18,29,42,.95),
+            rgba(10,16,24,.98)
+        );
+
+    border:
+        1px solid rgba(88,166,255,.12);
+
+    border-radius:24px;
+
+    padding:36px;
+
+    transition:.25s ease;
+}
+
+.bookstack-card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:
+        rgba(88,166,255,.35);
+}
+
+.bookstack-card h3{
+
+    font-size:28px;
+
+    color:#ffffff;
+
+    margin-bottom:22px;
+}
+
+.bookstack-card p{
+
+    color:#b5c0cc;
+
+    line-height:1.9;
+
+    margin-bottom:28px;
+}
+
+.command-block{
+
+    background:#071018;
+
+    border:
+        1px solid rgba(88,166,255,.12);
+
+    border-radius:14px;
+
+    padding:18px;
+
+    font-family:
+        Consolas,
+        monospace;
+
+    color:#8fc1ff;
+
+    margin-bottom:26px;
+
+    overflow-x:auto;
+}
 
 .doc-link{
 
@@ -387,11 +465,7 @@ nav{
 
     text-decoration:none;
 
-    font-weight:600;
-
-    font-size:15px;
-
-    transition:.2s ease;
+    font-weight:700;
 }
 
 .doc-link:hover{
@@ -405,46 +479,42 @@ nav{
 
 footer{
 
+    margin-top:140px;
+
+    border-top:
+        1px solid rgba(88,166,255,.12);
+
+    padding:60px 30px;
+
     text-align:center;
 
-    padding:50px 20px;
-
-    color:#7f8b98;
-
-    border-top:1px solid rgba(80,120,180,.10);
+    color:#7f8b97;
 
     font-size:14px;
-
-    margin-top:90px;
 }
 
 /* =========================================
    RESPONSIVE
 ========================================= */
 
-@media(max-width:1500px){
-
-    .doc-grid{
-
-        grid-template-columns:repeat(2, 1fr);
-    }
-}
-
-@media(max-width:900px){
-
-    .doc-grid{
-
-        grid-template-columns:1fr;
-    }
-
-    .main-container{
-
-        padding:0 24px 100px;
-    }
+@media(max-width:1200px){
 
     .hero h1{
+        font-size:52px;
+    }
 
-        font-size:42px;
+    .hero p{
+        font-size:18px;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .incident-grid,
+    .bookstack-grid{
+
+        grid-template-columns:1fr;
     }
 }
 
@@ -452,10 +522,6 @@ footer{
 </head>
 
 <body>
-
-<!-- =====================================
-     NAVIGATION
-===================================== -->
 
 <header>
 
@@ -485,85 +551,205 @@ GitHub
 
 </header>
 
-<!-- =====================================
-     HERO
-===================================== -->
-
 <section class="hero">
 
 <div class="hero-content">
 
-<div class="hero-badge">
-Storage Operations • Infrastructure Troubleshooting • Operational Documentation
+<div class="hero-tag">
+Storage Operations • Incident Response • Infrastructure Diagnostics
 </div>
 
 <h1>
 Storage Infrastructure Troubleshooting
 </h1>
 
+<div class="hero-divider"></div>
+
 <p>
+
 Operational incidents, NFS recovery workflows,
-storage diagnostics, virtualization troubleshooting,
-and infrastructure recovery procedures documented
-throughout the PatrickHomeLab environment.
+backup validation, media infrastructure diagnostics,
+and operational documentation from PatrickHomeLab.
+
 </p>
 
 </div>
 
 </section>
 
-<!-- =====================================
-     MAIN CONTENT
-===================================== -->
+<main>
 
-<div class="main-container">
+<!-- =========================================
+     FEATURED INCIDENTS
+========================================= -->
 
-<div class="section-title">
+<section>
+
+<div class="section-header">
+
+<h2>
+Featured Storage Incidents
+</h2>
+
+<p>
+
+Operational failures, recovery workflows,
+and infrastructure troubleshooting scenarios
+documented throughout the PatrickHomeLab environment.
+
+</p>
+
+</div>
+
+<div class="incident-grid">
+
+<div class="incident-card">
+
+<div class="incident-label">
+Storage Recovery
+</div>
+
+<h3>
+NFS Mount Failure
+</h3>
+
+<p>
+
+Plex media libraries became unavailable after
+the Vault NFS mount failed during startup,
+resulting in inaccessible media paths
+and degraded service availability.
+
+</p>
+
+<div class="incident-meta">
+
+<span>Linux</span>
+<span>NFS</span>
+<span>Plex</span>
+<span>Recovery</span>
+
+</div>
+
+</div>
+
+<div class="incident-card">
+
+<div class="incident-label">
+Infrastructure Capacity
+</div>
+
+<h3>
+NVMe Datastore Capacity Risk
+</h3>
+
+<p>
+
+The Forge hypervisor primary datastore approached
+operational storage thresholds due to increasing
+VM growth and infrastructure expansion.
+
+</p>
+
+<div class="incident-meta">
+
+<span>Proxmox</span>
+<span>Storage</span>
+<span>Datastore</span>
+<span>Migration</span>
+
+</div>
+
+</div>
+
+<div class="incident-card">
+
+<div class="incident-label">
+Infrastructure Operations
+</div>
+
+<h3>
+Storage Architecture Validation
+</h3>
+
+<p>
+
+Storage topology, NFS export validation,
+backup workflows, and media infrastructure
+operations documented throughout PatrickHomeLab.
+
+</p>
+
+<div class="incident-meta">
+
+<span>Architecture</span>
+<span>NFS</span>
+<span>AWS</span>
+<span>Operations</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================
+     OPERATIONAL DOCUMENTATION
+========================================= -->
+
+<section>
+
+<div class="section-header">
 
 <h2>
 Operational Documentation
 </h2>
 
 <p>
-Real-world operational incidents, infrastructure failures,
-storage recovery procedures, and troubleshooting workflows
-from the PatrickHomeLab environment.
+
+Operational incidents, recovery procedures,
+infrastructure diagnostics, and troubleshooting
+documentation integrated directly into PatrickHomeLab.
+
 </p>
 
 </div>
 
-<div class="doc-grid">
+<div class="bookstack-grid">
 
-<!-- =====================================
-     CARD 1
-===================================== -->
+<!-- CARD 1 -->
 
-<div class="doc-card">
-
-<div class="card-label">
-NFS Recovery
-</div>
+<div class="bookstack-card">
 
 <h3>
-Plex Media Unavailable Due to Vault NFS Mount Failure
+Plex – Missing Media – NFS Mount Failure
 </h3>
 
 <p>
-Plex libraries became inaccessible after the Vault NFS
-storage export failed to mount correctly. Although Plex
-remained online, media paths became unavailable because
-the underlying shared storage dependency failed upstream
-on vault-01.
+
+Plex media libraries became unavailable after the
+Vault NFS mount failed during startup operations,
+resulting in inaccessible media paths and degraded
+service availability across media-01.
+
 </p>
 
-<div class="tag-container">
+<div class="command-block">
+systemctl status mnt-vault\x2dmedia.mount
+</div>
 
-<div class="tag">NFS</div>
-<div class="tag">Plex</div>
-<div class="tag">Linux</div>
-<div class="tag">Recovery</div>
+<div class="incident-meta">
+
+<span>Linux</span>
+<span>NFS</span>
+<span>Plex</span>
+<span>Recovery</span>
 
 </div>
+
+<br>
 
 <a href="troubleshooting-storage-nfs.html"
 class="doc-link">
@@ -574,35 +760,37 @@ View Full Operational Documentation →
 
 </div>
 
-<!-- =====================================
-     CARD 2
-===================================== -->
+<!-- CARD 2 -->
 
-<div class="doc-card">
-
-<div class="card-label">
-Storage Operations
-</div>
+<div class="bookstack-card">
 
 <h3>
 Primary NVMe Datastore Capacity Exhaustion Risk
 </h3>
 
 <p>
-The primary Forge NVMe datastore approached operational
-capacity thresholds due to VM growth and infrastructure
-expansion, requiring workload redistribution to dedicated
-SSD storage to restore scalability and operational headroom.
+
+The Forge hypervisor primary datastore approached
+operational storage thresholds due to increasing
+virtual machine growth and infrastructure expansion,
+requiring workload redistribution to dedicated SSD storage.
+
 </p>
 
-<div class="tag-container">
+<div class="command-block">
+pvesm status
+</div>
 
-<div class="tag">Proxmox</div>
-<div class="tag">Storage</div>
-<div class="tag">Migration</div>
-<div class="tag">Operations</div>
+<div class="incident-meta">
+
+<span>Proxmox</span>
+<span>Storage</span>
+<span>Datastore</span>
+<span>Migration</span>
 
 </div>
+
+<br>
 
 <a href="troubleshooting-storage-capacity.html"
 class="doc-link">
@@ -613,35 +801,37 @@ View Full Operational Documentation →
 
 </div>
 
-<!-- =====================================
-     CARD 3
-===================================== -->
+<!-- CARD 3 -->
 
-<div class="doc-card">
-
-<div class="card-label">
-Future Documentation
-</div>
+<div class="bookstack-card">
 
 <h3>
-Additional Infrastructure Incident Documentation
+Future Infrastructure Incident
 </h3>
 
 <p>
-Additional operational incidents, infrastructure recovery
-workflows, monitoring failures, service interruptions,
-and virtualization troubleshooting procedures will be
-added as the PatrickHomeLab environment continues to evolve.
+
+Additional operational incidents, storage recovery
+workflows, infrastructure diagnostics, and operational
+documentation will continue to be integrated into
+the PatrickHomeLab environment over time.
+
 </p>
 
-<div class="tag-container">
+<div class="command-block">
+journalctl -xe
+</div>
 
-<div class="tag">Monitoring</div>
-<div class="tag">Infrastructure</div>
-<div class="tag">Diagnostics</div>
-<div class="tag">Operations</div>
+<div class="incident-meta">
+
+<span>Monitoring</span>
+<span>Infrastructure</span>
+<span>Diagnostics</span>
+<span>Operations</span>
 
 </div>
+
+<br>
 
 <a href="#"
 class="doc-link">
@@ -654,15 +844,13 @@ Additional Operational Documentation Coming Soon →
 
 </div>
 
-</div>
+</section>
 
-<!-- =====================================
-     FOOTER
-===================================== -->
+</main>
 
 <footer>
 
-PatrickHomeLab • Infrastructure Operations & Systems Administration
+PatrickHomeLab • Infrastructure Operations in Practice
 
 </footer>
 
