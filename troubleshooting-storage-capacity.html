@@ -1,1 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PatrickHomeLab | Storage Infrastructure Troubleshooting</title>
+
+<style>
+
+/* =========================================
+   GLOBAL
+========================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    background:
+        radial-gradient(circle at top, #152232 0%, #081018 60%),
+        #081018;
+
+    color:#e6edf3;
+
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        sans-serif;
+
+    overflow-x:hidden;
+}
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+header{
+
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:rgba(8,12,18,.82);
+
+    backdrop-filter:blur(14px);
+
+    border-bottom:
+        1px solid rgba(88,166,255,.10);
+}
+
+nav{
+
+    max-width:1800px;
+
+    margin:auto;
+
+    padding:18px 36px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+
+    font-size:20px;
+    font-weight:700;
+    letter-spacing:.5px;
+}
+
+.nav-links{
+
+    display:flex;
+    gap:28px;
+}
+
+.nav-links a{
+
+    color:#c9d1d9;
+
+    text-decoration:none;
+
+    font-size:14px;
+    font-weight:500;
+
+    transition:.2s ease;
+}
+
+.nav-links a:hover{
+    color:#58a6ff;
+}
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero{
+
+    position:relative;
+
+    min-height:520px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:100px 30px 80px 30px;
+
+    overflow:hidden;
+}
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(rgba(6,10,15,.88), rgba(6,10,15,.92)),
+        url("images/lab-topology.png");
+
+    background-size:cover;
+    background-position:center;
+
+    opacity:.10;
+
+    z-index:0;
+}
+
+.hero::after{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+
+    background-size:40px 40px;
+
+    z-index:1;
+}
+
+.hero-content{
+
+    position:relative;
+    z-index:2;
+
+    max-width:900px;
+}
+
+.hero-tag{
+
+    display:inline-block;
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    border:
+        1px solid rgba(88,166,255,.22);
+
+    background:
+        rgba(88,166,255,.08);
+
+    color:#58a6ff;
+
+    font-size:13px;
+    font-weight:700;
+
+    margin-bottom:30px;
+}
+
+.hero h1{
+
+    font-size:72px;
+
+    line-height:1.05;
+
+    margin-bottom:28px;
+
+    font-weight:800;
+}
+
+.hero-divider{
+
+    width:160px;
+    height:4px;
+
+    border-radius:999px;
+
+    margin:0 auto 34px auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #58a6ff,
+            transparent
+        );
+}
+
+.hero p{
+
+    font-size:22px;
+
+    line-height:1.9;
+
+    color:#b5c0cc;
+}
+
+/* =========================================
+   MAIN CONTENT
+========================================= */
+
+main{
+
+    max-width:1850px;
+
+    margin:auto;
+
+    padding:100px 40px 140px 40px;
+}
+
+.section-header{
+
+    margin-bottom:55px;
+}
+
+.section-header h2{
+
+    font-size:42px;
+
+    margin-bottom:18px;
+}
+
+.section-header p{
+
+    color:#aeb8c3;
+
+    line-height:1.8;
+
+    max-width:950px;
+}
+
+/* =========================================
+   INCIDENT GRID
+========================================= */
+
+.incident-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(420px,1fr));
+
+    gap:34px;
+
+    margin-bottom:130px;
+}
+
+.incident-card{
+
+    position:relative;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(20,30,42,.96),
+            rgba(10,17,26,.98)
+        );
+
+    border:
+        1px solid rgba(88,166,255,.12);
+
+    border-radius:24px;
+
+    padding:38px;
+
+    overflow:hidden;
+
+    transition:.25s ease;
+}
+
+.incident-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:
+        rgba(88,166,255,.35);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.40);
+}
+
+.incident-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #58a6ff,
+            #2ea043
+        );
+}
+
+.incident-label{
+
+    color:#58a6ff;
+
+    font-size:13px;
+    font-weight:700;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+    margin-bottom:22px;
+}
+
+.incident-card h3{
+
+    font-size:32px;
+
+    margin-bottom:22px;
+}
+
+.incident-card p{
+
+    color:#b5c0cc;
+
+    line-height:1.9;
+
+    margin-bottom:30px;
+}
+
+.incident-meta{
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.incident-meta span{
+
+    padding:8px 16px;
+
+    border-radius:999px;
+
+    background:
+        rgba(88,166,255,.08);
+
+    border:
+        1px solid rgba(88,166,255,.14);
+
+    color:#8fc1ff;
+
+    font-size:13px;
+}
+
+/* =========================================
+   ARCHITECTURE PANEL
+========================================= */
+
+.architecture-panel{
+
+    position:relative;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(18,27,39,.96),
+            rgba(10,16,24,.98)
+        );
+
+    border:
+        1px solid rgba(88,166,255,.12);
+
+    border-radius:30px;
+
+    padding:80px;
+
+    margin-bottom:130px;
+
+    overflow:hidden;
+}
+
+.architecture-panel::before{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(88,166,255,.10),
+            transparent 40%
+        );
+
+    pointer-events:none;
+}
+
+.node-status{
+
+    width:12px;
+    height:12px;
+
+    border-radius:50%;
+
+    background:#2ea043;
+
+    box-shadow:
+        0 0 18px rgba(46,160,67,.9);
+
+    margin-bottom:18px;
+}
+
+.node-status.backup{
+
+    background:#58a6ff;
+
+    box-shadow:
+        0 0 18px rgba(88,166,255,.9);
+}
+
+.flow-line{
+
+    width:90px;
+    height:2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(88,166,255,.15),
+            #58a6ff,
+            rgba(88,166,255,.15)
+        );
+
+    position:relative;
+}
+
+.flow-line::after{
+
+    content:"";
+
+    position:absolute;
+
+    right:-3px;
+    top:-5px;
+
+    border-left:10px solid #58a6ff;
+
+    border-top:6px solid transparent;
+    border-bottom:6px solid transparent;
+}
+
+.flow-line span{
+
+    position:absolute;
+
+    top:-32px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    color:#8fc1ff;
+
+    font-size:12px;
+    font-weight:700;
+
+    white-space:nowrap;
+}
+
+.right-stack{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:40px;
+
+    position:relative;
+}
+
+.right-stack::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-30px;
+    top:50%;
+
+    width:30px;
+    height:2px;
+
+    background:#58a6ff;
+}
+
+.media::before,
+.aws::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-30px;
+    top:50%;
+
+    width:30px;
+    height:2px;
+
+    background:#58a6ff;
+}
+
+/* =========================================
+   BOOKSTACK SECTION
+========================================= */
+
+.bookstack-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(420px,1fr));
+
+    gap:34px;
+}
+
+.bookstack-card{
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(18,29,42,.95),
+            rgba(10,16,24,.98)
+        );
+
+    border:
+        1px solid rgba(88,166,255,.12);
+
+    border-radius:24px;
+
+    padding:36px;
+
+    transition:.25s ease;
+}
+
+.bookstack-card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:
+        rgba(88,166,255,.35);
+}
+
+.bookstack-card h3{
+
+    font-size:28px;
+
+    color:#ffffff;
+
+    margin-bottom:22px;
+}
+
+.bookstack-card p{
+
+    color:#b5c0cc;
+
+    line-height:1.9;
+
+    margin-bottom:28px;
+}
+
+.command-block{
+
+    background:#071018;
+
+    border:
+        1px solid rgba(88,166,255,.12);
+
+    border-radius:14px;
+
+    padding:18px;
+
+    font-family:
+        Consolas,
+        monospace;
+
+    color:#8fc1ff;
+
+    margin-bottom:26px;
+
+    overflow-x:auto;
+}
+
+.doc-link{
+
+    color:#58a6ff;
+
+    text-decoration:none;
+
+    font-weight:700;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer{
+
+    margin-top:140px;
+
+    border-top:
+        1px solid rgba(88,166,255,.12);
+
+    padding:60px 30px;
+
+    text-align:center;
+
+    color:#7f8b97;
+
+    font-size:14px;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:1200px){
+
+    .hero h1{
+        font-size:52px;
+    }
+
+    .hero p{
+        font-size:18px;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .incident-grid,
+    .bookstack-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .storage-topology{
+
+        flex-direction:column;
+    }
+
+    .flow-line{
+
+        width:2px;
+        height:60px;
+    }
+
+    .flow-line::after{
+        display:none;
+    }
+
+    .right-stack::before,
+    .media::before,
+    .aws::before{
+        display:none;
+    }
+
+    .architecture-panel{
+        padding:40px 30px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<nav>
+
+<div class="logo">
+PatrickHomeLab
+</div>
+
+<div class="nav-links">
+
+<a href="index.html">Home</a>
+<a href="profile.html">Profile</a>
+<a href="architecture.html">Architecture</a>
+<a href="topology.html">Topology</a>
+<a href="projects.html">Projects</a>
+<a href="troubleshooting.html">Troubleshooting</a>
+<a href="monitoring.html">Monitoring</a>
+
+<a href="https://github.com/patrick-richardson" target="_blank">
+GitHub
+</a>
+
+</div>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="hero-tag">
+Troubleshooting Storage Capacity
+</div>
+
+<h1>
+Storage Infrastructure Troubleshooting
+</h1>
+
+<div class="hero-divider"></div>
+
+<p>
+
+Primary NVMe Datastore Capacity Exhaustion Risk
+Overview
+The Forge Proxmox hypervisor began approaching the NVMe datastore capacity limits due to increased VM disk utilization and the expansion of infrastructure services. To restore available capacity and improve long-term storage management, selected virtual machine workloads were migrated from the primary NVMe datastore to a dedicated SSD-based datastore.
+
+Environment
+Environment:
+- Hypervisor: Forge (Proxmox VE)
+- Primary Storage: NVMe datastore
+- Secondary Storage: Dedicated SSD datastore
+- Affected Services:
+  - media-01
+  - monitoring infrastructure
+  - supporting lab VMs
+
+Problem
+The primary NVMe datastore was nearing operational capacity thresholds, creating several infrastructure risks:
+
+- Reduced capacity for future VM deployments
+- Increased risk of datastore exhaustion
+- Limited flexibility for snapshots and maintenance operations
+- Reduced storage headroom for infrastructure growth
+
+Continued growth in utilization without reallocation would have negatively impacted long-term hypervisor stability and storage management flexibility.
+
+Objective
+The objective of the migration was to redistribute VM storage workloads to a dedicated SSD datastore in order to:
+
+Restore available NVMe capacity
+- Improve storage allocation strategy
+- Preserve operational stability
+- Maintain service availability during migration
+- Improve future scalability of the lab environment
+Migration Actions
+Actions Performed:
+- Provisioned SSD datastore within Proxmox
+- Evaluated VM storage utilization
+- Selected workloads appropriate for migration
+- Migrated VM disks from NVMe storage to SSD storage
+- Validated successful VM boot operations
+- Verified service availability post-migration
+- Confirmed restored datastore capacity levels
+
+Validation
+Post-Migration Validation:
+- VM startup behavior confirmed
+- Plex services operational
+- Storage mounts verified
+- No data loss observed
+- Hypervisor storage utilization was reduced successfully
+- Infrastructure services remained stable after migration
+
+Result
+The migration successfully reduced pressure on the primary NVMe datastore while maintaining operational continuity across infrastructure services. The updated storage allocation strategy improved capacity management and restored additional headroom for future infrastructure expansion.
+
+Lessons Learned
+https://kb.patrickhomelab.com/link/4#bkmrk-lessons-learned%3A--ea
+
+ 
+Lessons Learned:
+- Early storage planning is critical for virtualization environments
+- Infrastructure growth can rapidly impact datastore utilization
+- Segregating workloads across multiple storage tiers improves flexibility
+- Capacity monitoring should be incorporated into routine infrastructure management workflows
+
+</p>
+
+</div>
 
