@@ -433,92 +433,19 @@ main{
 
 .storage-topology{
 
-    position:relative;
-
-    margin-top:60px;
-
-    min-height:460px;
+    margin-top:70px;
 
     display:grid;
 
     grid-template-columns:
-        1fr 140px 1fr 140px 1fr;
+        1fr
+        120px
+        1fr
+        1.2fr;
 
     align-items:center;
 
-    gap:10px;
-}
-
-.topology-node{
-
-    position:relative;
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(18,29,42,.95),
-            rgba(10,16,24,.98)
-        );
-
-    border:
-        1px solid rgba(88,166,255,.18);
-
-    border-radius:22px;
-
-    padding:34px;
-
-    min-height:190px;
-
-    box-shadow:
-        0 20px 60px rgba(0,0,0,.25);
-}
-
-.topology-node h3{
-
-    font-size:30px;
-
-    margin-bottom:12px;
-}
-
-.topology-node p{
-
-    color:#58a6ff;
-
-    font-weight:700;
-
-    margin-bottom:16px;
-}
-
-.topology-node span{
-
-    color:#9da7b3;
-
-    font-size:14px;
-
-    line-height:1.6;
-}
-
-.node-status{
-
-    width:12px;
-    height:12px;
-
-    border-radius:50%;
-
-    background:#2ea043;
-
-    box-shadow:
-        0 0 18px rgba(46,160,67,.9);
-
-    margin-bottom:18px;
-}
-
-.node-status.backup{
-
-    background:#58a6ff;
-
-    box-shadow:
-        0 0 18px rgba(88,166,255,.9);
+    gap:30px;
 }
 
 .flow-line{
@@ -555,7 +482,7 @@ main{
 
     position:absolute;
 
-    top:-34px;
+    top:-32px;
     left:50%;
 
     transform:translateX(-50%);
@@ -566,6 +493,64 @@ main{
     font-weight:700;
 
     white-space:nowrap;
+}
+
+.right-stack{
+
+    position:relative;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:34px;
+}
+
+/* CONNECTION LINES */
+
+.right-stack::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-45px;
+    top:50%;
+
+    width:45px;
+    height:2px;
+
+    background:#58a6ff;
+}
+
+.media::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-45px;
+    top:50%;
+
+    width:45px;
+    height:2px;
+
+    background:#58a6ff;
+}
+
+.aws::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-45px;
+    top:50%;
+
+    width:45px;
+    height:2px;
+
+    background:#58a6ff;
 }
 
 /* AWS BACKUP NODE */
