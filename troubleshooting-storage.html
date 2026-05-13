@@ -441,8 +441,6 @@ main{
     position:relative;
 }
 
-/* NODE STYLING */
-
 .topology-node{
 
     position:relative;
@@ -494,8 +492,6 @@ main{
     line-height:1.6;
 }
 
-/* STATUS LIGHT */
-
 .node-status{
 
     width:12px;
@@ -518,8 +514,6 @@ main{
     box-shadow:
         0 0 18px rgba(88,166,255,.9);
 }
-
-/* FLOW LINES */
 
 .flow-line{
 
@@ -569,8 +563,6 @@ main{
     white-space:nowrap;
 }
 
-/* RIGHT SIDE */
-
 .right-stack{
 
     display:flex;
@@ -581,8 +573,6 @@ main{
 
     position:relative;
 }
-
-/* CONNECTOR HUB */
 
 .right-stack::before{
 
@@ -598,8 +588,6 @@ main{
 
     background:#58a6ff;
 }
-
-/* INDIVIDUAL CONNECTORS */
 
 .media::before,
 .aws::before{
@@ -662,7 +650,7 @@ main{
 
     font-size:28px;
 
-    color:#58a6ff;
+    color:#ffffff;
 
     margin-bottom:22px;
 }
@@ -782,8 +770,6 @@ footer{
 
 <body>
 
-<!-- NAVIGATION -->
-
 <header>
 
 <nav>
@@ -812,8 +798,6 @@ GitHub
 
 </header>
 
-<!-- HERO -->
-
 <section class="hero">
 
 <div class="hero-content">
@@ -840,11 +824,11 @@ and engineering documentation from PatrickHomeLab.
 
 </section>
 
-<!-- MAIN -->
-
 <main>
 
-<!-- INCIDENTS -->
+<!-- =========================================
+     FEATURED INCIDENTS
+========================================= -->
 
 <section>
 
@@ -873,14 +857,15 @@ Storage Recovery
 </div>
 
 <h3>
-NFS Dependency Failure
+NFS Mount Failure
 </h3>
 
 <p>
 
-Media services became unavailable following delayed
-NFS mount initialization during system startup,
-resulting in Plex access failures and degraded service availability.
+Plex media libraries became unavailable after
+the Vault NFS mount failed during startup,
+resulting in inaccessible media paths
+and degraded service availability.
 
 </p>
 
@@ -888,36 +873,7 @@ resulting in Plex access failures and degraded service availability.
 
 <span>Linux</span>
 <span>NFS</span>
-<span>systemd</span>
 <span>Plex</span>
-
-</div>
-
-</div>
-
-<div class="incident-card">
-
-<div class="incident-label">
-Backup Operations
-</div>
-
-<h3>
-AWS S3 Backup Migration
-</h3>
-
-<p>
-
-Legacy Glacier storage introduced operational recovery delays,
-leading to migration toward Intelligent-Tiering
-and redesigned rclone backup workflows.
-
-</p>
-
-<div class="incident-meta">
-
-<span>AWS S3</span>
-<span>rclone</span>
-<span>Backups</span>
 <span>Recovery</span>
 
 </div>
@@ -927,27 +883,56 @@ and redesigned rclone backup workflows.
 <div class="incident-card">
 
 <div class="incident-label">
-Infrastructure Diagnostics
+Infrastructure Capacity
 </div>
 
 <h3>
-Plex Storage Recovery
+NVMe Datastore Capacity Risk
 </h3>
 
 <p>
 
-Storage interruption events caused media library failures,
-requiring mount validation,
-service recovery, and infrastructure diagnostics.
+The Forge hypervisor primary datastore approached
+operational storage thresholds due to increasing
+VM growth and infrastructure expansion.
 
 </p>
 
 <div class="incident-meta">
 
-<span>Plex</span>
+<span>Proxmox</span>
 <span>Storage</span>
-<span>Recovery</span>
-<span>Diagnostics</span>
+<span>Datastore</span>
+<span>Migration</span>
+
+</div>
+
+</div>
+
+<div class="incident-card">
+
+<div class="incident-label">
+Infrastructure Operations
+</div>
+
+<h3>
+Storage Architecture Validation
+</h3>
+
+<p>
+
+Storage topology, NFS export validation,
+backup workflows, and media infrastructure
+operations documented throughout PatrickHomeLab.
+
+</p>
+
+<div class="incident-meta">
+
+<span>Architecture</span>
+<span>NFS</span>
+<span>AWS</span>
+<span>Operations</span>
 
 </div>
 
@@ -957,7 +942,9 @@ service recovery, and infrastructure diagnostics.
 
 </section>
 
-<!-- STORAGE ARCHITECTURE -->
+<!-- =========================================
+     STORAGE ARCHITECTURE
+========================================= -->
 
 <section class="architecture-panel">
 
@@ -979,8 +966,6 @@ and media distribution architecture.
 
 <div class="storage-topology">
 
-<!-- FORGE -->
-
 <div class="topology-node forge">
 
 <div class="node-status"></div>
@@ -995,13 +980,9 @@ VM Host / Compute Layer
 
 </div>
 
-<!-- FLOW -->
-
 <div class="flow-line">
 <span>Hosts</span>
 </div>
-
-<!-- VAULT -->
 
 <div class="topology-node vault">
 
@@ -1017,11 +998,7 @@ VM Host / Compute Layer
 
 </div>
 
-<!-- RIGHT SIDE -->
-
 <div class="right-stack">
-
-<!-- MEDIA -->
 
 <div class="topology-node media">
 
@@ -1036,8 +1013,6 @@ VM Host / Compute Layer
 </span>
 
 </div>
-
-<!-- AWS -->
 
 <div class="topology-node aws">
 
@@ -1059,7 +1034,9 @@ rclone / Intelligent-Tiering
 
 </section>
 
-<!-- BOOKSTACK -->
+<!-- =========================================
+     OPERATIONAL DOCUMENTATION
+========================================= -->
 
 <section>
 
@@ -1072,8 +1049,9 @@ Operational Documentation
 <p>
 
 Engineering notes, recovery procedures,
-incident reports, and troubleshooting workflows
-integrated from BookStack documentation.
+incident reports, and infrastructure troubleshooting
+workflows integrated directly from the PatrickHomeLab
+BookStack knowledge base.
 
 </p>
 
@@ -1081,17 +1059,20 @@ integrated from BookStack documentation.
 
 <div class="bookstack-grid">
 
+<!-- CARD 1 -->
+
 <div class="bookstack-card">
 
 <h3>
-Incident KB-001
+Plex – Missing Media – NFS Mount Failure
 </h3>
 
 <p>
 
-Operational notes documenting NFS dependency failures,
-mount validation workflows,
-and service restoration procedures.
+Plex media libraries became unavailable after the
+Vault NFS mount failed during startup operations,
+resulting in inaccessible media paths and degraded
+service availability across media-01.
 
 </p>
 
@@ -1099,56 +1080,106 @@ and service restoration procedures.
 systemctl status mnt-vault\x2dmedia.mount
 </div>
 
-<a href="#" class="doc-link">
+<div class="incident-meta">
+
+<span>Linux</span>
+<span>NFS</span>
+<span>Plex</span>
+<span>Recovery</span>
+
+</div>
+
+<br>
+
+<a href="https://kb.patrickhomelab.com/books/storage-vault-nfs/page/plex-missing-media-nfs-mount-failure"
+class="doc-link"
+target="_blank">
+
 View Full Engineering Notes →
+
 </a>
 
 </div>
 
+<!-- CARD 2 -->
+
 <div class="bookstack-card">
 
 <h3>
-Incident KB-002
+Primary NVMe Datastore Capacity Exhaustion Risk
 </h3>
 
 <p>
 
-Storage migration documentation,
-backup redesign workflows,
-and rclone validation procedures.
+The Forge hypervisor primary datastore approached
+operational storage thresholds due to increasing
+virtual machine growth and infrastructure expansion,
+requiring workload redistribution to dedicated SSD storage.
 
 </p>
 
 <div class="command-block">
-rclone sync /mnt/media aws-backup:bucket
+pvesm status
 </div>
 
-<a href="#" class="doc-link">
+<div class="incident-meta">
+
+<span>Proxmox</span>
+<span>Storage</span>
+<span>Datastore</span>
+<span>Migration</span>
+
+</div>
+
+<br>
+
+<a href="https://kb.patrickhomelab.com/books/storage-vault-nfs/page/primary-nvme-datastore-capacity-exhaustion-risk"
+class="doc-link"
+target="_blank">
+
 View Full Engineering Notes →
+
 </a>
 
 </div>
 
+<!-- CARD 3 -->
+
 <div class="bookstack-card">
 
 <h3>
-Incident KB-003
+Future Infrastructure Incident
 </h3>
 
 <p>
 
-Media outage diagnostics,
-NFS timeout recovery,
-and Plex service restoration workflows.
+Additional operational incidents, storage recovery
+workflows, infrastructure diagnostics, and engineering
+documentation will continue to be integrated into
+the PatrickHomeLab knowledge base over time.
 
 </p>
 
 <div class="command-block">
-journalctl -u plexmediaserver -b
+journalctl -xe
 </div>
 
-<a href="#" class="doc-link">
-View Full Engineering Notes →
+<div class="incident-meta">
+
+<span>Monitoring</span>
+<span>Infrastructure</span>
+<span>Diagnostics</span>
+<span>Operations</span>
+
+</div>
+
+<br>
+
+<a href="#"
+class="doc-link">
+
+Additional Engineering Documentation Coming Soon →
+
 </a>
 
 </div>
@@ -1158,8 +1189,6 @@ View Full Engineering Notes →
 </section>
 
 </main>
-
-<!-- FOOTER -->
 
 <footer>
 
