@@ -98,7 +98,7 @@ nav{
 }
 
 /* =========================================
-   HERO SECTION
+   HERO
 ========================================= */
 
 .hero{
@@ -118,8 +118,6 @@ nav{
     overflow:hidden;
 }
 
-/* Background */
-
 .hero::before{
 
     content:"";
@@ -138,8 +136,6 @@ nav{
 
     z-index:0;
 }
-
-/* Grid Overlay */
 
 .hero::after{
 
@@ -384,7 +380,7 @@ main{
 }
 
 /* =========================================
-   STORAGE ARCHITECTURE
+   ARCHITECTURE PANEL
 ========================================= */
 
 .architecture-panel{
@@ -448,7 +444,87 @@ main{
     gap:30px;
 }
 
+/* NODES */
+
+.topology-node{
+
+    position:relative;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(18,29,42,.95),
+            rgba(10,16,24,.98)
+        );
+
+    border:
+        1px solid rgba(88,166,255,.18);
+
+    border-radius:22px;
+
+    padding:34px;
+
+    min-height:190px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.25);
+}
+
+.topology-node h3{
+
+    font-size:30px;
+
+    margin-bottom:12px;
+}
+
+.topology-node p{
+
+    color:#58a6ff;
+
+    font-weight:700;
+
+    margin-bottom:16px;
+}
+
+.topology-node span{
+
+    color:#9da7b3;
+
+    font-size:14px;
+
+    line-height:1.6;
+}
+
+/* STATUS LIGHTS */
+
+.node-status{
+
+    width:12px;
+    height:12px;
+
+    border-radius:50%;
+
+    background:#2ea043;
+
+    box-shadow:
+        0 0 18px rgba(46,160,67,.9);
+
+    margin-bottom:18px;
+}
+
+.node-status.backup{
+
+    background:#58a6ff;
+
+    box-shadow:
+        0 0 18px rgba(88,166,255,.9);
+}
+
+/* FLOW LINE */
+
 .flow-line{
+
+    position:relative;
 
     height:2px;
 
@@ -459,8 +535,6 @@ main{
             #58a6ff,
             rgba(88,166,255,.15)
         );
-
-    position:relative;
 }
 
 .flow-line::after{
@@ -495,6 +569,8 @@ main{
     white-space:nowrap;
 }
 
+/* RIGHT SIDE STACK */
+
 .right-stack{
 
     position:relative;
@@ -503,10 +579,10 @@ main{
 
     flex-direction:column;
 
-    gap:34px;
+    gap:36px;
 }
 
-/* CONNECTION LINES */
+/* BRANCH CONNECTOR */
 
 .right-stack::before{
 
@@ -514,82 +590,31 @@ main{
 
     position:absolute;
 
-    left:-45px;
+    left:-30px;
     top:50%;
 
-    width:45px;
+    width:30px;
     height:2px;
 
     background:#58a6ff;
 }
 
-.media::before{
+/* INDIVIDUAL CONNECTORS */
 
-    content:"";
-
-    position:absolute;
-
-    left:-45px;
-    top:50%;
-
-    width:45px;
-    height:2px;
-
-    background:#58a6ff;
-}
-
+.media::before,
 .aws::before{
 
     content:"";
 
     position:absolute;
 
-    left:-45px;
+    left:-30px;
     top:50%;
 
-    width:45px;
+    width:30px;
     height:2px;
 
     background:#58a6ff;
-}
-
-/* AWS BACKUP NODE */
-
-.backup-path{
-
-    position:absolute;
-
-    left:50%;
-
-    bottom:-10px;
-
-    transform:translateX(-50%);
-
-    display:flex;
-    justify-content:center;
-}
-
-.backup-line{
-
-    position:absolute;
-
-    top:-110px;
-
-    width:2px;
-    height:110px;
-
-    background:
-        linear-gradient(
-            #58a6ff,
-            rgba(88,166,255,.12)
-        );
-}
-
-.aws{
-
-    width:260px;
-
-    text-align:center;
 }
 
 /* =========================================
@@ -706,10 +731,10 @@ footer{
    RESPONSIVE
 ========================================= */
 
-@media(max-width:1100px){
+@media(max-width:1200px){
 
     .hero h1{
-        font-size:48px;
+        font-size:52px;
     }
 
     .hero p{
@@ -731,9 +756,7 @@ footer{
         display:flex;
         flex-direction:column;
 
-        gap:24px;
-
-        min-height:auto;
+        gap:30px;
     }
 
     .flow-line{
@@ -746,21 +769,15 @@ footer{
         display:none;
     }
 
-    .backup-path{
+    .right-stack{
 
-        position:static;
-
-        transform:none;
-
-        margin-top:20px;
-    }
-
-    .backup-line{
-        display:none;
-    }
-
-    .aws{
         width:100%;
+    }
+
+    .right-stack::before,
+    .media::before,
+    .aws::before{
+        display:none;
     }
 
     .architecture-panel{
@@ -976,89 +993,49 @@ and media distribution architecture.
 
 <div class="storage-topology">
 
-    <!-- FORGE -->
+<!-- FORGE -->
 
-    <div class="topology-node forge">
+<div class="topology-node forge">
 
-        <div class="node-status"></div>
+<div class="node-status"></div>
 
-        <h3>Forge</h3>
+<h3>Forge</h3>
 
-        <p>Proxmox VE Hypervisor</p>
+<p>Proxmox VE Hypervisor</p>
 
-        <span>
-            VM Host / Compute Layer
-        </span>
-
-    </div>
-
-    <!-- FLOW TO VAULT -->
-
-    <div class="flow-line horizontal">
-        <span>Hosts</span>
-    </div>
-
-    <!-- VAULT -->
-
-    <div class="topology-node vault">
-
-        <div class="node-status"></div>
-
-        <h3>vault-01</h3>
-
-        <p>NFS Storage Server</p>
-
-        <span>
-            /mnt/media Export
-        </span>
-
-    </div>
-
-    <!-- RIGHT SIDE STACK -->
-
-    <div class="right-stack">
-
-        <!-- MEDIA -->
-
-        <div class="topology-node media">
-
-            <div class="node-status"></div>
-
-            <h3>media-01</h3>
-
-            <p>Plex Media Server</p>
-
-            <span>
-                /mnt/vault-media Mount
-            </span>
-
-        </div>
-
-        <!-- AWS -->
-
-        <div class="topology-node aws">
-
-            <div class="node-status backup"></div>
-
-            <h3>AWS S3</h3>
-
-            <p>Offsite Backup</p>
-
-            <span>
-                rclone / Intelligent-Tiering
-            </span>
-
-        </div>
-
-    </div>
+<span>
+VM Host / Compute Layer
+</span>
 
 </div>
 
-</div>
+<!-- FLOW -->
 
 <div class="flow-line">
-<span>NFS v4.2</span>
+<span>Hosts</span>
 </div>
+
+<!-- VAULT -->
+
+<div class="topology-node vault">
+
+<div class="node-status"></div>
+
+<h3>vault-01</h3>
+
+<p>NFS Storage Server</p>
+
+<span>
+/mnt/media Export
+</span>
+
+</div>
+
+<!-- RIGHT SIDE -->
+
+<div class="right-stack">
+
+<!-- MEDIA -->
 
 <div class="topology-node media">
 
@@ -1074,9 +1051,7 @@ and media distribution architecture.
 
 </div>
 
-<div class="backup-path">
-
-<div class="backup-line"></div>
+<!-- AWS -->
 
 <div class="topology-node aws">
 
