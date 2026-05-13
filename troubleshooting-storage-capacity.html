@@ -193,11 +193,7 @@ nav{
 
     width:100%;
 
-    max-width:100%;
-
-    margin:auto;
-
-    padding:0 80px 120px;
+    padding:0 60px 120px;
 }
 
 /* =========================================
@@ -212,9 +208,7 @@ nav{
 
     gap:36px;
 
-    width:100%;
-
-    align-items:start;
+    align-items:stretch;
 }
 
 /* =========================================
@@ -238,7 +232,11 @@ nav{
 
     padding:32px;
 
-    min-height:460px;
+    height:560px;
+
+    display:flex;
+
+    flex-direction:column;
 
     overflow:hidden;
 
@@ -300,6 +298,8 @@ nav{
 
     display:inline-block;
 
+    width:max-content;
+
     padding:6px 14px;
 
     border-radius:999px;
@@ -319,11 +319,13 @@ nav{
 
     font-size:34px;
 
-    line-height:1.15;
+    line-height:1.1;
 
-    margin-bottom:24px;
+    margin-bottom:22px;
 
     color:white;
+
+    min-height:82px;
 }
 
 .incident-card p{
@@ -332,7 +334,7 @@ nav{
 
     font-size:15px;
 
-    margin-bottom:20px;
+    margin-bottom:18px;
 }
 
 .incident-card ul{
@@ -342,7 +344,7 @@ nav{
 
 .incident-card li{
 
-    margin-bottom:12px;
+    margin-bottom:10px;
 
     color:#d8e1ea;
 
@@ -355,7 +357,7 @@ nav{
 
 .panel{
 
-    margin-top:22px;
+    margin-top:auto;
 
     padding:22px;
 
@@ -378,7 +380,7 @@ nav{
 }
 
 /* =========================================
-   VALIDATION PANEL
+   SPECIAL PANELS
 ========================================= */
 
 .validation-panel{
@@ -392,10 +394,6 @@ nav{
 
     border:1px solid rgba(60,180,120,.16);
 }
-
-/* =========================================
-   LESSONS PANEL
-========================================= */
 
 .lessons-panel{
 
@@ -415,7 +413,7 @@ nav{
 
 .command-block{
 
-    margin-top:22px;
+    margin-top:20px;
 
     background:#050b14;
 
@@ -473,6 +471,11 @@ footer{
     .incident-grid{
 
         grid-template-columns:1fr;
+    }
+
+    .incident-card{
+
+        height:auto;
     }
 
     .main-container{
@@ -557,7 +560,7 @@ PatrickHomeLab virtualization environment.
 
 <div class="incident-grid">
 
-<!-- OVERVIEW -->
+<!-- CARD 1 -->
 
 <div class="incident-card card-blue">
 
@@ -576,14 +579,14 @@ infrastructure workloads.
 </p>
 
 <p>
-To restore available storage capacity and improve long-term infrastructure
-management flexibility, selected virtual machine workloads were migrated
-from the primary NVMe datastore to a dedicated SSD-based datastore.
+Selected virtual machine workloads were migrated from the primary NVMe
+datastore to a dedicated SSD datastore to restore operational storage
+capacity and improve infrastructure scalability.
 </p>
 
 </div>
 
-<!-- ENVIRONMENT -->
+<!-- CARD 2 -->
 
 <div class="incident-card card-blue">
 
@@ -620,7 +623,7 @@ Affected Infrastructure:
 <ul>
 <li>media-01</li>
 <li>monitoring infrastructure</li>
-<li>supporting virtual machine workloads</li>
+<li>supporting VM workloads</li>
 </ul>
 </li>
 
@@ -630,7 +633,7 @@ Affected Infrastructure:
 
 </div>
 
-<!-- PROBLEM -->
+<!-- CARD 3 -->
 
 <div class="incident-card card-red">
 
@@ -644,8 +647,7 @@ Operational Risks
 
 <p>
 The primary NVMe datastore was approaching operational storage thresholds,
-creating several infrastructure risks and limiting future expansion
-capabilities.
+creating infrastructure risks and reducing future deployment flexibility.
 </p>
 
 <div class="panel">
@@ -665,7 +667,7 @@ Increased risk of datastore exhaustion
 </li>
 
 <li>
-Limited flexibility for snapshots and maintenance operations
+Limited flexibility for snapshots and maintenance
 </li>
 
 <li>
@@ -673,7 +675,7 @@ Reduced storage headroom for infrastructure growth
 </li>
 
 <li>
-Potential impact to long-term virtualization stability
+Potential impact to virtualization stability
 </li>
 
 </ul>
@@ -682,7 +684,7 @@ Potential impact to long-term virtualization stability
 
 </div>
 
-<!-- OBJECTIVE -->
+<!-- CARD 4 -->
 
 <div class="incident-card card-purple">
 
@@ -695,9 +697,9 @@ Migration Goals
 </h2>
 
 <p>
-The objective of the migration effort was to redistribute VM storage
-workloads to a dedicated SSD datastore while maintaining operational
-continuity across lab infrastructure services.
+The migration effort focused on redistributing VM storage workloads to a
+dedicated SSD datastore while maintaining operational continuity across
+lab infrastructure services.
 </p>
 
 <div class="panel">
@@ -725,7 +727,7 @@ Maintain service availability during migration
 </li>
 
 <li>
-Improve future scalability of the environment
+Improve future scalability
 </li>
 
 </ul>
@@ -734,7 +736,7 @@ Improve future scalability of the environment
 
 </div>
 
-<!-- ACTIONS -->
+<!-- CARD 5 -->
 
 <div class="incident-card card-purple">
 
@@ -797,7 +799,7 @@ qm move_disk &lt;vmid&gt; scsi0 &lt;target-storage&gt;
 
 </div>
 
-<!-- VALIDATION -->
+<!-- CARD 6 -->
 
 <div class="incident-card card-green">
 
@@ -810,8 +812,8 @@ Post-Migration Validation
 </h2>
 
 <p>
-Post-migration validation procedures confirmed infrastructure stability and
-successful workload redistribution.
+Validation procedures confirmed infrastructure stability and successful
+workload redistribution following storage migration operations.
 </p>
 
 <div class="panel validation-panel">
@@ -839,7 +841,7 @@ No data loss observed
 </li>
 
 <li>
-Infrastructure services remained stable after migration
+Infrastructure services remained stable
 </li>
 
 </ul>
@@ -848,7 +850,7 @@ Infrastructure services remained stable after migration
 
 </div>
 
-<!-- RESULT -->
+<!-- CARD 7 -->
 
 <div class="incident-card card-green">
 
@@ -867,12 +869,12 @@ while maintaining operational continuity across infrastructure services.
 
 <p>
 The updated storage allocation strategy improved capacity management and
-restored additional headroom for future infrastructure expansion.
+restored additional storage headroom for future infrastructure expansion.
 </p>
 
 </div>
 
-<!-- LESSONS -->
+<!-- CARD 8 -->
 
 <div class="incident-card card-gold">
 
@@ -897,7 +899,7 @@ Infrastructure growth can rapidly impact datastore utilization
 </li>
 
 <li>
-Segregating workloads across multiple storage tiers improves flexibility
+Segregating workloads across storage tiers improves flexibility
 </li>
 
 <li>
