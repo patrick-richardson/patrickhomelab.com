@@ -8,9 +8,9 @@
 
 <style>
 
-/* ========================================
+/* =========================================
    GLOBAL
-======================================== */
+========================================= */
 
 *{
     margin:0;
@@ -32,12 +32,12 @@ body{
         "Segoe UI",
         sans-serif;
 
-    line-height:1.7;
+    line-height:1.6;
 }
 
-/* ========================================
+/* =========================================
    NAVIGATION
-======================================== */
+========================================= */
 
 header{
     position:sticky;
@@ -87,9 +87,9 @@ nav{
     color:#58a6ff;
 }
 
-/* ========================================
+/* =========================================
    HERO
-======================================== */
+========================================= */
 
 .hero{
     position:relative;
@@ -114,14 +114,14 @@ nav{
     background-size:cover;
     background-position:center;
 
-    opacity:.28;
+    opacity:.22;
 }
 
 .hero-content{
     position:relative;
     z-index:2;
 
-    max-width:900px;
+    max-width:1000px;
     margin:auto;
 }
 
@@ -147,7 +147,7 @@ nav{
     font-size:64px;
     line-height:1.05;
 
-    margin-bottom:28px;
+    margin-bottom:26px;
 
     color:white;
 }
@@ -159,24 +159,36 @@ nav{
 
     color:#b8c2cc;
 
-    font-size:19px;
+    font-size:18px;
 }
 
-/* ========================================
-   MAIN CONTENT
-======================================== */
+/* =========================================
+   MAIN CONTAINER
+========================================= */
 
 .main-container{
-    max-width:1000px;
+    max-width:1600px;
 
     margin:auto;
 
-    padding:80px 24px 120px;
+    padding:0 24px 120px;
 }
 
-/* ========================================
-   INCIDENT CARD
-======================================== */
+/* =========================================
+   INCIDENT GRID
+========================================= */
+
+.incident-grid{
+    display:grid;
+
+    grid-template-columns:repeat(4, 1fr);
+
+    gap:28px;
+}
+
+/* =========================================
+   INCIDENT CARDS
+========================================= */
 
 .incident-card{
     background:
@@ -186,92 +198,136 @@ nav{
             rgba(8,14,24,.96)
         );
 
-    border:1px solid rgba(70,120,180,.18);
+    border:1px solid rgba(70,120,180,.16);
 
-    border-radius:28px;
+    border-radius:24px;
 
-    padding:60px;
+    padding:30px;
 
-    box-shadow:
-        0 30px 80px rgba(0,0,0,.45);
+    min-height:420px;
+
+    position:relative;
 
     overflow:hidden;
+
+    transition:.25s ease;
 }
 
-/* ========================================
-   SECTION STYLING
-======================================== */
+.incident-card:hover{
+    transform:translateY(-4px);
 
-.section{
-    margin-bottom:60px;
+    border-color:rgba(88,166,255,.32);
+
+    box-shadow:
+        0 18px 40px rgba(0,0,0,.38);
 }
 
-.section:last-child{
-    margin-bottom:0;
+.incident-card::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:3px;
+
+    background:linear-gradient(
+        90deg,
+        #58a6ff,
+        transparent
+    );
 }
 
-.section h2{
-    font-size:34px;
+/* =========================================
+   CARD TYPES
+========================================= */
 
-    margin-bottom:22px;
-
-    color:white;
+.card-blue::before{
+    background:linear-gradient(90deg,#58a6ff,transparent);
 }
 
-.section p{
-    color:#c4d0da;
-
-    margin-bottom:18px;
+.card-red::before{
+    background:linear-gradient(90deg,#ff6b6b,transparent);
 }
 
-/* ========================================
-   INFO BLOCKS
-======================================== */
-
-.info-block{
-    margin-top:26px;
-
-    padding:28px;
-
-    background:rgba(10,18,30,.55);
-
-    border:1px solid rgba(80,120,180,.14);
-
-    border-radius:20px;
+.card-purple::before{
+    background:linear-gradient(90deg,#b388ff,transparent);
 }
 
-.info-block h3{
-    margin-bottom:18px;
+.card-green::before{
+    background:linear-gradient(90deg,#7ee787,transparent);
+}
+
+.card-gold::before{
+    background:linear-gradient(90deg,#ffd580,transparent);
+}
+
+/* =========================================
+   CARD CONTENT
+========================================= */
+
+.card-label{
+    display:inline-block;
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    background:rgba(88,166,255,.10);
+
+    border:1px solid rgba(88,166,255,.18);
 
     color:#6cb6ff;
 
-    font-size:20px;
+    font-size:12px;
+
+    margin-bottom:18px;
 }
 
-.info-block ul{
-    padding-left:22px;
+.incident-card h2{
+    font-size:28px;
+
+    color:white;
+
+    margin-bottom:20px;
 }
 
-.info-block li{
+.incident-card p{
+    color:#c7d0db;
+
+    margin-bottom:18px;
+
+    font-size:15px;
+}
+
+.incident-card ul{
+    padding-left:20px;
+}
+
+.incident-card li{
     margin-bottom:12px;
 
-    color:#d3dce6;
+    color:#d8e1ea;
+
+    font-size:15px;
 }
 
-/* ========================================
-   COMMAND BLOCK
-======================================== */
+/* =========================================
+   CODE BLOCK
+========================================= */
 
 .command-block{
-    margin-top:24px;
+    margin-top:20px;
 
     background:#050b14;
 
     border:1px solid rgba(88,166,255,.18);
 
-    border-radius:16px;
+    border-radius:14px;
 
-    padding:22px;
+    padding:18px;
 
     overflow-x:auto;
 }
@@ -279,23 +335,21 @@ nav{
 .command-block code{
     color:#8fd0ff;
 
-    font-family:
-        Consolas,
-        monospace;
+    font-family:Consolas, monospace;
 
-    font-size:14px;
+    font-size:13px;
 }
 
-/* ========================================
+/* =========================================
    RESULT PANEL
-======================================== */
+========================================= */
 
 .result-panel{
-    margin-top:28px;
+    margin-top:18px;
 
-    padding:32px;
+    padding:20px;
 
-    border-radius:20px;
+    border-radius:18px;
 
     background:
         linear-gradient(
@@ -304,25 +358,19 @@ nav{
             rgba(8,18,15,.6)
         );
 
-    border:1px solid rgba(60,180,120,.18);
+    border:1px solid rgba(60,180,120,.16);
 }
 
-.result-panel h3{
-    color:#7ee787;
-
-    margin-bottom:18px;
-}
-
-/* ========================================
+/* =========================================
    LESSONS PANEL
-======================================== */
+========================================= */
 
 .lessons-panel{
-    margin-top:28px;
+    margin-top:18px;
 
-    padding:32px;
+    padding:20px;
 
-    border-radius:20px;
+    border-radius:18px;
 
     background:
         linear-gradient(
@@ -331,18 +379,12 @@ nav{
             rgba(18,14,8,.65)
         );
 
-    border:1px solid rgba(220,170,70,.18);
+    border:1px solid rgba(220,170,70,.16);
 }
 
-.lessons-panel h3{
-    color:#ffd580;
-
-    margin-bottom:18px;
-}
-
-/* ========================================
+/* =========================================
    FOOTER
-======================================== */
+========================================= */
 
 footer{
     text-align:center;
@@ -354,24 +396,30 @@ footer{
     border-top:1px solid rgba(80,120,180,.12);
 
     font-size:14px;
+
+    margin-top:80px;
 }
 
-/* ========================================
-   MOBILE
-======================================== */
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:1400px){
+
+    .incident-grid{
+        grid-template-columns:repeat(2, 1fr);
+    }
+
+}
 
 @media(max-width:900px){
 
     .hero h1{
-        font-size:44px;
+        font-size:42px;
     }
 
-    .incident-card{
-        padding:36px;
-    }
-
-    .section h2{
-        font-size:28px;
+    .incident-grid{
+        grid-template-columns:1fr;
     }
 
 }
@@ -440,18 +488,24 @@ PatrickHomeLab virtualization environment.
 </section>
 
 <!-- =====================================
-     MAIN CONTENT
+     GRID CONTENT
 ===================================== -->
 
 <div class="main-container">
 
-<div class="incident-card">
+<div class="incident-grid">
 
 <!-- OVERVIEW -->
 
-<section class="section">
+<div class="incident-card card-blue">
 
-<h2>Overview</h2>
+<div class="card-label">
+Overview
+</div>
+
+<h2>
+Incident Summary
+</h2>
 
 <p>
 The Forge Proxmox hypervisor began approaching primary NVMe datastore
@@ -461,21 +515,23 @@ infrastructure workloads.
 
 <p>
 To restore available storage capacity and improve long-term infrastructure
-management flexibility, selected virtual machine workloads were migrated from
-the primary NVMe datastore to a dedicated SSD-based datastore.
+management flexibility, selected virtual machine workloads were migrated
+from the primary NVMe datastore to a dedicated SSD-based datastore.
 </p>
 
-</section>
+</div>
 
 <!-- ENVIRONMENT -->
 
-<section class="section">
+<div class="incident-card card-blue">
 
-<h2>Environment</h2>
+<div class="card-label">
+Environment
+</div>
 
-<div class="info-block">
-
-<h3>Infrastructure Components</h3>
+<h2>
+Infrastructure Components
+</h2>
 
 <ul>
 
@@ -504,23 +560,23 @@ Affected Infrastructure:
 
 </div>
 
-</section>
-
 <!-- PROBLEM -->
 
-<section class="section">
+<div class="incident-card card-red">
 
-<h2>Problem</h2>
+<div class="card-label">
+Problem
+</div>
+
+<h2>
+Operational Risks
+</h2>
 
 <p>
 The primary NVMe datastore was approaching operational storage thresholds,
 creating several infrastructure risks and limiting future expansion
 capabilities.
 </p>
-
-<div class="info-block">
-
-<h3>Operational Risks Identified</h3>
 
 <ul>
 
@@ -548,23 +604,23 @@ Potential impact to long-term virtualization stability
 
 </div>
 
-</section>
-
 <!-- OBJECTIVE -->
 
-<section class="section">
+<div class="incident-card card-purple">
 
-<h2>Objective</h2>
+<div class="card-label">
+Objective
+</div>
+
+<h2>
+Migration Goals
+</h2>
 
 <p>
-The objective of the migration effort was to redistribute VM storage workloads
-to a dedicated SSD datastore while maintaining operational continuity across
-lab infrastructure services.
+The objective of the migration effort was to redistribute VM storage
+workloads to a dedicated SSD datastore while maintaining operational
+continuity across lab infrastructure services.
 </p>
-
-<div class="info-block">
-
-<h3>Migration Goals</h3>
 
 <ul>
 
@@ -581,33 +637,24 @@ Preserve infrastructure operational stability
 </li>
 
 <li>
-Maintain service availability during migration
-</li>
-
-<li>
-Improve future scalability of the environment
+Improve future scalability
 </li>
 
 </ul>
 
 </div>
 
-</section>
-
 <!-- ACTIONS -->
 
-<section class="section">
+<div class="incident-card card-purple">
 
-<h2>Migration Actions</h2>
+<div class="card-label">
+Migration Actions
+</div>
 
-<p>
-Several operational tasks were completed to safely redistribute storage
-workloads across available datastores.
-</p>
-
-<div class="info-block">
-
-<h3>Actions Performed</h3>
+<h2>
+Actions Performed
+</h2>
 
 <ul>
 
@@ -635,13 +682,7 @@ Validated successful VM boot operations
 Verified service availability post-migration
 </li>
 
-<li>
-Confirmed restored datastore capacity levels
-</li>
-
 </ul>
-
-</div>
 
 <div class="command-block">
 
@@ -651,22 +692,26 @@ qm move_disk &lt;vmid&gt; scsi0 &lt;target-storage&gt;
 
 </div>
 
-</section>
+</div>
 
 <!-- VALIDATION -->
 
-<section class="section">
+<div class="incident-card card-green">
 
-<h2>Validation</h2>
+<div class="card-label">
+Validation
+</div>
+
+<h2>
+Post-Migration Validation
+</h2>
 
 <p>
-Post-migration validation procedures confirmed infrastructure stability and
-successful workload redistribution.
+Infrastructure stability and successful workload redistribution were
+validated after migration operations completed.
 </p>
 
 <div class="result-panel">
-
-<h3>Validation Results</h3>
 
 <ul>
 
@@ -687,24 +732,26 @@ No data loss observed
 </li>
 
 <li>
-Hypervisor storage utilization successfully reduced
-</li>
-
-<li>
-Infrastructure services remained stable after migration
+Infrastructure services remained stable
 </li>
 
 </ul>
 
 </div>
 
-</section>
+</div>
 
 <!-- RESULT -->
 
-<section class="section">
+<div class="incident-card card-green">
 
-<h2>Result</h2>
+<div class="card-label">
+Result
+</div>
+
+<h2>
+Operational Outcome
+</h2>
 
 <p>
 The migration successfully reduced pressure on the primary NVMe datastore
@@ -716,17 +763,21 @@ The updated storage allocation strategy improved capacity management and
 restored additional headroom for future infrastructure expansion.
 </p>
 
-</section>
+</div>
 
 <!-- LESSONS -->
 
-<section class="section">
+<div class="incident-card card-gold">
 
-<h2>Lessons Learned</h2>
+<div class="card-label">
+Lessons Learned
+</div>
+
+<h2>
+Operational Takeaways
+</h2>
 
 <div class="lessons-panel">
-
-<h3>Operational Takeaways</h3>
 
 <ul>
 
@@ -743,20 +794,18 @@ Segregating workloads across multiple storage tiers improves flexibility
 </li>
 
 <li>
-Capacity monitoring should be integrated into routine infrastructure
-management workflows
+Capacity monitoring should be integrated into routine workflows
 </li>
 
 <li>
-Storage scalability planning becomes increasingly important as services
-expand
+Storage scalability planning becomes increasingly important
 </li>
 
 </ul>
 
 </div>
 
-</section>
+</div>
 
 </div>
 
