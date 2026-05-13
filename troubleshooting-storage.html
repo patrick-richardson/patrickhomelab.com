@@ -3,142 +3,917 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>PatrickHomeLab | Storage Infrastructure Troubleshooting</title>
 
 <style>
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background: #0f1720;
-  color: #e6edf3;
+
+/* =========================================
+   GLOBAL
+========================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-/* NAV */
-header {
-  background: #0f1720;
-  border-bottom: 1px solid #2a3440;
-  padding: 18px;
+body{
+    background:
+        radial-gradient(circle at top, #16202d 0%, #0b1118 55%),
+        #0b1118;
+
+    color:#e6edf3;
+
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        sans-serif;
+
+    overflow-x:hidden;
 }
 
-nav {
-  max-width: 1400px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* =========================================
+   NAVIGATION
+========================================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    backdrop-filter:blur(14px);
+
+    background:rgba(10,15,22,.78);
+
+    border-bottom:1px solid rgba(88,166,255,.12);
 }
 
-nav a {
-  color: #d0d7de;
-  text-decoration: none;
-  margin-left: 24px;
-  font-weight: 500;
+nav{
+    max-width:1500px;
+
+    margin:auto;
+
+    padding:18px 30px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
-nav a:hover {
-  color: #58a6ff;
+.logo{
+    font-size:20px;
+    font-weight:700;
+    letter-spacing:.5px;
 }
 
-/* HERO */
-.hero {
-  height: 260px;
-  background:
-    linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
-    url("images/lab-topology.png");
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.nav-links{
+    display:flex;
+    gap:28px;
 }
 
-.hero h1 {
-  font-size: 40px;
-  text-align: center;
+.nav-links a{
+    color:#c9d1d9;
+
+    text-decoration:none;
+
+    font-size:14px;
+    font-weight:500;
+
+    transition:.2s ease;
 }
 
-/* FULL WIDTH INFOGRAPHIC SECTION */
-.infographic {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 60px 20px;
+.nav-links a:hover{
+    color:#58a6ff;
 }
 
-.infographic img {
-  width: 95%;
-  max-width: 1800px;
-  height: auto;
-  border-radius: 14px;
-  box-shadow: 0 30px 120px rgba(0,0,0,0.6);
+/* =========================================
+   HERO SECTION
+========================================= */
+
+.hero{
+    position:relative;
+
+    min-height:420px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:80px 30px;
+
+    text-align:center;
+
+    overflow:hidden;
 }
 
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 40px;
-  color: #9da7b3;
-  border-top: 1px solid #2a3440;
-  margin-top: 80px;
+/* Background Overlay */
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(rgba(6,10,15,.82), rgba(6,10,15,.88)),
+        url("images/lab-topology.png");
+
+    background-size:cover;
+    background-position:center;
+
+    opacity:.25;
+
+    z-index:0;
 }
+
+/* Subtle Grid */
+
+.hero::after{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+
+    background-size:40px 40px;
+
+    z-index:1;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+
+    max-width:1000px;
+}
+
+.hero-tag{
+
+    display:inline-block;
+
+    padding:8px 16px;
+
+    border:1px solid rgba(88,166,255,.25);
+
+    border-radius:999px;
+
+    background:rgba(88,166,255,.08);
+
+    color:#58a6ff;
+
+    font-size:13px;
+    font-weight:600;
+
+    margin-bottom:24px;
+}
+
+.hero h1{
+
+    font-size:56px;
+
+    line-height:1.1;
+
+    margin-bottom:24px;
+
+    font-weight:800;
+}
+
+.hero p{
+
+    font-size:20px;
+
+    line-height:1.8;
+
+    color:#b9c3cf;
+
+    max-width:900px;
+
+    margin:auto;
+}
+
+.hero-divider{
+
+    width:140px;
+    height:4px;
+
+    margin:30px auto;
+
+    border-radius:999px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #58a6ff,
+            transparent
+        );
+}
+
+/* =========================================
+   MAIN LAYOUT
+========================================= */
+
+main{
+    max-width:1500px;
+    margin:auto;
+
+    padding:90px 30px 120px 30px;
+}
+
+.section-header{
+
+    margin-bottom:50px;
+}
+
+.section-header h2{
+
+    font-size:38px;
+
+    margin-bottom:16px;
+}
+
+.section-header p{
+
+    color:#aab6c2;
+
+    line-height:1.7;
+
+    max-width:900px;
+}
+
+/* =========================================
+   INCIDENT GRID
+========================================= */
+
+.incident-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(340px,1fr));
+
+    gap:30px;
+
+    margin-bottom:120px;
+}
+
+.incident-card{
+
+    position:relative;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(23,31,42,.92),
+            rgba(15,21,30,.95)
+        );
+
+    border:
+        1px solid rgba(88,166,255,.12);
+
+    border-radius:22px;
+
+    padding:34px;
+
+    overflow:hidden;
+
+    transition:.25s ease;
+}
+
+.incident-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:rgba(88,166,255,.35);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.45);
+}
+
+.incident-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #58a6ff,
+            #2ea043
+        );
+}
+
+.incident-label{
+
+    color:#58a6ff;
+
+    font-size:13px;
+    font-weight:700;
+
+    letter-spacing:1px;
+
+    margin-bottom:18px;
+
+    text-transform:uppercase;
+}
+
+.incident-card h3{
+
+    font-size:28px;
+
+    margin-bottom:20px;
+}
+
+.incident-card p{
+
+    color:#b5c0cc;
+
+    line-height:1.8;
+
+    margin-bottom:28px;
+}
+
+.incident-meta{
+
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.incident-meta span{
+
+    background:rgba(88,166,255,.08);
+
+    border:1px solid rgba(88,166,255,.12);
+
+    color:#8fc1ff;
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    font-size:13px;
+}
+
+/* =========================================
+   ARCHITECTURE PANEL
+========================================= */
+
+.architecture-panel{
+
+    position:relative;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(20,28,38,.95),
+            rgba(12,18,26,.98)
+        );
+
+    border:
+        1px solid rgba(88,166,255,.12);
+
+    border-radius:28px;
+
+    padding:60px;
+
+    margin-bottom:120px;
+
+    overflow:hidden;
+}
+
+.architecture-panel::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(88,166,255,.12),
+            transparent 40%
+        );
+
+    pointer-events:none;
+}
+
+.architecture-placeholder{
+
+    margin-top:40px;
+
+    min-height:420px;
+
+    border-radius:20px;
+
+    border:
+        1px dashed rgba(88,166,255,.2);
+
+    background:
+        rgba(255,255,255,.015);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    color:#7f8b97;
+
+    padding:30px;
+}
+
+/* =========================================
+   BOOKSTACK SECTION
+========================================= */
+
+.bookstack-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(380px,1fr));
+
+    gap:30px;
+}
+
+.bookstack-card{
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(20,28,38,.95),
+            rgba(12,18,26,.98)
+        );
+
+    border:
+        1px solid rgba(88,166,255,.12);
+
+    border-radius:22px;
+
+    padding:34px;
+
+    transition:.25s ease;
+}
+
+.bookstack-card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:rgba(88,166,255,.35);
+}
+
+.bookstack-card h3{
+
+    font-size:24px;
+
+    margin-bottom:20px;
+
+    color:#58a6ff;
+}
+
+.bookstack-card p{
+
+    color:#b5c0cc;
+
+    line-height:1.8;
+
+    margin-bottom:26px;
+}
+
+.command-block{
+
+    background:#0b1118;
+
+    border:
+        1px solid rgba(88,166,255,.12);
+
+    border-radius:14px;
+
+    padding:18px;
+
+    font-family:
+        Consolas,
+        monospace;
+
+    color:#8fc1ff;
+
+    overflow-x:auto;
+
+    margin-bottom:24px;
+}
+
+.doc-link{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:#58a6ff;
+
+    text-decoration:none;
+
+    font-weight:600;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer{
+
+    margin-top:120px;
+
+    border-top:
+        1px solid rgba(88,166,255,.12);
+
+    padding:50px 30px;
+
+    text-align:center;
+
+    color:#7f8b97;
+
+    font-size:14px;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:900px){
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .hero p{
+        font-size:18px;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .architecture-panel{
+        padding:40px 28px;
+    }
+
+}
+
 </style>
 </head>
 
 <body>
 
-<header>
-  <nav>
-    <div><strong>PatrickHomeLab</strong></div>
+<!-- =========================================
+     NAVIGATION
+========================================= -->
 
-    <div>
-      <a href="index.html">Home</a>
-      <a href="profile.html">Profile</a>
-      <a href="architecture.html">Architecture</a>
-      <a href="topology.html">Topology</a>
-      <a href="projects.html">Projects</a>
-      <a href="troubleshooting.html">Troubleshooting</a>
-      <a href="monitoring.html">Monitoring</a>
-      <a href="https://github.com/patrick-richardson" target="_blank">GitHub</a>
-    </div>
-  </nav>
+<header>
+
+<nav>
+
+<div class="logo">
+PatrickHomeLab
+</div>
+
+<div class="nav-links">
+
+<a href="index.html">Home</a>
+<a href="profile.html">Profile</a>
+<a href="architecture.html">Architecture</a>
+<a href="topology.html">Topology</a>
+<a href="projects.html">Projects</a>
+<a href="troubleshooting.html">Troubleshooting</a>
+<a href="monitoring.html">Monitoring</a>
+
+<a href="https://github.com/patrick-richardson" target="_blank">
+GitHub
+</a>
+
+</div>
+
+</nav>
+
 </header>
 
+<!-- =========================================
+     HERO
+========================================= -->
+
 <section class="hero">
-  <h1>Storage Infrastructure Troubleshooting</h1>
+
+<div class="hero-content">
+
+<div class="hero-tag">
+Storage Operations • Incident Response • Infrastructure Diagnostics
+</div>
+
+<h1>
+Storage Infrastructure Troubleshooting
+</h1>
+
+<div class="hero-divider"></div>
+
+<p>
+
+Operational incidents, NFS recovery workflows,
+backup validation, media infrastructure diagnostics,
+and engineering documentation from PatrickHomeLab.
+
+</p>
+
+</div>
+
 </section>
 
-<h2 style="
-  text-align:center;
-  margin-top:50px;
-  font-weight:600;
-  color:#c9d1d9;
-  letter-spacing:0.5px;
-">
-  Operational incidents, NFS recovery workflows, backup validation,
-and media infrastructure diagnostics from PatrickHomeLab.
-</h2>>
+<!-- =========================================
+     MAIN CONTENT
+========================================= -->
 
-<section class="hero">
+<main>
 
-    <div class="hero-content">
+<!-- =========================================
+     INCIDENT SECTION
+========================================= -->
 
-        <h1>
-           Storage Infrastructure Troubleshooting
-        </h1>
+<section>
 
-        <div class="hero-accent"></div>
+<div class="section-header">
 
-        <p>
+<h2>
+Featured Storage Incidents
+</h2>
 
-            Operational incidents, NFS recovery workflows, backup validation,
-and media infrastructure diagnostics from PatrickHomeLab.
+<p>
 
-        </p>
+Operational failures, recovery workflows,
+and infrastructure troubleshooting scenarios
+documented throughout the PatrickHomeLab environment.
 
-    </div>
+</p>
+
+</div>
+
+<div class="incident-grid">
+
+<div class="incident-card">
+
+<div class="incident-label">
+Storage Recovery
+</div>
+
+<h3>
+NFS Dependency Failure
+</h3>
+
+<p>
+
+Placeholder for media outage diagnostics,
+mount dependency failures, and automated
+service recovery workflows.
+
+</p>
+
+<div class="incident-meta">
+
+<span>Linux</span>
+<span>NFS</span>
+<span>systemd</span>
+<span>Plex</span>
+
+</div>
+
+</div>
+
+<div class="incident-card">
+
+<div class="incident-label">
+Backup Operations
+</div>
+
+<h3>
+AWS S3 Backup Migration
+</h3>
+
+<p>
+
+Placeholder for Intelligent-Tiering migration,
+rclone validation workflows,
+and long-term storage architecture redesign.
+
+</p>
+
+<div class="incident-meta">
+
+<span>AWS S3</span>
+<span>rclone</span>
+<span>Backups</span>
+<span>Recovery</span>
+
+</div>
+
+</div>
+
+<div class="incident-card">
+
+<div class="incident-label">
+Infrastructure Diagnostics
+</div>
+
+<h3>
+Plex Storage Recovery
+</h3>
+
+<p>
+
+Placeholder for media availability failures,
+mount validation procedures,
+and infrastructure restoration workflows.
+
+</p>
+
+<div class="incident-meta">
+
+<span>Plex</span>
+<span>Storage</span>
+<span>Recovery</span>
+<span>Diagnostics</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================
+     ARCHITECTURE PANEL
+========================================= -->
+
+<section class="architecture-panel">
+
+<div class="section-header">
+
+<h2>
+Storage Architecture
+</h2>
+
+<p>
+
+Storage topology, NFS infrastructure,
+backup validation workflows,
+and media distribution architecture.
+
+</p>
+
+</div>
+
+<div class="architecture-placeholder">
+
+Future storage architecture diagram placement.
+
+Recommended Flow:
+
+Forge → Vault-01 → NFS Export → media-01 → Plex
+↓
+AWS S3 Backup Infrastructure
+
+</div>
+
+</section>
+
+<!-- =========================================
+     BOOKSTACK SECTION
+========================================= -->
+
+<section>
+
+<div class="section-header">
+
+<h2>
+Operational Documentation
+</h2>
+
+<p>
+
+Engineering notes, incident reports,
+recovery procedures, and troubleshooting workflows
+integrated from BookStack documentation.
+
+</p>
+
+</div>
+
+<div class="bookstack-grid">
+
+<div class="bookstack-card">
+
+<h3>
+Incident KB-001
+</h3>
+
+<p>
+
+Placeholder for operational storage incident documentation,
+service validation workflows,
+and infrastructure recovery notes.
+
+</p>
+
+<div class="command-block">
+systemctl status mnt-vault\x2dmedia.mount
+</div>
+
+<a href="#" class="doc-link">
+View Full Engineering Notes →
+</a>
+
+</div>
+
+<div class="bookstack-card">
+
+<h3>
+Incident KB-002
+</h3>
+
+<p>
+
+Placeholder for backup diagnostics,
+rclone troubleshooting,
+and storage migration validation.
+
+</p>
+
+<div class="command-block">
+rclone sync /mnt/media aws-backup:bucket-name
+</div>
+
+<a href="#" class="doc-link">
+View Full Engineering Notes →
+</a>
+
+</div>
+
+<div class="bookstack-card">
+
+<h3>
+Incident KB-003
+</h3>
+
+<p>
+
+Placeholder for Plex outage diagnostics,
+NFS timeout recovery,
+and service restoration workflows.
+
+</p>
+
+<div class="command-block">
+journalctl -u plexmediaserver -b
+</div>
+
+<a href="#" class="doc-link">
+View Full Engineering Notes →
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<!-- =========================================
+     FOOTER
+========================================= -->
 
 <footer>
-  PatrickHomeLab • Infrastructure Engineering in Practice
+
+PatrickHomeLab • Infrastructure Engineering in Practice
+
 </footer>
 
 </body>
