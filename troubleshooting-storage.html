@@ -991,35 +991,83 @@ and media distribution architecture.
 
 <div class="storage-topology">
 
-<div class="topology-node forge">
+    <!-- FORGE -->
 
-<div class="node-status"></div>
+    <div class="topology-node forge">
 
-<h3>Forge</h3>
+        <div class="node-status"></div>
 
-<p>Proxmox VE Hypervisor</p>
+        <h3>Forge</h3>
 
-<span>
-VM Host / Compute Layer
-</span>
+        <p>Proxmox VE Hypervisor</p>
+
+        <span>
+            VM Host / Compute Layer
+        </span>
+
+    </div>
+
+    <!-- FLOW TO VAULT -->
+
+    <div class="flow-line horizontal">
+        <span>Hosts</span>
+    </div>
+
+    <!-- VAULT -->
+
+    <div class="topology-node vault">
+
+        <div class="node-status"></div>
+
+        <h3>vault-01</h3>
+
+        <p>NFS Storage Server</p>
+
+        <span>
+            /mnt/media Export
+        </span>
+
+    </div>
+
+    <!-- RIGHT SIDE STACK -->
+
+    <div class="right-stack">
+
+        <!-- MEDIA -->
+
+        <div class="topology-node media">
+
+            <div class="node-status"></div>
+
+            <h3>media-01</h3>
+
+            <p>Plex Media Server</p>
+
+            <span>
+                /mnt/vault-media Mount
+            </span>
+
+        </div>
+
+        <!-- AWS -->
+
+        <div class="topology-node aws">
+
+            <div class="node-status backup"></div>
+
+            <h3>AWS S3</h3>
+
+            <p>Offsite Backup</p>
+
+            <span>
+                rclone / Intelligent-Tiering
+            </span>
+
+        </div>
+
+    </div>
 
 </div>
-
-<div class="flow-line">
-<span>Hosts</span>
-</div>
-
-<div class="topology-node vault">
-
-<div class="node-status"></div>
-
-<h3>vault-01</h3>
-
-<p>NFS Storage Server</p>
-
-<span>
-/mnt/media Export
-</span>
 
 </div>
 
