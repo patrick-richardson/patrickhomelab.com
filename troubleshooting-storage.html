@@ -132,7 +132,7 @@ nav{
     background-size:cover;
     background-position:center;
 
-    opacity:.12;
+    opacity:.10;
 
     z-index:0;
 }
@@ -429,38 +429,37 @@ main{
 
 .storage-topology{
 
-    margin-top:70px;
+    margin-top:80px;
 
-    display:grid;
-
-    grid-template-columns:
-        1fr
-        120px
-        1fr
-        1.2fr;
+    display:flex;
 
     align-items:center;
+    justify-content:center;
 
-    gap:30px;
+    gap:60px;
+
+    position:relative;
 }
 
-/* NODES */
+/* NODE STYLING */
 
 .topology-node{
 
     position:relative;
 
+    width:280px;
+
     background:
         linear-gradient(
             180deg,
-            rgba(18,29,42,.95),
+            rgba(18,29,42,.96),
             rgba(10,16,24,.98)
         );
 
     border:
         1px solid rgba(88,166,255,.18);
 
-    border-radius:22px;
+    border-radius:24px;
 
     padding:34px;
 
@@ -495,7 +494,7 @@ main{
     line-height:1.6;
 }
 
-/* STATUS LIGHTS */
+/* STATUS LIGHT */
 
 .node-status{
 
@@ -520,12 +519,11 @@ main{
         0 0 18px rgba(88,166,255,.9);
 }
 
-/* FLOW LINE */
+/* FLOW LINES */
 
 .flow-line{
 
-    position:relative;
-
+    width:90px;
     height:2px;
 
     background:
@@ -535,6 +533,8 @@ main{
             #58a6ff,
             rgba(88,166,255,.15)
         );
+
+    position:relative;
 }
 
 .flow-line::after{
@@ -569,20 +569,20 @@ main{
     white-space:nowrap;
 }
 
-/* RIGHT SIDE STACK */
+/* RIGHT SIDE */
 
 .right-stack{
-
-    position:relative;
 
     display:flex;
 
     flex-direction:column;
 
-    gap:36px;
+    gap:40px;
+
+    position:relative;
 }
 
-/* BRANCH CONNECTOR */
+/* CONNECTOR HUB */
 
 .right-stack::before{
 
@@ -753,10 +753,7 @@ footer{
 
     .storage-topology{
 
-        display:flex;
         flex-direction:column;
-
-        gap:30px;
     }
 
     .flow-line{
@@ -767,11 +764,6 @@ footer{
 
     .flow-line::after{
         display:none;
-    }
-
-    .right-stack{
-
-        width:100%;
     }
 
     .right-stack::before,
@@ -790,9 +782,7 @@ footer{
 
 <body>
 
-<!-- =========================================
-     NAVIGATION
-========================================= -->
+<!-- NAVIGATION -->
 
 <header>
 
@@ -822,9 +812,7 @@ GitHub
 
 </header>
 
-<!-- =========================================
-     HERO
-========================================= -->
+<!-- HERO -->
 
 <section class="hero">
 
@@ -852,9 +840,7 @@ and engineering documentation from PatrickHomeLab.
 
 </section>
 
-<!-- =========================================
-     MAIN CONTENT
-========================================= -->
+<!-- MAIN -->
 
 <main>
 
