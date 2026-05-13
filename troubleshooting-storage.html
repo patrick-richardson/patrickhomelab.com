@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PatrickHomeLab | Storage Infrastructure Troubleshooting</title>
+<title>PatrickHomeLab | Primary NVMe Datastore Capacity Exhaustion Risk</title>
 
 <style>
 
@@ -33,6 +33,8 @@ body{
         "Segoe UI",
         sans-serif;
 
+    line-height:1.7;
+
     overflow-x:hidden;
 }
 
@@ -46,12 +48,11 @@ header{
     top:0;
     z-index:1000;
 
-    background:rgba(8,12,18,.82);
+    background:rgba(5,10,18,.88);
 
-    backdrop-filter:blur(14px);
+    backdrop-filter:blur(12px);
 
-    border-bottom:
-        1px solid rgba(88,166,255,.10);
+    border-bottom:1px solid rgba(80,120,180,.10);
 }
 
 nav{
@@ -60,39 +61,44 @@ nav{
 
     margin:auto;
 
-    padding:18px 36px;
+    padding:18px 32px;
 
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
 }
 
 .logo{
 
-    font-size:20px;
+    font-size:15px;
+
     font-weight:700;
-    letter-spacing:.5px;
+
+    color:white;
 }
 
 .nav-links{
 
     display:flex;
-    gap:28px;
+
+    gap:22px;
 }
 
 .nav-links a{
 
-    color:#c9d1d9;
+    color:#c7d0db;
 
     text-decoration:none;
 
     font-size:14px;
-    font-weight:500;
 
     transition:.2s ease;
 }
 
 .nav-links a:hover{
+
     color:#58a6ff;
 }
 
@@ -104,17 +110,11 @@ nav{
 
     position:relative;
 
-    min-height:520px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-
-    padding:100px 30px 80px 30px;
+    padding:140px 20px 110px;
 
     overflow:hidden;
+
+    text-align:center;
 }
 
 .hero::before{
@@ -125,31 +125,13 @@ nav{
     inset:0;
 
     background:
-        linear-gradient(rgba(6,10,15,.88), rgba(6,10,15,.92)),
+        linear-gradient(rgba(3,10,18,.82), rgba(3,10,18,.95)),
         url("images/lab-topology.png");
 
     background-size:cover;
     background-position:center;
 
-    opacity:.10;
-
-    z-index:0;
-}
-
-.hero::after{
-
-    content:"";
-
-    position:absolute;
-    inset:0;
-
-    background-image:
-        linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
-
-    background-size:40px 40px;
-
-    z-index:1;
+    opacity:.22;
 }
 
 .hero-content{
@@ -157,118 +139,81 @@ nav{
     position:relative;
     z-index:2;
 
-    max-width:900px;
+    max-width:1000px;
+
+    margin:auto;
 }
 
-.hero-tag{
+.hero-badge{
 
     display:inline-block;
 
-    padding:10px 18px;
+    padding:8px 18px;
 
     border-radius:999px;
 
-    border:
-        1px solid rgba(88,166,255,.22);
+    background:rgba(15,25,40,.85);
 
-    background:
-        rgba(88,166,255,.08);
+    border:1px solid rgba(88,166,255,.20);
 
-    color:#58a6ff;
+    color:#6cb6ff;
 
     font-size:13px;
-    font-weight:700;
 
     margin-bottom:30px;
 }
 
 .hero h1{
 
-    font-size:72px;
+    font-size:64px;
 
     line-height:1.05;
 
     margin-bottom:28px;
 
-    font-weight:800;
-}
-
-.hero-divider{
-
-    width:160px;
-    height:4px;
-
-    border-radius:999px;
-
-    margin:0 auto 34px auto;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #58a6ff,
-            transparent
-        );
+    color:white;
 }
 
 .hero p{
 
-    font-size:22px;
-
-    line-height:1.9;
-
-    color:#b5c0cc;
-}
-
-/* =========================================
-   MAIN CONTENT
-========================================= */
-
-main{
-
-    max-width:1850px;
+    max-width:760px;
 
     margin:auto;
 
-    padding:100px 40px 140px 40px;
-}
+    color:#b8c2cc;
 
-.section-header{
-
-    margin-bottom:55px;
-}
-
-.section-header h2{
-
-    font-size:42px;
-
-    margin-bottom:18px;
-}
-
-.section-header p{
-
-    color:#aeb8c3;
-
-    line-height:1.8;
-
-    max-width:950px;
+    font-size:18px;
 }
 
 /* =========================================
-   INCIDENT GRID
+   MAIN CONTAINER
+========================================= */
+
+.main-container{
+
+    width:100%;
+
+    padding:0 60px 120px;
+}
+
+/* =========================================
+   GRID
 ========================================= */
 
 .incident-grid{
 
     display:grid;
 
-    grid-template-columns:
-        repeat(auto-fit, minmax(420px,1fr));
+    grid-template-columns:repeat(4, 1fr);
 
-    gap:34px;
+    gap:36px;
 
-    margin-bottom:130px;
+    align-items:stretch;
 }
+
+/* =========================================
+   CARDS
+========================================= */
 
 .incident-card{
 
@@ -276,17 +221,22 @@ main{
 
     background:
         linear-gradient(
-            180deg,
-            rgba(20,30,42,.96),
-            rgba(10,17,26,.98)
+            145deg,
+            rgba(15,25,40,.96),
+            rgba(8,14,24,.96)
         );
 
-    border:
-        1px solid rgba(88,166,255,.12);
+    border:1px solid rgba(70,120,180,.16);
 
-    border-radius:24px;
+    border-radius:26px;
 
-    padding:38px;
+    padding:32px;
+
+    height:560px;
+
+    display:flex;
+
+    flex-direction:column;
 
     overflow:hidden;
 
@@ -295,13 +245,12 @@ main{
 
 .incident-card:hover{
 
-    transform:translateY(-8px);
+    transform:translateY(-4px);
 
-    border-color:
-        rgba(88,166,255,.35);
+    border-color:rgba(88,166,255,.30);
 
     box-shadow:
-        0 25px 80px rgba(0,0,0,.40);
+        0 20px 50px rgba(0,0,0,.35);
 }
 
 .incident-card::before{
@@ -314,163 +263,176 @@ main{
     left:0;
 
     width:100%;
-    height:4px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #58a6ff,
-            #2ea043
-        );
+    height:3px;
 }
 
-.incident-label{
+/* =========================================
+   CARD COLORS
+========================================= */
 
-    color:#58a6ff;
+.card-blue::before{
+    background:linear-gradient(90deg,#58a6ff,transparent);
+}
 
-    font-size:13px;
-    font-weight:700;
+.card-red::before{
+    background:linear-gradient(90deg,#ff6b6b,transparent);
+}
 
-    letter-spacing:1px;
+.card-purple::before{
+    background:linear-gradient(90deg,#b388ff,transparent);
+}
 
-    text-transform:uppercase;
+.card-green::before{
+    background:linear-gradient(90deg,#7ee787,transparent);
+}
+
+.card-gold::before{
+    background:linear-gradient(90deg,#ffd580,transparent);
+}
+
+/* =========================================
+   CARD CONTENT
+========================================= */
+
+.card-label{
+
+    display:inline-block;
+
+    width:max-content;
+
+    padding:6px 14px;
+
+    border-radius:999px;
+
+    background:rgba(88,166,255,.10);
+
+    border:1px solid rgba(88,166,255,.18);
+
+    color:#6cb6ff;
+
+    font-size:12px;
 
     margin-bottom:22px;
 }
 
-.incident-card h3{
+.incident-card h2{
 
-    font-size:32px;
+    font-size:34px;
+
+    line-height:1.1;
 
     margin-bottom:22px;
+
+    color:white;
+
+    min-height:82px;
 }
 
 .incident-card p{
 
-    color:#b5c0cc;
+    color:#c7d0db;
 
-    line-height:1.9;
+    font-size:15px;
 
-    margin-bottom:30px;
+    margin-bottom:18px;
 }
 
-.incident-meta{
+.incident-card ul{
 
-    display:flex;
-    flex-wrap:wrap;
-    gap:12px;
+    padding-left:20px;
 }
 
-.incident-meta span{
+.incident-card li{
 
-    padding:8px 16px;
+    margin-bottom:10px;
 
-    border-radius:999px;
+    color:#d8e1ea;
 
-    background:
-        rgba(88,166,255,.08);
-
-    border:
-        1px solid rgba(88,166,255,.14);
-
-    color:#8fc1ff;
-
-    font-size:13px;
+    font-size:14px;
 }
 
 /* =========================================
-   BOOKSTACK SECTION
+   PANELS
 ========================================= */
 
-.bookstack-grid{
+.panel{
 
-    display:grid;
+    margin-top:auto;
 
-    grid-template-columns:
-        repeat(auto-fit, minmax(420px,1fr));
+    padding:22px;
 
-    gap:34px;
+    border-radius:18px;
+
+    background:rgba(6,12,20,.72);
+
+    border:1px solid rgba(88,166,255,.10);
 }
 
-.bookstack-card{
+.panel-title{
+
+    color:#6cb6ff;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    margin-bottom:18px;
+}
+
+/* =========================================
+   SPECIAL PANELS
+========================================= */
+
+.validation-panel{
 
     background:
         linear-gradient(
-            180deg,
-            rgba(18,29,42,.95),
-            rgba(10,16,24,.98)
+            145deg,
+            rgba(10,40,25,.50),
+            rgba(8,18,15,.70)
         );
 
-    border:
-        1px solid rgba(88,166,255,.12);
-
-    border-radius:24px;
-
-    padding:36px;
-
-    transition:.25s ease;
+    border:1px solid rgba(60,180,120,.16);
 }
 
-.bookstack-card:hover{
+.lessons-panel{
 
-    transform:translateY(-6px);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(25,20,8,.55),
+            rgba(18,14,8,.75)
+        );
 
-    border-color:
-        rgba(88,166,255,.35);
+    border:1px solid rgba(220,170,70,.16);
 }
 
-.bookstack-card h3{
-
-    font-size:28px;
-
-    color:#ffffff;
-
-    margin-bottom:22px;
-}
-
-.bookstack-card p{
-
-    color:#b5c0cc;
-
-    line-height:1.9;
-
-    margin-bottom:28px;
-}
+/* =========================================
+   COMMAND BLOCK
+========================================= */
 
 .command-block{
 
-    background:#071018;
+    margin-top:20px;
 
-    border:
-        1px solid rgba(88,166,255,.12);
+    background:#050b14;
 
-    border-radius:14px;
+    border:1px solid rgba(88,166,255,.16);
 
-    padding:18px;
+    border-radius:16px;
 
-    font-family:
-        Consolas,
-        monospace;
-
-    color:#8fc1ff;
-
-    margin-bottom:26px;
+    padding:16px;
 
     overflow-x:auto;
 }
 
-.doc-link{
+.command-block code{
 
-    color:#58a6ff;
+    color:#8fd0ff;
 
-    text-decoration:none;
+    font-family:Consolas, monospace;
 
-    font-weight:700;
-}
-
-.doc-link:hover{
-
-    color:#8fc7ff;
+    font-size:13px;
 }
 
 /* =========================================
@@ -479,42 +441,51 @@ main{
 
 footer{
 
-    margin-top:140px;
-
-    border-top:
-        1px solid rgba(88,166,255,.12);
-
-    padding:60px 30px;
-
     text-align:center;
 
-    color:#7f8b97;
+    padding:50px 20px;
+
+    color:#7f8b98;
+
+    border-top:1px solid rgba(80,120,180,.10);
 
     font-size:14px;
+
+    margin-top:90px;
 }
 
 /* =========================================
    RESPONSIVE
 ========================================= */
 
-@media(max-width:1200px){
+@media(max-width:1700px){
 
-    .hero h1{
-        font-size:52px;
+    .incident-grid{
+
+        grid-template-columns:repeat(2, 1fr);
     }
+}
 
-    .hero p{
-        font-size:18px;
-    }
+@media(max-width:900px){
 
-    .nav-links{
-        display:none;
-    }
-
-    .incident-grid,
-    .bookstack-grid{
+    .incident-grid{
 
         grid-template-columns:1fr;
+    }
+
+    .incident-card{
+
+        height:auto;
+    }
+
+    .main-container{
+
+        padding:0 24px 100px;
+    }
+
+    .hero h1{
+
+        font-size:42px;
     }
 }
 
@@ -522,6 +493,10 @@ footer{
 </head>
 
 <body>
+
+<!-- =====================================
+     NAVIGATION
+===================================== -->
 
 <header>
 
@@ -551,306 +526,407 @@ GitHub
 
 </header>
 
+<!-- =====================================
+     HERO
+===================================== -->
+
 <section class="hero">
 
 <div class="hero-content">
 
-<div class="hero-tag">
-Storage Operations • Incident Response • Infrastructure Diagnostics
+<div class="hero-badge">
+Storage Operations • Infrastructure Capacity Management
 </div>
 
 <h1>
-Storage Infrastructure Troubleshooting
+Primary NVMe Datastore Capacity Exhaustion Risk
 </h1>
 
-<div class="hero-divider"></div>
-
 <p>
-
-Operational incidents, NFS recovery workflows,
-backup validation, media infrastructure diagnostics,
-and operational documentation from PatrickHomeLab.
-
+Operational storage capacity incident involving Proxmox VM datastore growth,
+workload redistribution, and infrastructure storage management within the
+PatrickHomeLab virtualization environment.
 </p>
 
 </div>
 
 </section>
 
-<main>
+<!-- =====================================
+     MAIN CONTENT
+===================================== -->
 
-<!-- =========================================
-     FEATURED INCIDENTS
-========================================= -->
-
-<section>
-
-<div class="section-header">
-
-<h2>
-Featured Storage Incidents
-</h2>
-
-<p>
-
-Operational failures, recovery workflows,
-and infrastructure troubleshooting scenarios
-documented throughout the PatrickHomeLab environment.
-
-</p>
-
-</div>
+<div class="main-container">
 
 <div class="incident-grid">
 
-<div class="incident-card">
+<!-- CARD 1 -->
 
-<div class="incident-label">
-Storage Recovery
+<div class="incident-card card-blue">
+
+<div class="card-label">
+Overview
 </div>
-
-<h3>
-NFS Mount Failure
-</h3>
-
-<p>
-
-Plex media libraries became unavailable after
-the Vault NFS mount failed during startup,
-resulting in inaccessible media paths
-and degraded service availability.
-
-</p>
-
-<div class="incident-meta">
-
-<span>Linux</span>
-<span>NFS</span>
-<span>Plex</span>
-<span>Recovery</span>
-
-</div>
-
-</div>
-
-<div class="incident-card">
-
-<div class="incident-label">
-Infrastructure Capacity
-</div>
-
-<h3>
-NVMe Datastore Capacity Risk
-</h3>
-
-<p>
-
-The Forge hypervisor primary datastore approached
-operational storage thresholds due to increasing
-VM growth and infrastructure expansion.
-
-</p>
-
-<div class="incident-meta">
-
-<span>Proxmox</span>
-<span>Storage</span>
-<span>Datastore</span>
-<span>Migration</span>
-
-</div>
-
-</div>
-
-<div class="incident-card">
-
-<div class="incident-label">
-Infrastructure Operations
-</div>
-
-<h3>
-Storage Architecture Validation
-</h3>
-
-<p>
-
-Storage topology, NFS export validation,
-backup workflows, and media infrastructure
-operations documented throughout PatrickHomeLab.
-
-</p>
-
-<div class="incident-meta">
-
-<span>Architecture</span>
-<span>NFS</span>
-<span>AWS</span>
-<span>Operations</span>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- =========================================
-     OPERATIONAL DOCUMENTATION
-========================================= -->
-
-<section>
-
-<div class="section-header">
 
 <h2>
-Operational Documentation
+Incident Summary
 </h2>
 
 <p>
-
-Operational incidents, recovery procedures,
-infrastructure diagnostics, and troubleshooting
-documentation integrated directly into PatrickHomeLab.
-
+The Forge Proxmox hypervisor began approaching primary NVMe datastore
+capacity thresholds due to increased VM disk utilization and expanding
+infrastructure workloads.
 </p>
-
-</div>
-
-<div class="bookstack-grid">
-
-<!-- CARD 1 -->
-
-<div class="bookstack-card">
-
-<h3>
-Plex – Missing Media – NFS Mount Failure
-</h3>
 
 <p>
-
-Plex media libraries became unavailable after the
-Vault NFS mount failed during startup operations,
-resulting in inaccessible media paths and degraded
-service availability across media-01.
-
+Selected virtual machine workloads were migrated from the primary NVMe
+datastore to a dedicated SSD datastore to restore operational storage
+capacity and improve infrastructure scalability.
 </p>
-
-<div class="command-block">
-systemctl status mnt-vault\x2dmedia.mount
-</div>
-
-<div class="incident-meta">
-
-<span>Linux</span>
-<span>NFS</span>
-<span>Plex</span>
-<span>Recovery</span>
-
-</div>
-
-<br>
-
-<a href="troubleshooting-storage-nfs.html"
-class="doc-link">
-
-View Full Operational Documentation →
-
-</a>
 
 </div>
 
 <!-- CARD 2 -->
 
-<div class="bookstack-card">
+<div class="incident-card card-blue">
 
-<h3>
-Primary NVMe Datastore Capacity Exhaustion Risk
-</h3>
-
-<p>
-
-The Forge hypervisor primary datastore approached
-operational storage thresholds due to increasing
-virtual machine growth and infrastructure expansion,
-requiring workload redistribution to dedicated SSD storage.
-
-</p>
-
-<div class="command-block">
-pvesm status
+<div class="card-label">
+Environment
 </div>
 
-<div class="incident-meta">
+<h2>
+Infrastructure Components
+</h2>
 
-<span>Proxmox</span>
-<span>Storage</span>
-<span>Datastore</span>
-<span>Migration</span>
+<div class="panel">
 
+<div class="panel-title">
+Infrastructure Environment
 </div>
 
-<br>
+<ul>
 
-<a href="troubleshooting-storage-capacity.html"
-class="doc-link">
+<li>
+Hypervisor Platform: Forge (Proxmox VE)
+</li>
 
-View Full Operational Documentation →
+<li>
+Primary Storage: NVMe datastore
+</li>
 
-</a>
+<li>
+Secondary Storage: Dedicated SSD datastore
+</li>
+
+<li>
+Affected Infrastructure:
+<ul>
+<li>media-01</li>
+<li>monitoring infrastructure</li>
+<li>supporting VM workloads</li>
+</ul>
+</li>
+
+</ul>
+
+</div>
 
 </div>
 
 <!-- CARD 3 -->
 
-<div class="bookstack-card">
+<div class="incident-card card-red">
 
-<h3>
-Future Infrastructure Incident
-</h3>
+<div class="card-label">
+Problem
+</div>
+
+<h2>
+Operational Risks
+</h2>
 
 <p>
-
-Additional operational incidents, storage recovery
-workflows, infrastructure diagnostics, and operational
-documentation will continue to be integrated into
-the PatrickHomeLab environment over time.
-
+The primary NVMe datastore was approaching operational storage thresholds,
+creating infrastructure risks and reducing future deployment flexibility.
 </p>
 
+<div class="panel">
+
+<div class="panel-title">
+Operational Risks Identified
+</div>
+
+<ul>
+
+<li>
+Reduced available capacity for future VM deployment
+</li>
+
+<li>
+Increased risk of datastore exhaustion
+</li>
+
+<li>
+Limited flexibility for snapshots and maintenance
+</li>
+
+<li>
+Reduced storage headroom for infrastructure growth
+</li>
+
+<li>
+Potential impact to virtualization stability
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<!-- CARD 4 -->
+
+<div class="incident-card card-purple">
+
+<div class="card-label">
+Objective
+</div>
+
+<h2>
+Migration Goals
+</h2>
+
+<p>
+The migration effort focused on redistributing VM storage workloads to a
+dedicated SSD datastore while maintaining operational continuity across
+lab infrastructure services.
+</p>
+
+<div class="panel">
+
+<div class="panel-title">
+Migration Objectives
+</div>
+
+<ul>
+
+<li>
+Restore available NVMe datastore capacity
+</li>
+
+<li>
+Improve storage allocation strategy
+</li>
+
+<li>
+Preserve infrastructure operational stability
+</li>
+
+<li>
+Maintain service availability during migration
+</li>
+
+<li>
+Improve future scalability
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<!-- CARD 5 -->
+
+<div class="incident-card card-purple">
+
+<div class="card-label">
+Migration Actions
+</div>
+
+<h2>
+Actions Performed
+</h2>
+
+<p>
+Several operational tasks were completed to safely redistribute storage
+workloads across available datastores.
+</p>
+
+<div class="panel">
+
+<div class="panel-title">
+Migration Workflow
+</div>
+
+<ul>
+
+<li>
+Provisioned SSD datastore within Proxmox
+</li>
+
+<li>
+Evaluated VM storage utilization
+</li>
+
+<li>
+Selected workloads appropriate for migration
+</li>
+
+<li>
+Migrated VM disks from NVMe storage to SSD storage
+</li>
+
+<li>
+Validated successful VM boot operations
+</li>
+
+<li>
+Verified service availability post-migration
+</li>
+
+</ul>
+
+</div>
+
 <div class="command-block">
-journalctl -xe
-</div>
 
-<div class="incident-meta">
-
-<span>Monitoring</span>
-<span>Infrastructure</span>
-<span>Diagnostics</span>
-<span>Operations</span>
-
-</div>
-
-<br>
-
-<a href="#"
-class="doc-link">
-
-Additional Operational Documentation Coming Soon →
-
-</a>
+<code>
+qm move_disk &lt;vmid&gt; scsi0 &lt;target-storage&gt;
+</code>
 
 </div>
 
 </div>
 
-</section>
+<!-- CARD 6 -->
 
-</main>
+<div class="incident-card card-green">
+
+<div class="card-label">
+Validation
+</div>
+
+<h2>
+Post-Migration Validation
+</h2>
+
+<p>
+Validation procedures confirmed infrastructure stability and successful
+workload redistribution following storage migration operations.
+</p>
+
+<div class="panel validation-panel">
+
+<div class="panel-title">
+Validation Results
+</div>
+
+<ul>
+
+<li>
+VM startup behavior confirmed
+</li>
+
+<li>
+Plex services operational
+</li>
+
+<li>
+Storage mounts verified
+</li>
+
+<li>
+No data loss observed
+</li>
+
+<li>
+Infrastructure services remained stable
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<!-- CARD 7 -->
+
+<div class="incident-card card-green">
+
+<div class="card-label">
+Result
+</div>
+
+<h2>
+Operational Outcome
+</h2>
+
+<p>
+The migration successfully reduced pressure on the primary NVMe datastore
+while maintaining operational continuity across infrastructure services.
+</p>
+
+<p>
+The updated storage allocation strategy improved capacity management and
+restored additional storage headroom for future infrastructure expansion.
+</p>
+
+</div>
+
+<!-- CARD 8 -->
+
+<div class="incident-card card-gold">
+
+<div class="card-label">
+Lessons Learned
+</div>
+
+<h2>
+Operational Takeaways
+</h2>
+
+<div class="panel lessons-panel">
+
+<ul>
+
+<li>
+Early storage planning is critical for virtualization environments
+</li>
+
+<li>
+Infrastructure growth can rapidly impact datastore utilization
+</li>
+
+<li>
+Segregating workloads across storage tiers improves flexibility
+</li>
+
+<li>
+Capacity monitoring should be integrated into routine workflows
+</li>
+
+<li>
+Storage scalability planning becomes increasingly important
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- =====================================
+     FOOTER
+===================================== -->
 
 <footer>
 
-PatrickHomeLab • Infrastructure Operations in Practice
+PatrickHomeLab • Infrastructure Operations & Systems Administration
 
 </footer>
 
