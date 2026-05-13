@@ -43,8 +43,8 @@ body{
 }
 
 .nav-container{
-    width:92%;
-    max-width:1600px;
+    width:94%;
+    max-width:1800px;
     margin:auto;
     height:100%;
     display:flex;
@@ -79,9 +79,9 @@ body{
 ========================= */
 
 .hero{
-    padding-top:160px;
+    padding-top:170px;
+    padding-bottom:110px;
     text-align:center;
-    padding-bottom:80px;
 }
 
 .hero-badge{
@@ -98,28 +98,28 @@ body{
 .hero h1{
     font-size:4rem;
     line-height:1.05;
-    margin-bottom:26px;
+    margin-bottom:28px;
     color:white;
-    max-width:1000px;
+    max-width:1100px;
     margin-left:auto;
     margin-right:auto;
 }
 
 .hero p{
-    max-width:850px;
+    max-width:920px;
     margin:auto;
     color:#9fb3c8;
     font-size:1.05rem;
-    line-height:1.8;
+    line-height:1.9;
 }
 
 /* =========================
-   CARD GRID
+   GRID
 ========================= */
 
 .grid-section{
-    width:96%;
-    max-width:1850px;
+    width:98%;
+    max-width:1950px;
     margin:auto;
     padding-bottom:120px;
 }
@@ -127,32 +127,39 @@ body{
 .grid{
     display:grid;
     grid-template-columns:repeat(4, 1fr);
-    gap:22px;
+    gap:26px;
 }
 
+/* =========================
+   CARDS
+========================= */
+
 .card{
-    min-height:360px;
+    min-height:460px;
     background:rgba(8,15,25,.88);
     border:1px solid rgba(88,166,255,.16);
-    border-radius:18px;
-    padding:28px;
+    border-radius:20px;
+    padding:34px;
     position:relative;
     overflow:hidden;
     transition:.35s;
+    display:flex;
+    flex-direction:column;
 }
 
 .card:hover{
     transform:translateY(-5px);
     border-color:rgba(88,166,255,.35);
-    box-shadow:0 0 25px rgba(88,166,255,.08);
+    box-shadow:0 0 30px rgba(88,166,255,.08);
 }
 
 .card-label{
     display:inline-block;
+    width:fit-content;
     padding:6px 12px;
     border-radius:20px;
     font-size:.7rem;
-    margin-bottom:22px;
+    margin-bottom:26px;
     border:1px solid rgba(88,166,255,.25);
     color:#58a6ff;
     background:rgba(88,166,255,.05);
@@ -161,44 +168,49 @@ body{
 .card h2{
     font-size:2rem;
     line-height:1.15;
-    margin-bottom:22px;
+    margin-bottom:24px;
     color:white;
 }
 
 .card p{
-    color:#9fb3c8;
-    line-height:1.8;
-    font-size:.95rem;
+    color:#aebfd0;
+    line-height:1.85;
+    font-size:.96rem;
     margin-bottom:18px;
 }
 
+/* =========================
+   INNER BOX
+========================= */
+
 .inner-box{
-    margin-top:20px;
-    border-radius:14px;
+    margin-top:auto;
+    border-radius:16px;
     border:1px solid rgba(88,166,255,.12);
     background:rgba(3,8,14,.55);
-    padding:22px;
+    padding:24px;
+    min-height:185px;
 }
 
 .inner-box h3{
-    margin-bottom:16px;
+    margin-bottom:18px;
     color:#58a6ff;
     font-size:.95rem;
 }
 
 .inner-box ul{
-    padding-left:18px;
+    padding-left:20px;
 }
 
 .inner-box li{
-    color:#c7d5e0;
-    line-height:1.9;
+    color:#d2dde8;
+    line-height:1.95;
     margin-bottom:6px;
-    font-size:.9rem;
+    font-size:.92rem;
 }
 
 /* =========================
-   SPECIAL COLORS
+   CARD COLORS
 ========================= */
 
 .red{
@@ -223,7 +235,7 @@ body{
 
 .footer{
     text-align:center;
-    padding:50px 20px;
+    padding:55px 20px;
     color:#607080;
     font-size:.82rem;
     border-top:1px solid rgba(88,166,255,.08);
@@ -233,14 +245,14 @@ body{
    RESPONSIVE
 ========================= */
 
-@media(max-width:1500px){
+@media(max-width:1700px){
 
     .grid{
         grid-template-columns:repeat(2,1fr);
     }
 }
 
-@media(max-width:900px){
+@media(max-width:950px){
 
     .hero h1{
         font-size:2.8rem;
@@ -261,10 +273,11 @@ body{
 <body>
 
 <!-- =========================
-     NAVIGATION
+     NAVBAR
 ========================= -->
 
 <nav class="navbar">
+
     <div class="nav-container">
 
         <div class="logo">
@@ -283,6 +296,7 @@ body{
         </div>
 
     </div>
+
 </nav>
 
 <!-- =========================
@@ -329,13 +343,12 @@ body{
 
     <p>
         Plex libraries on media-01 became unavailable after the Vault NFS export
-        failed due to a storage-layer mount issue on vault-01.
+        failed because the primary storage volume on vault-01 did not mount correctly.
     </p>
 
     <p>
-        Although Plex Media Server remained operational, downstream media paths
-        became inaccessible because the underlying shared storage volume was not
-        mounted correctly.
+        Although Plex Media Server remained online, downstream shared storage paths
+        became inaccessible throughout the media environment.
     </p>
 
 </div>
@@ -359,12 +372,12 @@ body{
         </h3>
 
         <ul>
-            <li>Hypervisor Platform: Forge (Proxmox VE)</li>
-            <li>Storage Server: vault-01</li>
-            <li>Media Server: media-01</li>
-            <li>Plex Media Server infrastructure</li>
+            <li>Forge (Proxmox VE) virtualization platform</li>
+            <li>vault-01 storage server</li>
+            <li>media-01 Plex media server</li>
             <li>/mnt/media primary storage mount</li>
             <li>/mnt/vault-media NFS client mount</li>
+            <li>Shared movie and television libraries</li>
         </ul>
 
     </div>
@@ -384,8 +397,8 @@ body{
     </h2>
 
     <p>
-        Multiple infrastructure symptoms indicated shared storage failure across
-        the media environment.
+        Multiple infrastructure indicators confirmed downstream storage dependency
+        failures across the Plex media environment.
     </p>
 
     <div class="inner-box">
@@ -396,7 +409,7 @@ body{
 
         <ul>
             <li>Plex libraries appeared empty</li>
-            <li>Media content disappeared from Plex</li>
+            <li>Movies and television content disappeared</li>
             <li>NFS mounts stalled or failed</li>
             <li>/mnt/vault-media returned empty results</li>
             <li>mount -a operations hung on media-01</li>
@@ -419,8 +432,8 @@ body{
     </h2>
 
     <p>
-        The primary storage volume on vault-01 failed to mount because of an
-        invalid UUID reference inside /etc/fstab.
+        The primary storage volume on vault-01 failed to initialize because of an
+        outdated UUID reference within /etc/fstab.
     </p>
 
     <div class="inner-box">
@@ -431,9 +444,10 @@ body{
 
         <ul>
             <li>NFS exports failed to initialize</li>
-            <li>media-01 lost shared storage access</li>
-            <li>Plex lost media path visibility</li>
-            <li>Downstream client mounts stalled</li>
+            <li>media-01 lost shared storage visibility</li>
+            <li>Plex lost access to media paths</li>
+            <li>Downstream mount operations stalled</li>
+            <li>Shared media services became unavailable</li>
         </ul>
 
     </div>
@@ -453,8 +467,8 @@ body{
     </h2>
 
     <p>
-        Recovery operations focused on restoring storage dependencies in the
-        correct operational sequence.
+        Recovery procedures focused on restoring infrastructure dependencies in the
+        proper operational sequence.
     </p>
 
     <div class="inner-box">
@@ -490,7 +504,7 @@ body{
 
     <p>
         Infrastructure validation confirmed successful storage restoration and
-        downstream service recovery.
+        operational recovery across dependent services.
     </p>
 
     <div class="inner-box">
@@ -501,9 +515,9 @@ body{
 
         <ul>
             <li>/mnt/media restored successfully</li>
-            <li>NFS exports operational</li>
-            <li>/mnt/vault-media visible on media-01</li>
-            <li>Plex libraries repopulated correctly</li>
+            <li>NFS exports became operational</li>
+            <li>/mnt/vault-media mounted correctly</li>
+            <li>Plex libraries repopulated successfully</li>
             <li>Infrastructure services stabilized</li>
         </ul>
 
@@ -529,8 +543,8 @@ body{
     </p>
 
     <p>
-        If mount operations hang on media-01, troubleshooting should begin on
-        vault-01 rather than on the Plex application layer.
+        If mount operations hang on media-01, troubleshooting should begin at
+        vault-01 rather than at the Plex application layer.
     </p>
 
 </div>
