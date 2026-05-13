@@ -1,1 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PatrickHomeLab | Plex NFS Mount Failure</title>
 
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:
+        radial-gradient(circle at top, #152232 0%, #081018 60%),
+        #081018;
+    color:#e6edf3;
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    overflow-x:hidden;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navbar{
+    position:fixed;
+    top:0;
+    width:100%;
+    height:70px;
+    background:rgba(5,10,18,.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(70,130,180,.15);
+    z-index:999;
+}
+
+.nav-container{
+    width:92%;
+    max-width:1600px;
+    margin:auto;
+    height:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:.95rem;
+    font-weight:700;
+    color:white;
+}
+
+.nav-links{
+    display:flex;
+    gap:28px;
+}
+
+.nav-links a{
+    color:#9fb3c8;
+    text-decoration:none;
+    font-size:.82rem;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#58a6ff;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    padding-top:160px;
+    text-align:center;
+    padding-bottom:80px;
+}
+
+.hero-badge{
+    display:inline-block;
+    padding:8px 18px;
+    border:1px solid rgba(88,166,255,.35);
+    border-radius:30px;
+    font-size:.75rem;
+    color:#58a6ff;
+    margin-bottom:28px;
+    background:rgba(88,166,255,.05);
+}
+
+.hero h1{
+    font-size:4rem;
+    line-height:1.05;
+    margin-bottom:26px;
+    color:white;
+    max-width:1000px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.hero p{
+    max-width:850px;
+    margin:auto;
+    color:#9fb3c8;
+    font-size:1.05rem;
+    line-height:1.8;
+}
+
+/* =========================
+   CARD GRID
+========================= */
+
+.grid-section{
+    width:96%;
+    max-width:1850px;
+    margin:auto;
+    padding-bottom:120px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:22px;
+}
+
+.card{
+    min-height:360px;
+    background:rgba(8,15,25,.88);
+    border:1px solid rgba(88,166,255,.16);
+    border-radius:18px;
+    padding:28px;
+    position:relative;
+    overflow:hidden;
+    transition:.35s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(88,166,255,.35);
+    box-shadow:0 0 25px rgba(88,166,255,.08);
+}
+
+.card-label{
+    display:inline-block;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:.7rem;
+    margin-bottom:22px;
+    border:1px solid rgba(88,166,255,.25);
+    color:#58a6ff;
+    background:rgba(88,166,255,.05);
+}
+
+.card h2{
+    font-size:2rem;
+    line-height:1.15;
+    margin-bottom:22px;
+    color:white;
+}
+
+.card p{
+    color:#9fb3c8;
+    line-height:1.8;
+    font-size:.95rem;
+    margin-bottom:18px;
+}
+
+.inner-box{
+    margin-top:20px;
+    border-radius:14px;
+    border:1px solid rgba(88,166,255,.12);
+    background:rgba(3,8,14,.55);
+    padding:22px;
+}
+
+.inner-box h3{
+    margin-bottom:16px;
+    color:#58a6ff;
+    font-size:.95rem;
+}
+
+.inner-box ul{
+    padding-left:18px;
+}
+
+.inner-box li{
+    color:#c7d5e0;
+    line-height:1.9;
+    margin-bottom:6px;
+    font-size:.9rem;
+}
+
+/* =========================
+   SPECIAL COLORS
+========================= */
+
+.red{
+    border-color:rgba(255,90,90,.22);
+}
+
+.purple{
+    border-color:rgba(180,120,255,.22);
+}
+
+.green{
+    border-color:rgba(70,255,150,.22);
+}
+
+.orange{
+    border-color:rgba(255,180,90,.22);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    text-align:center;
+    padding:50px 20px;
+    color:#607080;
+    font-size:.82rem;
+    border-top:1px solid rgba(88,166,255,.08);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1500px){
+
+    .grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:900px){
+
+    .hero h1{
+        font-size:2.8rem;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .nav-links{
+        display:none;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav class="navbar">
+    <div class="nav-container">
+
+        <div class="logo">
+            PatrickHomeLab
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="profile.html">Profile</a>
+            <a href="architecture.html">Architecture</a>
+            <a href="topology.html">Topology</a>
+            <a href="projects.html">Projects</a>
+            <a href="troubleshooting.html">Troubleshooting</a>
+            <a href="monitoring.html">Monitoring</a>
+            <a href="https://github.com/patrick-richardson">GitHub</a>
+        </div>
+
+    </div>
+</nav>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-badge">
+        Storage Operations • NFS Dependency Recovery
+    </div>
+
+    <h1>
+        Plex Media Unavailable Due to Vault NFS Mount Failure
+    </h1>
+
+    <p>
+        Infrastructure storage dependency incident involving Vault NFS export failures,
+        shared media mount disruption, downstream Plex storage loss, and operational
+        recovery across the PatrickHomeLab virtualization environment.
+    </p>
+
+</section>
+
+<!-- =========================
+     CARD GRID
+========================= -->
+
+<section class="grid-section">
+
+<div class="grid">
+
+<!-- CARD 1 -->
+
+<div class="card">
+
+    <div class="card-label">
+        Overview
+    </div>
+
+    <h2>
+        Incident Summary
+    </h2>
+
+    <p>
+        Plex libraries on media-01 became unavailable after the Vault NFS export
+        failed due to a storage-layer mount issue on vault-01.
+    </p>
+
+    <p>
+        Although Plex Media Server remained operational, downstream media paths
+        became inaccessible because the underlying shared storage volume was not
+        mounted correctly.
+    </p>
+
+</div>
+
+<!-- CARD 2 -->
+
+<div class="card">
+
+    <div class="card-label">
+        Environment
+    </div>
+
+    <h2>
+        Infrastructure Components
+    </h2>
+
+    <div class="inner-box">
+
+        <h3>
+            Storage Environment
+        </h3>
+
+        <ul>
+            <li>Hypervisor Platform: Forge (Proxmox VE)</li>
+            <li>Storage Server: vault-01</li>
+            <li>Media Server: media-01</li>
+            <li>Plex Media Server infrastructure</li>
+            <li>/mnt/media primary storage mount</li>
+            <li>/mnt/vault-media NFS client mount</li>
+        </ul>
+
+    </div>
+
+</div>
+
+<!-- CARD 3 -->
+
+<div class="card red">
+
+    <div class="card-label">
+        Symptoms
+    </div>
+
+    <h2>
+        Operational Indicators
+    </h2>
+
+    <p>
+        Multiple infrastructure symptoms indicated shared storage failure across
+        the media environment.
+    </p>
+
+    <div class="inner-box">
+
+        <h3>
+            Observed Conditions
+        </h3>
+
+        <ul>
+            <li>Plex libraries appeared empty</li>
+            <li>Media content disappeared from Plex</li>
+            <li>NFS mounts stalled or failed</li>
+            <li>/mnt/vault-media returned empty results</li>
+            <li>mount -a operations hung on media-01</li>
+        </ul>
+
+    </div>
+
+</div>
+
+<!-- CARD 4 -->
+
+<div class="card purple">
+
+    <div class="card-label">
+        Root Cause
+    </div>
+
+    <h2>
+        Storage Dependency Failure
+    </h2>
+
+    <p>
+        The primary storage volume on vault-01 failed to mount because of an
+        invalid UUID reference inside /etc/fstab.
+    </p>
+
+    <div class="inner-box">
+
+        <h3>
+            Dependency Impact
+        </h3>
+
+        <ul>
+            <li>NFS exports failed to initialize</li>
+            <li>media-01 lost shared storage access</li>
+            <li>Plex lost media path visibility</li>
+            <li>Downstream client mounts stalled</li>
+        </ul>
+
+    </div>
+
+</div>
+
+<!-- CARD 5 -->
+
+<div class="card">
+
+    <div class="card-label">
+        Recovery Actions
+    </div>
+
+    <h2>
+        Infrastructure Restoration
+    </h2>
+
+    <p>
+        Recovery operations focused on restoring storage dependencies in the
+        correct operational sequence.
+    </p>
+
+    <div class="inner-box">
+
+        <h3>
+            Recovery Workflow
+        </h3>
+
+        <ul>
+            <li>Validated attached storage devices</li>
+            <li>Corrected invalid UUID references</li>
+            <li>Reapplied filesystem mounts</li>
+            <li>Restarted NFS export services</li>
+            <li>Restored media-01 client mounts</li>
+            <li>Restarted Plex Media Server</li>
+        </ul>
+
+    </div>
+
+</div>
+
+<!-- CARD 6 -->
+
+<div class="card green">
+
+    <div class="card-label">
+        Validation
+    </div>
+
+    <h2>
+        Post-Recovery Validation
+    </h2>
+
+    <p>
+        Infrastructure validation confirmed successful storage restoration and
+        downstream service recovery.
+    </p>
+
+    <div class="inner-box">
+
+        <h3>
+            Validation Results
+        </h3>
+
+        <ul>
+            <li>/mnt/media restored successfully</li>
+            <li>NFS exports operational</li>
+            <li>/mnt/vault-media visible on media-01</li>
+            <li>Plex libraries repopulated correctly</li>
+            <li>Infrastructure services stabilized</li>
+        </ul>
+
+    </div>
+
+</div>
+
+<!-- CARD 7 -->
+
+<div class="card">
+
+    <div class="card-label">
+        Operational Notes
+    </div>
+
+    <h2>
+        Dependency Recovery Behavior
+    </h2>
+
+    <p>
+        NFS client recovery depends entirely on successful storage initialization
+        and export availability from the upstream storage server.
+    </p>
+
+    <p>
+        If mount operations hang on media-01, troubleshooting should begin on
+        vault-01 rather than on the Plex application layer.
+    </p>
+
+</div>
+
+<!-- CARD 8 -->
+
+<div class="card orange">
+
+    <div class="card-label">
+        Lessons Learned
+    </div>
+
+    <h2>
+        Operational Takeaways
+    </h2>
+
+    <div class="inner-box">
+
+        <ul>
+            <li>Plex failures may originate from infrastructure dependencies</li>
+            <li>NFS troubleshooting should begin at the storage export source</li>
+            <li>UUID mismatches can silently break shared storage workflows</li>
+            <li>Storage validation should be integrated into monitoring operations</li>
+            <li>Dependency-aware recovery significantly reduces troubleshooting time</li>
+        </ul>
+
+    </div>
+
+</div>
+
+</div>
+</section>
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+    PatrickHomeLab • Infrastructure Operations & Systems Administration
+</footer>
+
+</body>
+</html>
