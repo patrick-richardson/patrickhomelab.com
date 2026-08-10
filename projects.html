@@ -1,473 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PatrickHomeLab | Projects</title>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background: #0d1117;
-      color: #f0f6fc;
-      line-height: 1.6;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(13, 17, 23, 0.95);
-      border-bottom: 1px solid #30363d;
-      backdrop-filter: blur(10px);
-    }
-
-    nav {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 18px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    nav strong {
-      font-size: 20px;
-      color: #f0f6fc;
-    }
-
-    nav div:last-child {
-      display: flex;
-      gap: 24px;
-      align-items: center;
-    }
-
-    nav a {
-      color: #c9d1d9;
-      text-decoration: none;
-      font-size: 14px;
-      transition: color 0.2s ease;
-    }
-
-    nav a:hover {
-      color: #58a6ff;
-    }
-
-    .hero {
-      background:
-        linear-gradient(rgba(13,17,23,0.72), rgba(13,17,23,0.82)),
-        url("images/lab-topology.png") center/cover no-repeat;
-      text-align: center;
-      padding: 110px 20px 90px;
-      border-bottom: 1px solid #30363d;
-    }
-
-    .hero h1 {
-      font-size: 48px;
-      margin-bottom: 18px;
-    }
-
-    .hero p {
-      max-width: 900px;
-      margin: 0 auto;
-      color: #9da7b3;
-      font-size: 18px;
-    }
-
-    .container {
-      max-width: 1500px;
-      margin: 0 auto;
-      padding: 70px 40px 90px;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 34px;
-      margin-bottom: 14px;
-    }
-
-    .section-subtitle {
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto 50px;
-      color: #9da7b3;
-      font-size: 16px;
-    }
-
-    .overview-strip {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 22px;
-      margin-bottom: 60px;
-    }
-
-    .overview-item {
-      background: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 18px;
-      padding: 24px;
-      text-align: center;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-    }
-
-    .overview-item h3 {
-      color: #58a6ff;
-      font-size: 28px;
-      margin-bottom: 10px;
-    }
-
-    .overview-item p {
-      color: #9da7b3;
-      font-size: 14px;
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 28px;
-      margin-bottom: 50px;
-    }
-
-    .project-card {
-      background: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 20px;
-      padding: 28px;
-      transition: transform 0.2s ease, border-color 0.2s ease;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.28);
-    }
-
-    .project-card:hover {
-      transform: translateY(-4px);
-      border-color: #58a6ff;
-    }
-
-    .project-card h3 {
-      font-size: 22px;
-      margin-bottom: 16px;
-      color: #f0f6fc;
-    }
-
-    .project-card p {
-      color: #9da7b3;
-      margin-bottom: 22px;
-      font-size: 15px;
-    }
-
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .project-tags span {
-      background: rgba(88, 166, 255, 0.12);
-      border: 1px solid rgba(88, 166, 255, 0.35);
-      color: #58a6ff;
-      border-radius: 999px;
-      padding: 6px 12px;
-      font-size: 12px;
-    }
-
-    footer {
-      border-top: 1px solid #30363d;
-      text-align: center;
-      color: #8b949e;
-      padding: 30px 20px;
-      font-size: 14px;
-    }
-
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        gap: 16px;
-      }
-
-      nav div:last-child {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .hero h1 {
-        font-size: 36px;
-      }
-
-      .container {
-        padding: 50px 20px 70px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Web Development Projects</title>
+    <link rel="stylesheet" href="styles.css?v=3">
 </head>
-<body>
 
-  <header>
-    <nav>
-      <div><strong>PatrickHomeLab</strong></div>
+<body class="site-background">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header>
+        <nav>
+            <a href="index.html">Patrick Richardson</a>
 
-      <div>
-        <a href="index.html">Home</a>
-        <a href="profile.html">Profile</a>
-        <a href="architecture.html">Architecture</a>
-        <a href="topology.html">Topology</a>
-        <a href="projects.html">Projects</a>
-        <a href="troubleshooting.html">Troubleshooting</a>
-        <a href="monitoring.html">Monitoring</a>
-        
-        <a href="https://github.com/patrick-richardson" target="_blank">GitHub</a>
-      </div>
-    </nav>
-  </header>
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="projects.html" aria-current="page">Projects</a></li>
+                <li><a href="skills.html">Skills</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="main-content">
+        <section class="projects">
+            <div class="projects-content">
+                <p class="section-label">Projects</p>
+                <h1>Web development projects and practical experience</h1>
+            </div>
 
-  <section class="hero">
-    <h1>Infrastructure Projects</h1>
-    <p>
-      Active and completed engineering projects across virtualization, automation,
-      monitoring, storage, backup, remote access, and infrastructure operations.
-    </p>
-  </section>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <a href="https://scapeliftpm.com" target="_blank" rel="noopener noreferrer">
 
-  <div class="container">
+                        <img class="project-image" src="images/scapeliftpm-homepage.png"
+                            alt="ScapeLift Property Management website homepage">
+                    </a>
 
-    <h2 class="section-title">PatrickHomeLab Environment</h2>
+                    <div class="project-details">
+                        <p class="project-type">Client Website</p>
 
-    <p class="section-subtitle">
-      The current environment is centered around a Dell Precision 3630 running Proxmox,
-      supporting media services, centralized storage, AWS cloud backup, secure remote access,
-      and infrastructure automation.
-    </p>
+                        <h2>ScapeLift Property Management</h2>
 
-    <div class="overview-strip">
-      <div class="overview-item">
-        <h3>6</h3>
-        <p>Active Virtual Machines</p>
-      </div>
+                        <p>
+                            A responsive property-management website with editable content,
+                            image galleries, and a secure content-management workflow.
+                        </p>
 
-      <div class="overview-item">
-        <h3>1</h3>
-        <p>Primary Proxmox Host</p>
-      </div>
+                        <ul class="project-technologies">
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                            <li>Decap CMS</li>
+                            <li>GitHub</li>
+                        </ul>
 
-      <div class="overview-item">
-        <h3>AWS S3</h3>
-        <p>Cloud Backup Active</p>
-      </div>
+                        <a href="https://scapeliftpm.com" target="_blank" rel="noopener noreferrer">
+                            View Live Website
+                        </a>
+                    </div>
+                </article>
+            </div>
 
-      <div class="overview-item">
-        <h3>WireGuard</h3>
-        <p>Remote Access Enabled</p>
-      </div>
 
-      <div class="overview-item">
-        <h3>Grafana</h3>
-        <p>Monitoring Stack Online</p>
-      </div>
+        </section>
+    </main>
+     <footer class="site-footer">
+    <div class="footer-content">
+        <p class="section-label">Let’s Connect</p>
+
+        <h2>Open to entry-level front-end and web development opportunities</h2>
+
+        <ul class="footer-links">
+            <li>
+                <a href="mailto:patrickrrichardson@outlook.com">Email</a>
+            </li>
+
+            <li>
+                <a href="https://www.linkedin.com/in/patrick-r-richardson/"
+                   target="_blank"
+                   rel="noopener noreferrer">LinkedIn</a>
+            </li>
+
+            <li>
+                <a href="https://github.com/patrick-richardson"
+                   target="_blank"
+                   rel="noopener noreferrer">GitHub</a>
+            </li>
+        </ul>
+
+        <p class="footer-location">Shawnee, Oklahoma</p>
+        <p class="footer-copyright">&copy; 2026 Patrick Richardson</p>
     </div>
-
-    <h2 class="section-title">Featured Projects</h2>
-
-    <p class="section-subtitle">
-      Completed and active infrastructure projects that define the current PatrickHomeLab environment.
-    </p>
-
-    <div class="projects-grid">
-
-      <div class="project-card">
-        <h3>Media Infrastructure Migration</h3>
-        <p>
-          Migrated Plex from a standalone system into the Media VM hosted on Forge.
-          Integrated centralized NFS storage from Vault and designed the environment
-          for rapid rebuild and future Ansible-driven recovery.
-        </p>
-        <div class="project-tags">
-          <span>Proxmox</span>
-          <span>Plex</span>
-          <span>NFS</span>
-          <span>Ubuntu Server</span>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <h3>AWS S3 Media Backup & Disaster Recovery</h3>
-        <p>
-          Implemented off-site backup by synchronizing the media library from Vault to AWS S3.
-          The solution provides disaster recovery capability, protects against drive failure,
-          and supports future restore testing and lifecycle management.
-        </p>
-        <div class="project-tags">
-          <span>AWS S3</span>
-          <span>Cloud Backup</span>
-          <span>Disaster Recovery</span>
-          <span>AWS CLI</span>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <h3>WireGuard Remote Access</h3>
-        <p>
-          Built a dedicated VPN-Gateway VM to provide secure remote access into the lab
-          from the MacBook Operations system, Windows workstation, and future mobile devices.
-        </p>
-        <div class="project-tags">
-          <span>WireGuard</span>
-          <span>Remote Access</span>
-          <span>Networking</span>
-          <span>Security</span>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <h3>Monitoring & Observability Stack</h3>
-        <p>
-          Implemented centralized monitoring using Prometheus and Grafana to provide
-          real-time visibility into Forge, Media, Vault, Proxy-01, and Controller-01.
-        </p>
-        <div class="project-tags">
-          <span>Grafana</span>
-          <span>Prometheus</span>
-          <span>Monitoring</span>
-          <span>Observability</span>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <h3>Reverse Proxy & HTTPS Publishing</h3>
-        <p>
-          Deployed Proxy-01 using Caddy and Cloudflare to route internal services
-          and prepare the environment for secure HTTPS access and future public-facing services.
-        </p>
-        <div class="project-tags">
-          <span>Caddy</span>
-          <span>Cloudflare</span>
-          <span>HTTPS</span>
-          <span>Reverse Proxy</span>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <h3>Ansible Infrastructure Automation</h3>
-        <p>
-          Built Controller-01 to centralize patching, provisioning, VM rebuild workflows,
-          SSH configuration, and future infrastructure-as-code deployments.
-        </p>
-        <div class="project-tags">
-          <span>Ansible</span>
-          <span>Automation</span>
-          <span>Linux</span>
-          <span>Infrastructure as Code</span>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <h3>Centralized Operations Workspace</h3>
-        <p>
-          Integrated the MacBook Operations system and the Windows 11 Dell 7050 workstation
-          to manage the lab locally and remotely through SSH, shared storage, and future VPN workflows.
-        </p>
-        <div class="project-tags">
-          <span>Windows 11</span>
-          <span>macOS</span>
-          <span>SSH</span>
-          <span>Operations</span>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <h3>Vault Migration</h3>
-        <p>
-          Migrated Vault from a standalone physical system into a dedicated VM on Forge.
-          Reconfigured NFS exports, storage services, and backup workflows while improving
-          integration with the rest of the virtual infrastructure.
-        </p>
-        <div class="project-tags">
-          <span>Proxmox</span>
-          <span>Virtualization</span>
-          <span>NFS</span>
-          <span>Storage</span>
-        </div>
-      </div>
-
-    </div>
-
-    <h2 class="section-title" style="margin-top: 80px;">Planned & In-Progress Projects</h2>
-
-    <p class="section-subtitle">
-      Current initiatives and future engineering projects planned for the continued growth
-      of the PatrickHomeLab environment.
-    </p>
-
-    <div class="projects-grid">
-
-      <div class="project-card">
-        <h3>Media Inventory System</h3>
-        <p>
-          Design and build a PostgreSQL-backed web application to catalog movies,
-          television series, and Plex metadata with family accounts, backups,
-          and future API integration.
-        </p>
-        <div class="project-tags">
-          <span>PostgreSQL</span>
-          <span>Web App</span>
-          <span>Plex API</span>
-          <span>Automation</span>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <h3>Plex VM Rebuild Automation</h3>
-        <p>
-          Develop an Ansible workflow capable of automatically rebuilding the Media VM,
-          remounting storage, and restoring Plex services after failure.
-        </p>
-        <div class="project-tags">
-          <span>Ansible</span>
-          <span>Proxmox</span>
-          <span>Plex</span>
-          <span>Disaster Recovery</span>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <h3>Public Monitoring Dashboard</h3>
-        <p>
-          Build a sanitized public Grafana dashboard for the website that shows live system health,
-          uptime, and current activity without exposing sensitive infrastructure details.
-        </p>
-        <div class="project-tags">
-          <span>Grafana</span>
-          <span>Monitoring</span>
-          <span>Public Dashboard</span>
-          <span>Observability</span>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <h3>Family Shared Storage Access</h3>
-        <p>
-          Create separate secure shared folders and VPN-enabled access for family devices,
-          including dedicated permissions and remote file access.
-        </p>
-        <div class="project-tags">
-          <span>SMB</span>
-          <span>VPN</span>
-          <span>File Sharing</span>
-          <span>Permissions</span>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-  <footer>
-    PatrickHomeLab • Project Portfolio
-  </footer>
-
+</footer>
 </body>
+
 </html>
-```
