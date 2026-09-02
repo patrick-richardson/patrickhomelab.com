@@ -1,130 +1,153 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Information technology projects by Patrick Richardson, including a Proxmox homelab and a production website delivered for a paying client."
+    />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | Information Technology and Web Development</title>
-    <link rel="stylesheet" href="styles.css?v=3">
-</head>
+    <title>Patrick Richardson Projects | Information Technology</title>
+    <link rel="stylesheet" href="styles.css?v=3" />
+  </head>
 
-<body class="site-background">
+  <body class="site-background">
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header>
-        <nav>
-            <a href="index.html">Patrick Richardson</a>
+      <nav>
+        <a href="index.html">Patrick Richardson</a>
 
-            <ul>
-                <li><a href="about.html">About</a></li>
-                <li><a href="resume.html">Resume</a></li>
-                <li><a href="projects.html" aria-current="page">Projects</a></li>
-                <li><a href="skills.html">Skills</a></li>
-            </ul>
-        </nav>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="resume.html">Resume</a></li>
+          <li><a href="projects.html" aria-current="page">Projects</a></li>
+          <li><a href="skills.html">Skills</a></li>
+        </ul>
+      </nav>
     </header>
     <main id="main-content">
-        <section class="projects">
-            <div class="projects-content">
-                <p class="section-label">Projects</p>
-                <h1>Information Technology and Web Development projects</h1>
+      <section class="projects">
+        <div class="projects-content">
+          <p class="section-label">Projects</p>
+          <h1>
+            Hands-on projects involving infrastructure, troubleshooting, and web
+            technologies
+          </h1>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card project-card--text-only">
+            <div class="project-details">
+              <p class="project-type">IT Infrastructure Project</p>
+
+              <h2>Patrick Home Lab</h2>
+
+              <p>
+                A Proxmox-based homelab using Linux virtual machines to provide
+                media streaming, network storage, secure remote access,
+                reverse-proxy services, system monitoring, and automation.
+              </p>
+
+              <p>
+                Maintaining the environment has given me practical experience
+                with virtualization, networking, NFS storage, backups, service
+                configuration, documentation, and technical troubleshooting.
+              </p>
+
+              <ul class="project-technologies">
+                <li>Proxmox</li>
+                <li>Linux</li>
+                <li>NFS</li>
+                <li>Caddy</li>
+                <li>Cloudflare Tunnel</li>
+                <li>WireGuard</li>
+                <li>Grafana</li>
+                <li>Prometheus</li>
+                <li>Ansible</li>
+              </ul>
             </div>
+          </article>
 
-            <div class="projects-grid">
-                <article class="project-card">
-                    <a href="https://scapeliftpm.com" target="_blank" rel="noopener noreferrer">
+          <article class="project-card">
+            <a
+              href="https://scapeliftpm.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                class="project-image"
+                src="images/scapeliftpm-homepage.png"
+                alt="ScapeLift Property Management website homepage"
+              />
+            </a>
 
-                        <img class="project-image" src="images/scapeliftpm-homepage.png"
-                            alt="ScapeLift Property Management website homepage">
-                    </a>
+            <div class="project-details">
+              <p class="project-type">Client Website</p>
 
-                    <div class="project-details">
-                        <p class="project-type">Client Website</p>
+              <h2>ScapeLift Property Management</h2>
 
-                        <h2>ScapeLift Property Management</h2>
+              <p>
+                A responsive property-management website delivered for a paying
+                client. The project included editable content, image galleries,
+                performance improvements, domain and DNS configuration, and a
+                content-management workflow.
+              </p>
 
-                        <p>
-                            A responsive property-management website with editable content,
-                            image galleries, and a secure content-management workflow.
-                        </p>
+              <ul class="project-technologies">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>Decap CMS</li>
+                <li>GitHub Pages</li>
+                <li>Cloudflare</li>
+              </ul>
 
-                        <ul class="project-technologies">
-                            <li>HTML</li>
-                            <li>CSS</li>
-                            <li>JavaScript</li>
-                            <li>Decap CMS</li>
-                            <li>GitHub</li>
-                        </ul>
-
-                        <a href="https://scapeliftpm.com" target="_blank" rel="noopener noreferrer">
-                            View Live Website
-                        </a>
-                    </div>
-                </article>
-
-                <article class="project-card project-card--text-only">
-                    <div class="project-details">
-                        <p class="project-type">IT Infrastructure Project</p>
-
-                        <h2>Patrick Home Lab</h2>
-
-                        <p>
-                            A Proxmox-based virtualized homelab using Linux virtual machines
-                            to provide Plex media streaming, NFS network storage, Caddy
-                            reverse-proxy services, Cloudflare Tunnel, WireGuard remote access,
-                            and Grafana and Prometheus monitoring.
-                        </p>
-
-                        <p>
-                            Maintaining the environment includes Ansible-based automation and
-                            hands-on storage, backup, networking, and service troubleshooting.
-                        </p>
-
-                        <ul class="project-technologies">
-                            <li>Proxmox</li>
-                            <li>Linux</li>
-                            <li>NFS</li>
-                            <li>Caddy</li>
-                            <li>Cloudflare Tunnel</li>
-                            <li>WireGuard</li>
-                            <li>Grafana</li>
-                            <li>Prometheus</li>
-                            <li>Ansible</li>
-                        </ul>
-                    </div>
-                </article>
+              <a
+                href="https://scapeliftpm.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Live Website
+              </a>
             </div>
-
-
-        </section>
+          </article>
+        </div>
+      </section>
     </main>
-     <footer class="site-footer">
-    <div class="footer-content">
+    <footer class="site-footer">
+      <div class="footer-content">
         <p class="section-label">Let’s Connect</p>
 
-        <h2>Open to entry-level IT support, technical support, and web development opportunities</h2>
+        <h2>Open to entry-level Information Technology opportunities</h2>
 
         <ul class="footer-links">
-            <li>
-                <a href="mailto:patrickrrichardson@outlook.com">Email</a>
-            </li>
+          <li>
+            <a href="mailto:patrickrrichardson@outlook.com">Email</a>
+          </li>
 
-            <li>
-                <a href="https://www.linkedin.com/in/patrick-r-richardson/"
-                   target="_blank"
-                   rel="noopener noreferrer">LinkedIn</a>
-            </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/patrick-r-richardson/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >LinkedIn</a
+            >
+          </li>
 
-            <li>
-                <a href="https://github.com/patrick-richardson"
-                   target="_blank"
-                   rel="noopener noreferrer">GitHub</a>
-            </li>
+          <li>
+            <a
+              href="https://github.com/patrick-richardson"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GitHub</a
+            >
+          </li>
         </ul>
 
         <p class="footer-location">Shawnee, Oklahoma</p>
         <p class="footer-copyright">&copy; 2026 Patrick Richardson</p>
-    </div>
-</footer>
-</body>
-
+      </div>
+    </footer>
+  </body>
 </html>
