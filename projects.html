@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Information technology projects by Patrick Richardson, including a Proxmox homelab and a production website delivered for a paying client."
+      content="Patrick Richardson's projects include an academic multi-tier AWS deployment, a personal Linux and Proxmox homelab, and a responsive website delivered for a paying client."
     />
 
     <title>Patrick Richardson Projects | Information Technology</title>
-    <link rel="stylesheet" href="styles.css?v=3" />
+    <link rel="stylesheet" href="styles.css?v=6" />
   </head>
 
   <body class="site-background">
@@ -31,40 +31,108 @@
         <div class="projects-content">
           <p class="section-label">Projects</p>
           <h1>
-            Hands-on projects involving infrastructure, troubleshooting, and web
-            technologies
+            Academic, personal, and client projects in Linux, infrastructure,
+            cloud, and web development
           </h1>
         </div>
 
         <div class="projects-grid">
           <article class="project-card project-card--text-only">
             <div class="project-details">
-              <p class="project-type">IT Infrastructure Project</p>
+              <p class="project-type">Featured Academic Capstone Project</p>
 
-              <h2>Patrick Home Lab</h2>
+              <h2>AWS Multi-Tier SeedDMS Deployment</h2>
 
               <p>
-                A Proxmox-based homelab using Linux virtual machines to provide
-                media streaming, network storage, secure remote access,
-                reverse-proxy services, system monitoring, and automation.
+                Designed and deployed a five-instance AWS environment for
+                SeedDMS: three Linux application servers running Apache and
+                PHP, a dedicated MariaDB database server, and an HAProxy load
+                balancer.
               </p>
 
               <p>
-                Maintaining the environment has given me practical experience
-                with virtualization, networking, NFS storage, backups, service
-                configuration, documentation, and technical troubleshooting.
+                Configured HTTPS with a self-signed certificate, implemented
+                session persistence, and tested application-server failover.
+                The academic capstone also included deployment documentation
+                and a Statement of Work (SOW).
               </p>
 
               <ul class="project-technologies">
-                <li>Proxmox</li>
+                <li>AWS EC2</li>
+                <li>Amazon Linux</li>
                 <li>Linux</li>
+                <li>SeedDMS</li>
+                <li>Apache</li>
+                <li>PHP</li>
+                <li>MariaDB</li>
+                <li>HAProxy</li>
+                <li>HTTPS</li>
+              </ul>
+
+              <a
+                href="documents/ProjectReport%28SOW%29.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View AWS Project Documentation (PDF)
+              </a>
+            </div>
+          </article>
+
+          <article class="project-card project-card--text-only">
+            <div class="project-details">
+              <p class="project-type">Personal Homelab Project</p>
+
+              <h2>Proxmox and Linux Homelab</h2>
+
+              <p>
+                A personal infrastructure environment where I administer
+                Linux systems and manage virtual machines with Proxmox VE.
+                Work includes Linux services, networking, NFS storage, and
+                secure remote access.
+              </p>
+
+              <p>
+                I also maintain Docker services with Portainer, reverse-proxy
+                and Cloudflare Tunnel access, and a WireGuard VPN. I use
+                Ansible for Linux system maintenance and updates, and
+                Prometheus and Grafana for infrastructure monitoring.
+              </p>
+
+              <figure class="project-diagram">
+                <a
+                  href="images/Topology.jpg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src="images/Topology.jpg"
+                    width="1180"
+                    height="990"
+                    loading="lazy"
+                    alt="Proxmox homelab network topology diagram. The internet connects through a modem and managed switch to a Windows 11 administration workstation and a Dell Precision Proxmox VE host. Proxmox hosts seven Linux virtual machines for Cloudflare Tunnel ingress, monitoring, WireGuard VPN, NFS storage, Plex media, documentation, and Docker with Portainer. Select the image to open the full-resolution version."
+                  />
+                </a>
+                <figcaption>
+                  Homelab network topology: a Proxmox VE host runs seven Linux
+                  virtual machines for external access, monitoring, VPN, NFS
+                  storage, media, documentation, and container management.
+                  Administration uses SSH and Ansible from a workstation.
+                </figcaption>
+              </figure>
+
+              <ul class="project-technologies">
+                <li>Proxmox VE</li>
+                <li>Ubuntu Linux</li>
+                <li>Docker</li>
+                <li>Portainer</li>
                 <li>NFS</li>
-                <li>Caddy</li>
+                <li>Reverse proxies</li>
                 <li>Cloudflare Tunnel</li>
                 <li>WireGuard</li>
-                <li>Grafana</li>
-                <li>Prometheus</li>
                 <li>Ansible</li>
+                <li>Prometheus</li>
+                <li>Grafana</li>
               </ul>
             </div>
           </article>
@@ -83,7 +151,7 @@
             </a>
 
             <div class="project-details">
-              <p class="project-type">Client Website</p>
+              <p class="project-type">Paid Client Website</p>
 
               <h2>ScapeLift Property Management</h2>
 
@@ -91,7 +159,8 @@
                 A responsive property-management website delivered for a paying
                 client. The project included editable content, image galleries,
                 performance improvements, domain and DNS configuration, and a
-                content-management workflow.
+                content-management workflow. This client delivery is presented
+                separately from my academic and personal infrastructure work.
               </p>
 
               <ul class="project-technologies">
