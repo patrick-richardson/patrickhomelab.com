@@ -157,8 +157,9 @@ nav a:focus-visible,
     max-width: 1000px;
     margin: 0;
     color: var(--primary-text-color);
-    font-size: clamp(2.5rem, 3vw, 4.75rem);
+    font-size: clamp(2rem, 3vw, 4.75rem);
     line-height: 1.25;
+    overflow-wrap: anywhere;
     text-transform: uppercase;
 }
 
@@ -380,6 +381,29 @@ body.home-page .hero-capabilities > p {
 .project-details h2 {
     margin-top: 0.75rem;
     margin-bottom: 1rem;
+}
+
+.project-diagram {
+    margin: 1.5rem 0;
+}
+
+.project-diagram a {
+    display: block;
+}
+
+.project-diagram img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid rgba(131, 215, 234, 0.35);
+    border-radius: 0.75rem;
+}
+
+.project-diagram figcaption {
+    margin-top: 0.75rem;
+    color: var(--secondary-text-color);
+    font-size: 0.9rem;
+    line-height: 1.5;
 }
 
 .project-technologies {
